@@ -17,7 +17,6 @@
       --manila:#f3e7c9;
       --paper:#fffef8;
       --ink:#0f172a;
-      --postit:#fff6a6;
       --header-bg:rgba(0,0,0,.82);
       --border:rgba(255,255,255,.16);
     }
@@ -39,27 +38,22 @@
       border-bottom:1px solid rgba(0,255,136,.28);
       backdrop-filter:blur(10px)
     }
-    .header-content{
-      height:70px;display:flex;align-items:center;justify-content:space-between;
-    }
-    .brand-wrap{display:flex;align-items:center;gap:.65rem;text-decoration:none}
-    .logo-folder{
-      height:34px;width:auto;display:block;
-      filter:drop-shadow(0 0 10px rgba(0,255,136,.35))
-    }
+    .header-content{height:70px;display:flex;align-items:center;justify-content:space-between}
+    .brand-wrap{display:flex;align-items:center;gap:.7rem;text-decoration:none}
+    .logo-folder{height:36px;width:auto;display:block;filter:drop-shadow(0 0 10px rgba(0,255,136,.35))}
     .brand-text{
-      font-weight:900;font-size:1.35rem;letter-spacing:.2px;
+      font-weight:900;font-size:1.4rem;letter-spacing:.2px;
       background:var(--gradient-primary);
       -webkit-background-clip:text;-webkit-text-fill-color:transparent
     }
 
-    /* Header menu (matching header style) */
+    /* Header dropdown */
     .menu{position:relative}
     .menu-btn{
       display:flex;align-items:center;gap:.5rem;
       background:transparent;color:#e9f9f0;
       border:1px solid var(--border);
-      border-radius:999px;padding:.6rem 1rem;font-weight:800;cursor:pointer;
+      border-radius:999px;padding:.65rem 1rem;font-weight:800;cursor:pointer;
       box-shadow:0 2px 12px rgba(0,0,0,.25)
     }
     .menu-btn:hover{border-color:rgba(0,255,136,.5)}
@@ -81,41 +75,44 @@
     .hero{text-align:center;padding:3.6rem 1rem 2.4rem}
     .hero-content{max-width:1040px;margin:0 auto}
 
+    /* Bigger folder + integrated VAULT card (logoA) */
     .folder-hero{
-      display:inline-block;position:relative;width:300px;height:205px;margin-bottom:18px
+      display:inline-block;position:relative;width:360px;height:250px;margin-bottom:18px
     }
     .folder-shape{
       position:relative;width:100%;height:100%;background:var(--manila);
-      border-radius:10px;box-shadow:0 12px 28px rgba(0,0,0,.42)
+      border-radius:12px;box-shadow:0 14px 32px rgba(0,0,0,.42)
     }
     .folder-shape::before{
-      content:"";position:absolute;top:-24px;left:0;width:130px;height:24px;
-      background:var(--manila);border-radius:10px 10px 0 0
+      content:"";position:absolute;top:-26px;left:0;width:150px;height:26px;
+      background:var(--manila);border-radius:12px 12px 0 0
     }
-    /* Post-it note with logoA (more natural, prominent) */
-    .postit{
-      position:absolute;top:18px;right:18px;
-      background:var(--postit);border:1px solid rgba(0,0,0,.25);
-      width:150px;transform:rotate(6deg);
-      box-shadow:0 10px 22px rgba(0,0,0,.22), inset 0 0 0 1px rgba(255,255,255,.35);
-      border-radius:6px;padding:10px 8px 8px;
+    /* The “VAULT card” holds logoA large and readable */
+    .vault-card{
+      position:absolute;top:20px;right:20px;left:20px;bottom:20px;
+      background:var(--paper);border:1px solid rgba(0,0,0,.18);
+      border-radius:10px;box-shadow:0 14px 26px rgba(0,0,0,.22), inset 0 0 0 1px rgba(255,255,255,.4);
+      display:flex;align-items:center;justify-content:center;
+      transform:rotate(-1.5deg)
     }
-    .postit::before{
-      content:"";position:absolute;top:-10px;left:18px;width:46px;height:14px;
-      background:rgba(255,255,255,.7);border:1px solid rgba(0,0,0,.2);
+    .vault-card::before{
+      content:"";position:absolute;top:-12px;left:24px;width:58px;height:16px;
+      background:rgba(255,255,255,.75);border:1px solid rgba(0,0,0,.2);
       border-radius:2px;box-shadow:0 3px 4px rgba(0,0,0,.25)
     }
-    .postit img{width:100%;height:auto;display:block;filter:contrast(1.1) opacity(.95)}
+    .vault-logo{
+      width:85%;height:auto;display:block;
+      filter:contrast(1.05) opacity(.97); /* make text crisp but natural */
+    }
 
     .hero-title{
-      white-space:nowrap;font-size:clamp(1.45rem,6.2vw,2.9rem);
+      white-space:nowrap;font-size:clamp(1.5rem,6.4vw,3rem);
       font-weight:900;margin:.2rem 0 1rem;
       background:var(--gradient-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent
     }
     .hero-subtitle{
       font-size:1.06rem;max-width:760px;margin:0 auto 1.2rem;color:rgba(255,255,255,.9)
     }
-
     .cta-group{display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap}
     .btn-primary,.btn-secondary{
       padding:.95rem 1.55rem;border-radius:50px;text-decoration:none;font-weight:800
@@ -144,7 +141,7 @@
     .submissions{padding:2.8rem 1rem}
     .sub-card{
       background:rgba(255,255,255,.05);border:1px solid var(--border);
-      border-radius:12px;padding:1.2rem;max-width:760px;margin:0 auto
+      border-radius:12px;padding:1.2rem;max-width:780px;margin:0 auto
     }
     .form-row{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:.6rem}
     .form-row.full{grid-template-columns:1fr}
@@ -168,14 +165,13 @@
     .footer-brand{font-weight:800}
     .footer-legal{font-size:.85rem;color:rgba(255,255,255,.6);margin-top:.4rem}
 
-    @media (max-width:700px){
-      .header-content{height:auto;padding:10px 0}
-      .brand-text{font-size:1.15rem}
-      .logo-folder{height:30px}
-      .hero-title{font-size:clamp(1.2rem,6.5vw,2.2rem)}
+    @media (max-width:760px){
+      .brand-text{font-size:1.2rem}
+      .logo-folder{height:32px}
+      .hero-title{font-size:clamp(1.25rem,6.5vw,2.2rem)}
       .form-row{grid-template-columns:1fr}
-      .folder-hero{width:270px;height:190px}
-      .postit{width:140px}
+      .folder-hero{width:310px;height:220px}
+      .vault-logo{width:88%}
     }
   </style>
 </head>
@@ -211,11 +207,11 @@
     <section class="hero">
       <div class="container">
         <div class="hero-content">
-          <!-- Manila folder + Post-it note with logoA -->
+          <!-- Larger folder with integrated “VAULT card” (logoA) -->
           <div class="folder-hero" aria-hidden="true">
             <div class="folder-shape"></div>
-            <div class="postit" title="Public_Logic">
-              <img src="logoA.png" alt="Public_Logic logo on note"/>
+            <div class="vault-card">
+              <img class="vault-logo" src="logoA.png" alt="Public_Logic VAULT card"/>
             </div>
           </div>
 
@@ -276,12 +272,7 @@
                 <label for="focus">Primary need</label>
                 <select id="focus" name="focus" required>
                   <option value="" disabled selected>Choose one</option>
-                  <option>Accounts Payable / Turnovers</option>
-                  <option>Licensing / Clerk</option>
-                  <option>DPW / Service Requests</option>
-                  <option>Records / Retention / Naming</option>
-                  <option>Budget / Transparency</option>
-                  <option>Other</option>
+                  <!-- Options get injected based on audience -->
                 </select>
               </div>
             </div>
@@ -382,17 +373,57 @@
     btn.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') toggleMenu(false); });
 
     // ----- Conditional intake form -----
-    // Optional: set a backend endpoint to POST to (otherwise we use mailto):
-    // window.PL_ENDPOINT = 'https://your.api/intake';
+    // Optional backend: window.PL_ENDPOINT = 'https://your.api/intake';
     window.PL_ENDPOINT = window.PL_ENDPOINT || null;
 
     const form = document.getElementById('pl-intake');
     const audience = document.getElementById('audience');
+    const focus = document.getElementById('focus');
+
     const groups = {
       town: document.querySelector('.group-town'),
       partner: document.querySelector('.group-partner'),
       regional: document.querySelector('.group-regional')
     };
+
+    const focusOptions = {
+      town: [
+        'Accounts Payable / Turnovers',
+        'Licensing / Clerk',
+        'DPW / Service Requests',
+        'Records / Retention / Naming',
+        'Budget / Transparency',
+        'ARPA / Grants',
+        'Other'
+      ],
+      partner: [
+        'Forms / Front-end',
+        'Records / Laserfiche',
+        'Workflows / Automation',
+        'Storage / M365 / SharePoint',
+        'Data / ETL',
+        'Analytics / Dashboards',
+        'Reseller / Implementation',
+        'Other'
+      ],
+      regional: [
+        'Digital transformation',
+        'Transparency / Open Gov',
+        'Records / Compliance',
+        'Shared services',
+        'Grant programs',
+        'Training / Technical Assistance',
+        'Other'
+      ]
+    };
+
+    function setFocusOptions(key){
+      focus.innerHTML = '<option value="" disabled selected>Choose one</option>';
+      (focusOptions[key] || []).forEach(txt => {
+        const opt = document.createElement('option');
+        opt.textContent = txt; focus.appendChild(opt);
+      });
+    }
 
     function showGroup(key){
       Object.values(groups).forEach(el => el.classList.add('hidden'));
@@ -401,7 +432,9 @@
         groups[key].classList.remove('hidden');
         groups[key].querySelectorAll('input').forEach(el => el.required = true);
       }
+      setFocusOptions(key);
     }
+
     audience.addEventListener('change', e => showGroup(e.target.value));
 
     function toMailto(data, to){
@@ -439,6 +472,9 @@
         error.style.display = 'inline';
       }
     });
+
+    // Initialize with no audience (keeps "Choose one" in focus)
+    setFocusOptions('');
   </script>
 </body>
 </html>
