@@ -4,9 +4,40 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Public_Logic — Launching 9/1/2025</title>
-    <link rel="stylesheet" href="css/style.css">
-    <meta name="description" content="Public_Logic — Smart Systems. Stronger Communities. Launching September 1, 2025.">
+
+    <!-- INLINE STYLES (no external files needed) -->
+    <style>
+      :root { --pl-green:#0f3d2e; --pl-dark:#1e1e1e; --pl-light:#f7f7f7; --pl-teal:#7ee4c7; }
+      *{box-sizing:border-box;margin:0;padding:0}
+      html,body{height:100%}
+      body{
+        font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+        background:var(--pl-light); color:var(--pl-dark); line-height:1.6;
+        display:flex; flex-direction:column; min-height:100vh;
+      }
+      .container{width:min(980px,92%);margin:0 auto;padding:1.25rem 1rem}
+      header{background:var(--pl-green);color:#fff;border-bottom:2px solid #0b2c21;position:sticky;top:0;z-index:40}
+      header .wrap{display:flex;justify-content:space-between;align-items:center;gap:.5rem;padding:.75rem 0}
+      .brand{font-weight:900;font-size:1.25rem;text-decoration:none;color:#fff;letter-spacing:-.01em}
+      .brand-underscore{color:var(--pl-teal);font-family:ui-monospace,Menlo,monospace}
+      .strap{font-weight:700;font-size:.9rem;opacity:.9}
+      main{flex:1;display:flex;justify-content:center;align-items:center;text-align:center;flex-direction:column;padding:2rem 1rem}
+      .folder{display:inline-block;background:#fff;border:2px solid var(--pl-green);border-radius:6px;padding:1.5rem 2rem;box-shadow:0 4px 12px rgba(0,0,0,.08);position:relative;margin-bottom:1.25rem}
+      .folder::before{content:'';position:absolute;top:-12px;left:20px;width:80px;height:12px;background:#fff;border:2px solid var(--pl-green);border-bottom:none;border-radius:4px 4px 0 0}
+      h1{font-size:2rem;margin:.5rem 0;color:var(--pl-green)}
+      p{font-size:1.1rem;margin:.5rem 0 1.5rem;color:#333}
+      .pds{font-weight:700;letter-spacing:.05em;margin-top:.25rem;color:var(--pl-green)}
+      a.btn{background:var(--pl-green);color:#fff;text-decoration:none;padding:.75rem 1.25rem;border-radius:6px;font-weight:600;transition:background .2s ease;display:inline-block}
+      a.btn:hover{background:#0c2e22}
+      footer{background:#0f0f0f;color:#cfcfcf;padding:1rem;text-align:center;border-top:1px solid #1f1f1f}
+      footer p{margin:.2rem 0}
+      .tiny{font-size:.85rem;opacity:.85}
+      @media (max-width:520px){.strap{display:none}}
+      /* inline SVG sizing */
+      .logo{max-width:280px;height:auto;display:block}
+    </style>
   </head>
+
   <body>
     <header role="banner">
       <div class="container wrap">
@@ -16,11 +47,23 @@
     </header>
 
     <main>
-      <div class="folder">
-        <img src="assets/logoA.png" alt="Public_Logic Logo" class="logo" />
+      <div class="folder" aria-hidden="true">
+        <!-- INLINE SVG LOGO (no external image needed) -->
+        <svg class="logo" viewBox="0 0 900 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Public_Logic">
+          <rect x="8" y="48" width="884" height="200" rx="24" fill="#fff" stroke="#0f3d2e" stroke-width="6"/>
+          <rect x="60" y="20" width="220" height="40" rx="6" fill="#fff" stroke="#0f3d2e" stroke-width="6"/>
+          <g font-family="Segoe UI, Arial, sans-serif" font-weight="700" font-size="90" fill="#0f3d2e">
+            <text x="120" y="160">Public</text>
+            <text x="120" y="160" dx="362" fill="#7ee4c7" font-family="ui-monospace, Menlo, monospace">_</text>
+            <text x="120" y="160" dx="410">Logic</text>
+          </g>
+        </svg>
       </div>
+
       <h1>Launching September 1, 2025</h1>
       <p class="pds">People_Data_Systems</p>
+
+      <!-- If you add note.html later, this link will work. For now it’s fine to leave. -->
       <a href="note.html" class="btn">Read Field Note_001</a>
     </main>
 
@@ -30,7 +73,6 @@
       <p class="tiny">VAULT<span style="font-variant-caps: all-small-caps;">™</span> framework and related marks — patent pending.</p>
     </footer>
 
-    <script src="js/main.js"></script>
-    <noscript>JavaScript is disabled. The site still works, but dynamic bits like the year won’t update.</noscript>
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
   </body>
 </html>
