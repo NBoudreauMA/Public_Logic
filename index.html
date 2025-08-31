@@ -3,51 +3,69 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Public_Logic — Now Live</title>
+  <title>Public_Logic — Launch</title>
   <meta name="description" content="Public_Logic — Smart Systems. Stronger Communities. People_Data_Systems.">
   <style>
     :root{
-      --pl-green:#0f3d2e; --pl-teal:#7ee4c7; --ink:#111; --bg:#0a0a0a; --paper:#ffffff;
+      --pl-green:#0f3d2e; --pl-teal:#7ee4c7;
+      --bg:#0a0a0a; --ink:#f2f5f4;
     }
     *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;background:#0a0a0a;color:#e9f1ee;min-height:100vh;display:flex;flex-direction:column}
-    .container{width:min(1200px,92%);margin:0 auto;padding:0 1rem}
-
-    /* header */
-    header{position:sticky;top:0;z-index:10;background:rgba(10,10,10,.85);backdrop-filter:blur(12px);border-bottom:1px solid rgba(15,61,46,.25)}
+    body{
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+      background:var(--bg);color:var(--ink);
+      min-height:100vh;display:flex;flex-direction:column;
+    }
+    .container{width:min(1100px,92%);margin:0 auto;padding:0 1rem}
+    header{
+      position:sticky;top:0;z-index:10;
+      background:rgba(10,10,10,.85);backdrop-filter:blur(12px);
+      border-bottom:1px solid rgba(15,61,46,.25)
+    }
     .head{display:flex;justify-content:space-between;align-items:center;padding:1rem 0}
     .brand{font-weight:900;font-size:1.35rem;text-decoration:none;color:#fff}
     .brand-underscore{color:var(--pl-teal);font-family:ui-monospace,Menlo,monospace}
     .tag{font-weight:700;font-size:.9rem;opacity:.9}
 
-    /* hero */
-    main{flex:1;display:flex;align-items:center;justify-content:center;text-align:center}
-    h1{font-size:clamp(2.2rem,6vw,4rem);font-weight:900;margin:.75rem 0;color:#caf2e5}
-    .sub{letter-spacing:.1em;text-transform:uppercase;opacity:.9;margin-bottom:1.25rem}
+    main{flex:1;display:flex;align-items:center;justify-content:center;text-align:center;padding:2rem 0}
 
-    /* ⬇️ Cleaner folder frame */
+    /* Folder card */
     .folder{
       display:inline-block;background:#fff;border:2px solid var(--pl-green);
-      border-radius:10px;padding:1.25rem 1.5rem;margin:1.25rem 0 1.5rem; color:var(--ink);
-      box-shadow:0 10px 24px rgba(0,0,0,.18);
+      border-radius:12px;padding:1.5rem 2rem;margin:1.5rem 0 2rem;
+      color:#111;box-shadow:0 12px 28px rgba(0,0,0,.22);
       position:relative;
     }
     .folder::before{
-      content:'';position:absolute;top:-10px;left:28px;width:90px;height:14px;background:#fff;
-      border:2px solid var(--pl-green);border-bottom:none;border-radius:6px 6px 0 0;
+      content:'';position:absolute;top:-12px;left:28px;width:100px;height:16px;
+      background:#fff;border:2px solid var(--pl-green);border-bottom:none;border-radius:6px 6px 0 0;
     }
-    .folder img{
-      display:block;max-width:min(640px,90vw);height:auto;
-      border-radius:6px; /* subtle rounding on the image itself */
-    }
+    .folder img{display:block;max-width:min(500px,90vw);height:auto;border-radius:6px}
 
+    h1{
+      font-size:clamp(2.4rem,6vw,4.4rem);
+      font-weight:900;margin:.75rem 0;
+      background:linear-gradient(135deg,#0f3d2e,#7ee4c7);
+      -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+    }
+    .sub{letter-spacing:.1em;text-transform:uppercase;opacity:.9;margin-bottom:1.25rem;font-weight:600}
+
+    /* Call-to-action buttons */
     .btns{display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center;margin-top:.5rem}
-    .btn{background:var(--pl-green);color:#fff;text-decoration:none;padding:.9rem 1.25rem;border-radius:8px;font-weight:700}
-    .btn:hover{background:#0c2e22}
+    .btn{
+      background:var(--pl-green);color:#fff;text-decoration:none;
+      padding:.9rem 1.25rem;border-radius:8px;font-weight:700;transition:.2s;
+    }
+    .btn:hover{background:#0c2e22;transform:translateY(-2px)}
     .btn.alt{background:#164c3a}
-    footer{background:#0f0f0f;border-top:1px solid #1b1b1b;text-align:center;padding:1.25rem .5rem}
+
+    footer{
+      background:#0f0f0f;border-top:1px solid #1b1b1b;
+      text-align:center;padding:1.25rem .5rem
+    }
     footer p{opacity:.85;margin:.3rem 0}
     .tiny{opacity:.65;font-style:italic}
+
     @media (max-width:700px){.tag{display:none}}
   </style>
 </head>
@@ -61,13 +79,13 @@
 
   <main>
     <div class="container">
-      <!-- Uses your real repo image -->
       <div class="folder">
-        <img src="vault-lock-folder.png" alt="Public_Logic folder mark">
+        <img src="logoA.png" alt="Public_Logic logo">
       </div>
 
-      <h1>Public_Logic is LIVE</h1>
-      <p class="sub">People_Data_Systems</p>
+      <!-- Cooler launch line -->
+      <h1>We’re Building the Future of Town Systems</h1>
+      <p class="sub">Public_Logic has launched — People_Data_Systems for real communities</p>
 
       <div class="btns">
         <a class="btn" href="framework.html">Explore VAULT</a>
