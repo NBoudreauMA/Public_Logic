@@ -1,176 +1,49 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Field_Notes — Pieces and Frameworks | PublicLogic</title>
-    <meta name="description" content="Field Note_001 — Breaking things down into pieces, building a municipal framework, HubbCONNECT progress, and the VAULT™ backbone. Launching September 1, 2025." />
-    <style>
-      :root {
-        --pl-green: #0f3d2e;
-        --pl-green-soft: #2d6b55;
-        --pl-dark: #1e1e1e;
-        --pl-light: #f7f7f7;
-        --pl-gray: #4a4a4a;
-        --pl-border:#e6e6e6;
-      }
-      *{box-sizing:border-box}
-      body { font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial; background: var(--pl-light); color: var(--pl-dark); line-height:1.6; margin:0; }
-      .container { width: min(980px, 92%); margin:0 auto; padding:1.25rem 1rem; }
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Field Note_001 — Public_Logic</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header role="banner">
+  <div class="container wrap">
+    <a class="brand" href="index.html" aria-label="Public Logic home">Public<span class="brand-underscore">_</span>Logic</a>
+    <div class="strap">Smart Systems. Stronger Communities.</div>
+  </div>
+</header>
 
-      header { background: var(--pl-green); color:#fff; border-bottom: 2px solid #0b2c21; position:sticky; top:0; z-index:40; }
-      header .wrap { display:flex; justify-content:space-between; align-items:center; gap:.5rem; padding:.75rem 0; }
-      .brand { font-weight:900; font-size:1.25rem; text-decoration:none; color:#fff; letter-spacing:-.01em; }
-      .brand-underscore{ color:#7ee4c7; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
-      .strap { font-weight:700; font-size:.9rem; opacity:.9; }
+<main class="container note">
+  <h1>Field Note_001</h1>
+  <p><time datetime="2025-09-01">September 1, 2025</time></p>
+  <p class="lead">Launch day thoughts: building municipal systems that actually work for staff and residents.</p>
 
-      h1,h2 { margin:.25rem 0 .5rem; letter-spacing:-.01em; }
-      .section { padding:1.6rem 0; border-bottom:1px solid var(--pl-border); }
-      .card { background:#fff; border:1px solid var(--pl-border); border-radius:8px; }
+  <h2>What we’re doing</h2>
+  <p>Public_Logic builds compliance-first, human-friendly operating frameworks for towns. VAULT™ standardizes naming, retention, and workflow logic across your existing platforms — CivicPlus, Microsoft 365, and more.</p>
 
-      .note { background:#fff; border:1px solid var(--pl-border); border-radius:10px; box-shadow:0 8px 22px rgba(0,0,0,.06); overflow:hidden; }
-      .note-head { display:flex; justify-content:space-between; align-items:center; gap:1rem; padding:1rem; border-bottom:1px solid var(--pl-border); background:linear-gradient(180deg,#fff,#fbfcfd); }
-      .note-logo { height:72px; width:auto; }
-      .note-contact { text-align:right; font-size:.95rem; color:#2d3d36; line-height:1.35; }
-      .note-contact a { color:#0b2239; text-decoration:none; font-weight:700; }
+  <h2>Why this matters</h2>
+  <ul>
+    <li>Clarity: everyone files and finds the same way.</li>
+    <li>Compliance: retention and audit logs are baked in.</li>
+    <li>Speed: automation handles the boring stuff.</li>
+  </ul>
 
-      .note-meta { padding:1rem; border-bottom:1px solid var(--pl-border); }
-      .note-title { margin:.1rem 0 .35rem; font-size:1.75rem; color:#0b2239; }
-      .note-kicker { margin:0 0 .6rem; color:#3f5163; font-weight:700; }
-      .meta-line { color:#5a6b63; font-size:.95rem; display:flex; gap:.6rem; flex-wrap:wrap; }
+  <h2>What’s next</h2>
+  <p>Week 1 is about pilots, feedback, and tightening the playbook. If you want early access, reach out.</p>
 
-      .note-body { padding:1rem 1rem 1.1rem; }
-      p{margin:.25rem 0 1rem}
-      h2{margin:1.2rem 0 .6rem; color:#0b2239; font-size:1.2rem}
-      em{font-style:italic}
+  <p style="margin-top:1.5rem;">
+    <a class="btn" href="contact.html">Request Early Access</a>
+    <a class="btn" href="framework.html" style="margin-left:.5rem;">Explore VAULT</a>
+  </p>
+</main>
 
-      .ovals { display:flex; justify-content:center; gap:.6rem; margin:1rem 0 1.1rem; flex-wrap:wrap; }
-      .oval { background:#eef7f2; border:2px solid #cfe6dc; border-radius:999px; padding:.35rem 1.05rem; font-weight:800; color:#153c2f; font-size:.95rem; }
+<footer role="contentinfo">
+  <p>People.Data.Systems.</p>
+  <p>© <span id="year"></span> Public_Logic. All rights reserved.</p>
+  <p class="tiny">VAULT<span style="font-variant-caps: all-small-caps;">™</span> framework and related marks — patent pending.</p>
+</footer>
 
-      .rule { height:1px; background:var(--pl-border); margin:1.1rem 0; }
-      .sig { margin-top:1rem; font-weight:800; color:#12272a; }
-      .sig small { display:block; color:#4d5e56; margin-top:.25rem; }
-
-      .cta { background:#eef7f2; border-left:6px solid var(--pl-green-soft); padding:.85rem 1rem; border-radius:10px; color:#153c2f; font-weight:700; margin:1.1rem 0; }
-      .bullets { margin:.3rem 0 1.1rem 1.2rem; }
-      .bullets li { margin:.2rem 0; }
-
-      footer { background:#0f0f0f; color:#cfcfcf; padding:1rem; text-align:center; border-top:1px solid #1f1f1f; }
-      footer p { margin:.2rem 0; }
-      .tiny { font-size:.85rem; opacity:.85; }
-    </style>
-  </head>
-  <body>
-    <header role="banner">
-      <div class="container wrap">
-        <a class="brand" href="index.html">Public<span class="brand-underscore">_</span>Logic</a>
-        <div class="strap">Smart Systems. Stronger Communities.</div>
-      </div>
-    </header>
-
-    <main role="main">
-      <section class="section">
-        <div class="container">
-          <article class="note">
-            <div class="note-head">
-              <img class="note-logo" src="logoA.png" alt="Public_Logic logo" />
-              <div class="note-contact">
-                Nathan R. Boudreau<br/>
-                Practitioner_Builder_Founder<br/>
-                <a href="mailto:nathan@publiclogic.org">nathan@publiclogic.org</a>
-              </div>
-            </div>
-
-            <div class="note-meta">
-              <h1 class="note-title">Field Note_001 — Pieces and Frameworks</h1>
-              <div class="note-kicker">Breaking things down — and building them back stronger.</div>
-              <div class="meta-line">
-                <span id="date">Today</span> • <span>Field_Notes</span> • <span>~5 min read</span>
-              </div>
-            </div>
-
-            <div class="note-body">
-              <p>I’ve worked in and alongside several towns — from communities of four thousand to forty thousand — and spent time in both local and state legislative settings. At every scale, the story is the same: good people trying to do the right thing are often left fighting through unclear processes and disconnected systems. That’s where this starts. With people, not platforms.</p>
-
-              <p>This is our debut as <strong>Public_Logic</strong>. It isn’t about selling another municipal app. It’s about giving staff, boards, and residents the clarity they need to succeed. This note is the first in a series we’re calling <em>Field_Notes</em>, sharing what we’re building, why it matters, and how it connects back to the day-to-day reality of government work.</p>
-
-              <h2>Pieces and Frameworks</h2>
-              <p>Everything breaks into pieces. Career. Health. Even mistakes. What looks impossible becomes manageable once you stop treating it as one crushing weight and start seeing the smaller parts you can actually fix.</p>
-
-              <p>I’ve carried that lesson through hard times. Loops that came with an addictive personality. A cancer diagnosis that stopped everything in its tracks. Years of ethical uncertainty hanging over my career. None of it felt survivable at the time. What kept me moving was breaking things down and tackling what I could, one piece at a time.</p>
-
-              <p>That same approach carried over into municipal work. Local government is full of good people, but too often the structure sets them up to fail. Systems don’t connect. Data gets buried. Staff are forced into gray areas where the only option is to improvise.</p>
-
-              <h2>The Gray Problem</h2>
-              <p>Towns are drowning in <em>gray</em> — unclear processes, conflicting systems, buried data. Good people can’t succeed when they’re fighting the structure itself.</p>
-
-              <div class="ovals">
-                <div class="oval">People</div>
-                <div class="oval">Data</div>
-                <div class="oval">Systems</div>
-              </div>
-
-              <p><strong>People</strong> work without clear expectations or consistent workflows. <strong>Data</strong> disappears into folder-within-folder chaos. <strong>Systems</strong> overlap and conflict, forcing staff to build risky workarounds. The gray compounds until nothing works efficiently.</p>
-
-              <p>Break it down, and you can build a <strong>framework</strong>.</p>
-
-              <h2>One Pathway Forward</h2>
-              <p><strong>HubbCONNECT</strong> is proving this works. With about 30% rolled out in Hubbardston, we’re already seeing DPW requests, turnovers, and licensing flow through unified processes. Not perfect, but proof that replacing gray with structure works.</p>
-
-              <p>That’s <strong>Public_Logic</strong>: <em>Verified Automation &amp; Unified Logic for Towns</em>. Not another app, but a <strong>framework</strong> that connects the pieces you already have. The underscore isn’t decoration — it’s the through-line tying it all together.</p>
-
-              <p>Underneath runs <strong>VAULT<span style="font-variant-caps: all-small-caps;">™</span></strong> — an agnostic data framework layering compliance, workflow, and archive logic onto municipal operations. It’s the backbone that helps People, Data, and Systems work <em>with</em> each other instead of <em>against</em> each other.</p>
-
-              <h2>The Difference</h2>
-              <p>Other vendors sell software. We build frameworks. Software makes you change how you work; frameworks adapt to strengthen what you already do.</p>
-
-              <p><strong>Immediate impact:</strong> Staff get clarity instead of confusion. Boards get focus instead of firefighting. Residents get results instead of runarounds.</p>
-              <p><strong>Long-term change:</strong> Gray becomes transparent. Scattered data becomes searchable. Competing systems become connected operations.</p>
-
-              <h2>Personal Stakes</h2>
-              <p>Public service isn’t one big thing — it’s thousands of connected pieces. They can drag you into destructive loops, or they can build something sustainable.</p>
-
-              <p>For me, it’s anchored by my wife and our pups—Liberty Belle at my feet, and Independence downstairs "guarding" us from joggers and neighbors. They remind me why this matters: because families everywhere count on their towns to work. And towns only work when their pieces do.</p>
-
-              <p class="sig">
-                — Nathan R. Boudreau<br/>
-                <small>Practitioner_Builder_Founder, Public_Logic</small>
-              </p>
-
-              <p><em>And yes, the acronym is deliberate. Public_Logic really does stand for:</em><br/>
-                <strong>P</strong>ractitioners of Unified Best practices in Local Innovation &amp; Compliance;<br/>
-                <strong>L</strong>eadership in Operational Government Innovation &amp; Community.<br/>
-                <span style="color:#5a6b63; font-size:.9rem">(It’s a little nerdy, but it’s ours.)</span>
-              </p>
-
-              <div class="rule"></div>
-
-              <div class="cta">
-                <strong>Launching September 1, 2025:</strong> Ready to replace gray with clarity? If you’re a municipal leader tired of fighting your own systems, let’s build something better — piece by piece.
-              </div>
-
-              <ul class="bullets">
-                <li><strong>Municipal leaders:</strong> Schedule a framework assessment</li>
-                <li><strong>Vendors/partners:</strong> Explore integration opportunities</li>
-                <li><strong>Residents:</strong> Hold your town accountable for better systems</li>
-              </ul>
-            </div>
-          </article>
-        </div>
-      </section>
-    </main>
-
-    <footer role="contentinfo">
-      <p>People.Data.Systems.</p>
-      <p>© <span id="year"></span> PublicLogic. All rights reserved.</p>
-      <p class="tiny">VAULT<span style="font-variant-caps: all-small-caps;">™</span> framework and related marks — patent pending.</p>
-    </footer>
-
-    <script>
-      const d = new Date();
-      const opts = { year:'numeric', month:'long', day:'numeric' };
-      document.getElementById('date').textContent = d.toLocaleDateString(undefined, opts);
-      document.getElementById('year').textContent = d.getFullYear();
-    </script>
-  </body>
+<script src="js/main.js"></script>
+</body>
 </html>
