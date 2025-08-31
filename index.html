@@ -118,11 +118,9 @@
     }
     .brand-wrap:hover{transform:translateY(-1px)}
     .logo-folder{
-      height:34px;width:auto;display:block;
-      filter:drop-shadow(0 0 10px rgba(0,255,136,.28));
-      transition:filter 0.3s ease;
+      height:28px;width:auto;display:block;
+      filter:brightness(0) saturate(100%) invert(85%) sepia(13%) saturate(261%) hue-rotate(81deg) brightness(99%) contrast(96%);
     }
-    .brand-wrap:hover .logo-folder{filter:drop-shadow(0 0 15px rgba(0,255,136,.4))}
     .brand-text{
       font-weight:900;font-size:1.3rem;letter-spacing:.2px;
       background:var(--gradient-primary);
@@ -136,6 +134,8 @@
       border:1px solid var(--border);border-radius:999px;
       padding:.6rem 1rem;font-weight:800;cursor:pointer;
       transition:all 0.3s ease;
+      font-family:inherit;
+      font-size:inherit;
     }
     .menu-btn:hover{
       border-color:rgba(0,255,136,.5);
@@ -185,9 +185,10 @@
       background:var(--manila);border-radius:12px 12px 0 0
     }
     .folder-logo{
-      position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-      width:80%;height:auto;display:block;
+      position:absolute;top:45%;left:50%;transform:translate(-50%,-50%);
+      width:60%;height:auto;display:block;
       transition:transform 0.4s ease;
+      filter:drop-shadow(0 2px 8px rgba(0,0,0,.3));
     }
     .folder-hero:hover .folder-logo{transform:translate(-50%,-50%) scale(1.05)}
 
@@ -495,7 +496,10 @@
   <div class="container">
     <h2 class="section-title">Start Your Digital Transformation</h2>
     <div class="form-wrap">
-      <form id="pl-intake" novalidate>
+      <!-- Hidden input for Netlify forms -->
+      <input type="hidden" name="form-name" value="pl-intake" />
+      
+      <form id="pl-intake" name="pl-intake" method="POST" data-netlify="true" novalidate>
         <div class="row">
           <div>
             <label for="audience">I am a…</label>
@@ -685,6 +689,7 @@
       return isValid;
     }
 
+    // Form submission with actual functionality
     form.addEventListener('submit', async function(e) {
       e.preventDefault();
       
@@ -699,21 +704,38 @@
       successMsg.style.display = 'none';
       errorMsg.style.display = 'none';
 
+      // Collect form data
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+
       try {
-        // Simulate form submission (replace with actual endpoint)
-        await new Promise(resolve => setTimeout(resolve, 2000));
-        
-        // Success state
-        successMsg.style.display = 'block';
-        form.reset();
-        focusSelect.disabled = true;
-        
-        // Reset form after 5 seconds
-        setTimeout(() => {
-          successMsg.style.display = 'none';
-        }, 5000);
+        // Submit to Netlify forms (or your preferred service)
+        const response = await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams({
+            'form-name': 'pl-intake',
+            ...data
+          }).toString()
+        });
+
+        if (response.ok) {
+          // Success state
+          successMsg.style.display = 'block';
+          form.reset();
+          focusSelect.disabled = true;
+          focusSelect.innerHTML = '<option value="" disabled selected>Choose one</option>';
+          
+          // Reset form after 5 seconds
+          setTimeout(() => {
+            successMsg.style.display = 'none';
+          }, 5000);
+        } else {
+          throw new Error('Network response was not ok');
+        }
         
       } catch (error) {
+        console.error('Form submission error:', error);
         // Error state
         errorMsg.style.display = 'block';
         setTimeout(() => {
