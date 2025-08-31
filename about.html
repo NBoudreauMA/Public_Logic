@@ -71,6 +71,48 @@
     }
     .container{max-width:1080px;margin:0 auto;padding:0 18px}
 
+    /* Header */
+    header{
+      position:sticky;top:0;z-index:1000;
+      background:rgba(0,0,0,.82);
+      border-bottom:1px solid rgba(0,255,136,.28);
+      backdrop-filter:blur(10px)
+    }
+    .header-content{height:70px;display:flex;align-items:center;justify-content:space-between}
+    .brand-wrap{display:flex;align-items:center;gap:.6rem;text-decoration:none}
+    .brand-text{
+      font-weight:900;font-size:1.3rem;letter-spacing:.2px;
+      background:var(--grad);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent
+    }
+    .underscore{
+      animation:colorCycle 3s ease-in-out infinite;
+    }
+    @keyframes colorCycle{
+      0%,100%{color:#00ff88}
+      25%{color:#00d4aa}
+      50%{color:#ff6b6b}
+      75%{color:#4ecdc4}
+    }
+
+    .menu{position:relative}
+    .menu-btn{
+      background:transparent;color:#e9f9f0;
+      border:1px solid var(--border);border-radius:999px;
+      padding:.6rem 1rem;font-weight:800;cursor:pointer;
+      font-family:inherit;
+    }
+    .menu-btn:hover{border-color:rgba(0,255,136,.5)}
+    .menu-list{
+      position:absolute;right:0;top:110%;min-width:220px;
+      background:rgba(8,12,20,.98);border:1px solid var(--border);
+      border-radius:12px;padding:.4rem;box-shadow:0 14px 30px rgba(0,0,0,.45);display:none
+    }
+    .menu[aria-expanded="true"] .menu-list{display:block}
+    .menu a{display:block;padding:.65rem .75rem;border-radius:8px;color:#e8f3ee;text-decoration:none;font-weight:700}
+    .menu a:hover{background:rgba(255,255,255,.08)}
+    .menu .sep{height:1px;background:rgba(255,255,255,.12);margin:.35rem .25rem}
+
     /* Hero */
     .hero{padding:3.5rem 1rem 2rem;text-align:center}
     .hero h1{
@@ -163,6 +205,7 @@
     .footer-legal{font-size:.88rem;color:rgba(255,255,255,.65);margin-top:.4rem}
 
     @media (max-width:720px){
+      .brand-text{font-size:1.18rem}
       .about-content{padding:1.6rem}
       .principles-grid{grid-template-columns:1fr}
       .cta-row{flex-direction:column;align-items:center}
@@ -183,6 +226,29 @@
 <body>
   <!-- Skip link for accessibility -->
   <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- Header -->
+
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <a class="brand-wrap" href="index.html" aria-label="Public_Logic home">
+          <span class="brand-text">Public<span class="underscore">_</span>Logic</span>
+        </a>
+        <nav class="menu" aria-label="Site menu" aria-expanded="false">
+          <button class="menu-btn" aria-haspopup="true" aria-controls="top-menu">Menu ▾</button>
+          <div id="top-menu" class="menu-list" role="menu">
+            <a role="menuitem" href="index.html">Home</a>
+            <div class="sep" aria-hidden="true"></div>
+            <a role="menuitem" href="framework.html">VAULT Framework</a>
+            <a role="menuitem" href="note.html">Field Notes</a>
+            <a role="menuitem" href="about.html">About & Services</a>
+            <a role="menuitem" href="contact.html">Contact</a>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </header>
 
   <!-- About page hero -->
 
@@ -309,6 +375,21 @@
   <script>
     // Year
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Dropdown toggle
+    const menu = document.querySelector('.menu');
+    const btn = document.querySelector('.menu-btn');
+    function toggleMenu(force){
+      const expanded = (force !== undefined) ? force : menu.getAttribute('aria-expanded') !== 'true';
+      menu.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+    }
+    btn.addEventListener('click', () => toggleMenu());
+    document.addEventListener('click', (e) => { 
+      if(!menu.contains(e.target)) toggleMenu(false); 
+    });
+    btn.addEventListener('keydown', (e) => { 
+      if(e.key === 'Escape') toggleMenu(false); 
+    });
   </script>
 
 </body>
