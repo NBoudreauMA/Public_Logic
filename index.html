@@ -12,11 +12,9 @@
       --pl-green: #00ff88;
       --pl-dark: #0a0a0a;
       --pl-light: #f8fafc;
-      --pl-teal: #00d4aa;
       --pl-orange: #f97316;
       --gradient-primary: linear-gradient(135deg, #00ff88 0%, #00d4aa 100%);
-      --gradient-accent: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-      --glass: rgba(255, 255, 255, 0.08);
+      --glass: rgba(255,255,255,.08);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -36,7 +34,7 @@
         radial-gradient(circle at 40% 70%, rgba(249,115,22,.08) 0%, transparent 50%);
       animation: meshFloat 15s ease-in-out infinite;
     }
-    @keyframes meshFloat { 50% { transform: rotate(1.8deg) scale(1.03); } }
+    @keyframes meshFloat { 50% { transform: rotate(1.5deg) scale(1.02); } }
 
     /* Header */
     header {
@@ -49,22 +47,36 @@
     .header-content { display:flex; justify-content:space-between; align-items:center; padding: 12px 0; }
     .brand-wrap { display:flex; align-items:center; gap:.6rem; text-decoration:none; }
     .logo-main { height: 28px; width:auto; display:block; }
-    .logo-folder { height: 20px; width:auto; display:block; opacity:.95; filter: drop-shadow(0 2px 10px rgba(0,255,136,.12)); }
-    .brand-text {
-      font-weight: 900; font-size: 1.2rem; letter-spacing:.2px; text-decoration:none;
-      background: var(--gradient-primary);
-      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
-    }
 
     /* Hero */
     .hero { min-height: 64vh; display:flex; align-items:center; justify-content:center; text-align:center; padding: 3.2rem 1rem 2rem; }
-    .hero-content { max-width: 900px; }
-    .hero-title { font-size: clamp(2.2rem, 7vw, 4rem); font-weight: 900; margin-bottom: .85rem; }
-    .title-main { background: var(--gradient-primary); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
-    .title-accent { color: var(--pl-orange); display:block; font-size:.72em; font-weight:700; margin-top:.35rem; }
-    .hero-subtitle { font-size: 1.08rem; color: rgba(248,250,252,.92); margin-bottom:1.4rem; }
+    .hero-content { max-width: 980px; margin: 0 auto; }
 
-    .cta-group { display:flex; gap:.9rem; justify-content:center; flex-wrap:wrap; margin-top:1.2rem; }
+    /* Folder with inset logo (above headline) */
+    .folder-hero {
+      position: relative; width: 220px; height: 170px; margin: 0 auto 16px;
+      filter: drop-shadow(0 8px 24px rgba(0,0,0,.35));
+    }
+    .folder-hero img { position:absolute; inset:0; margin:auto; display:block; }
+    .folder-bg { width: 100%; height: 100%; object-fit: contain; }
+    .folder-brand {
+      width: 68%; height: auto; object-fit: contain; 
+      transform: translateY(-6%); /* slight lift inside the folder */
+    }
+
+    .hero-title {
+      white-space: nowrap; /* FORCE one line */
+      font-size: clamp(1.4rem, 6.2vw, 3.1rem);
+      font-weight: 900; margin-bottom: .9rem;
+      line-height: 1.15;
+    }
+    .title-main { 
+      background: var(--gradient-primary); 
+      -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; 
+    }
+    .hero-subtitle { font-size: clamp(.95rem, 2.5vw, 1.08rem); color: rgba(248,250,252,.92); margin-bottom:1.3rem; }
+
+    .cta-group { display:flex; gap:.9rem; justify-content:center; flex-wrap:wrap; margin-top:1rem; }
     .btn-primary{
       background:var(--gradient-primary); color:var(--pl-dark); padding:.95rem 1.5rem; border-radius:50px;
       text-decoration:none; font-weight:700; font-size:1.02rem;
@@ -74,24 +86,21 @@
       border-radius:50px; text-decoration:none; font-weight:600;
     }
 
-    /* Quick Links */
-    .quick-links { margin-top: .9rem; display:flex; flex-wrap:wrap; gap:.5rem; justify-content:center; }
+    .quick-links { margin-top: .8rem; display:flex; flex-wrap:wrap; gap:.5rem; justify-content:center; }
     .btn-quiet {
       background: rgba(255,255,255,.06);
       border:1px solid rgba(255,255,255,.16);
       color: var(--pl-light);
       padding:.55rem .95rem; border-radius:999px; text-decoration:none; font-weight:600; font-size:.95rem;
     }
-    .btn-quiet:hover { border-color: rgba(0,255,136,.35); }
 
     /* Features (cards) */
     .features { padding:2.6rem 1rem; background: rgba(0,0,0,.28); backdrop-filter: blur(8px); }
-    .features-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:1.4rem; margin-top:1.6rem; }
+    .features-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:1.4rem; margin-top:1.4rem; }
     .feature-card{
       background:var(--glass); backdrop-filter: blur(14px);
-      border:1px solid rgba(255,255,255,.12); border-radius:16px; padding:1.25rem; transition:transform .15s ease, border-color .15s ease;
+      border:1px solid rgba(255,255,255,.12); border-radius:16px; padding:1.25rem;
     }
-    .feature-card:hover{ transform:translateY(-4px); border-color:rgba(0,255,136,.28); }
     .feature-icon{ width:48px; height:48px; background:var(--gradient-primary); border-radius:12px; display:flex; align-items:center; justify-content:center; margin-bottom:.9rem; font-size:1.2rem; }
     .feature-title{ font-size:1.18rem; font-weight:700; margin-bottom:.45rem; color:var(--pl-light); }
     .feature-desc{ color:rgba(248,250,252,.88); }
@@ -110,9 +119,9 @@
     .about-card ul { margin-left:1rem; }
     .about-card li { margin:.25rem 0; }
 
-    /* Submissions */
+    /* Submissions (single adaptive form) */
     .submissions { padding:2.6rem 1rem; }
-    .sub-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap:1.1rem; margin-top:1.1rem; }
+    .sub-grid { display:grid; grid-template-columns: 1fr; gap:1.1rem; margin-top:1.1rem; }
     .sub-card { background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.12); border-radius:14px; padding:1.15rem; backdrop-filter: blur(10px); }
     .sub-card h3 { margin-bottom:.35rem; font-size:1.08rem; }
     .sub-card p { margin-bottom:.7rem; color:rgba(248,250,252,.85); }
@@ -128,6 +137,7 @@
     .submit-wrap { display:flex; gap:.6rem; align-items:center; margin-top:.7rem; }
     .success-msg { display:none; color:#8bffce; font-weight:600; }
     .error-msg { display:none; color:#ffb4b4; font-weight:600; }
+    .hidden { display: none !important; }
 
     /* Field Notes */
     .field-notes { padding:2.6rem 1rem; background: rgba(255,255,255,.02); }
@@ -150,14 +160,10 @@
     .footer-tagline{ color:rgba(248,250,252,.68); margin-bottom:1rem; }
     .footer-legal{ font-size:.76rem; color:rgba(248,250,252,.5); line-height:1.4; }
 
-    /* Utilities */
-    .fade-in{ opacity:0; transform:translateY(20px); transition: all .45s ease; }
-    .fade-in.visible{ opacity:1; transform:translateY(0); }
-    @media (max-width: 768px){
-      .cta-group,.quick-links{ flex-direction:column; align-items:center; }
-      .btn-primary,.btn-secondary{ width:100%; max-width:320px; }
+    @media (max-width: 520px){
+      .folder-hero { width: 190px; height: 150px; }
+      .hero-title { font-size: clamp(1.1rem, 6.5vw, 2.2rem); }
       .form-row { grid-template-columns: 1fr; }
-      .logo-main { height: 24px; }
     }
   </style>
 </head>
@@ -168,10 +174,8 @@
     <div class="container">
       <div class="header-content">
         <a class="brand-wrap" href="#top" aria-label="Public_Logic home">
-          <!-- Your logos from the repo -->
+          <!-- Header: ONLY your logo -->
           <img class="logo-main" src="logoA.png" alt="Public_Logic logo"/>
-          <img class="logo-folder" src="vault-lock-folder.png" alt="VAULT folder logo"/>
-          <span class="brand-text">Public_Logic</span>
         </a>
       </div>
     </div>
@@ -181,10 +185,14 @@
     <section class="hero">
       <div class="container">
         <div class="hero-content">
-          <h1 class="hero-title">
-            <span class="title-main">Turn Municipal Chaos</span>
-            <span class="title-accent">into Digital Clarity</span>
-          </h1>
+          <!-- Folder graphic with your logo inset -->
+          <div class="folder-hero" aria-hidden="true">
+            <img class="folder-bg" src="vault-lock-folder.png" alt="Folder background"/>
+            <img class="folder-brand" src="logoA.png" alt="Public_Logic inset logo"/>
+          </div>
+
+          <!-- One-line headline -->
+          <h1 class="hero-title"><span class="title-main">Turn Municipal Chaos into Digital Clarity</span></h1>
 
           <p class="hero-subtitle">
             A practitioner-built framework for how local government actually works.
@@ -208,21 +216,21 @@
     <!-- Features (cards) -->
     <section class="features" aria-labelledby="pds-title">
       <div class="container">
-        <h2 id="pds-title" class="section-title fade-in">People_Data_Systems</h2>
-        <p class="section-subtitle fade-in">The municipal-first fix for scattered tools and fragile processes</p>
+        <h2 id="pds-title" class="section-title">People_Data_Systems</h2>
+        <p class="section-subtitle">The municipal-first fix for scattered tools and fragile processes</p>
 
         <div class="features-grid">
-          <div class="feature-card fade-in">
+          <div class="feature-card">
             <div class="feature-icon" aria-hidden="true">🗂️</div>
             <h3 class="feature-title">Records that behave</h3>
             <p class="feature-desc">Naming, retention, and structure that auditors understand and staff can actually follow — across AP, Licensing, DPW, and more.</p>
           </div>
-          <div class="feature-card fade-in">
+          <div class="feature-card">
             <div class="feature-icon" aria-hidden="true">➡️</div>
             <h3 class="feature-title">Routing that finishes</h3>
             <p class="feature-desc">Clean handoffs and approvals mapped to how your town works — not how a vendor wishes it did.</p>
           </div>
-          <div class="feature-card fade-in">
+          <div class="feature-card">
             <div class="feature-icon" aria-hidden="true">🔗</div>
             <h3 class="feature-title">Systems that connect</h3>
             <p class="feature-desc">CivicPlus, Microsoft 365, Laserfiche, and Power Automate stitched together so people don’t retype or hunt for files.</p>
@@ -265,171 +273,141 @@
       </div>
     </section>
 
-    <!-- Submissions -->
+    <!-- Submissions: single adaptive form with conditional logic -->
     <section id="submissions" class="submissions" aria-labelledby="submissions-title">
       <div class="container">
         <h2 id="submissions-title" class="section-title">Start a Conversation</h2>
         <p class="section-subtitle">Tell us who you are and what outcome you need. We’ll reply with next steps.</p>
 
         <div class="sub-grid">
-          <!-- Towns -->
           <div class="sub-card">
-            <h3>For Towns & Cities</h3>
-            <p>Looking to stabilize records, AP, licensing, or service requests? Share a few details.</p>
-            <form class="pl-form" data-type="town">
-              <div class="form-row">
-                <div>
-                  <label for="t-name">Your name</label>
-                  <input id="t-name" name="name" autocomplete="name" required/>
-                </div>
-                <div>
-                  <label for="t-email">Email</label>
-                  <input id="t-email" name="email" type="email" autocomplete="email" required/>
-                </div>
-              </div>
-              <div class="form-row">
-                <div>
-                  <label for="t-org">Town/City</label>
-                  <input id="t-org" name="organization" required/>
-                </div>
-                <div>
-                  <label for="t-role">Role/Dept</label>
-                  <input id="t-role" name="role" required/>
-                </div>
-              </div>
+            <h3>One Form — Three Paths</h3>
+            <p>Select who you are. The form adapts and routes to the right team.</p>
+
+            <form id="pl-intake" novalidate>
+              <!-- Audience -->
               <div class="form-row full">
                 <div>
-                  <label for="t-focus">What’s the first problem to fix?</label>
-                  <select id="t-focus" name="focus" required>
+                  <label for="audience">I am a…</label>
+                  <select id="audience" name="audience" required>
                     <option value="" selected disabled>Choose one</option>
-                    <option>Accounts Payable / Turnovers</option>
-                    <option>Licensing / Clerk</option>
-                    <option>DPW / Service Requests</option>
-                    <option>Records / Retention / Naming</option>
-                    <option>Budget / Transparency</option>
-                    <option>Other (explain below)</option>
+                    <option value="town">Town / City</option>
+                    <option value="partner">GovTech Partner</option>
+                    <option value="regional">Regional / NGO</option>
                   </select>
                 </div>
               </div>
-              <div class="form-row full">
+
+              <!-- Common -->
+              <div class="form-row">
                 <div>
-                  <label for="t-notes">Context (optional)</label>
-                  <textarea id="t-notes" name="notes" placeholder="Deadlines, audits, staffing constraints, or tools you use now…"></textarea>
+                  <label for="name">Your name</label>
+                  <input id="name" name="name" autocomplete="name" required/>
+                </div>
+                <div>
+                  <label for="email">Email</label>
+                  <input id="email" name="email" type="email" autocomplete="email" required/>
                 </div>
               </div>
+
+              <!-- Town-specific -->
+              <div class="group group-town hidden">
+                <div class="form-row">
+                  <div>
+                    <label for="t-org">Town/City</label>
+                    <input id="t-org" name="town_organization"/>
+                  </div>
+                  <div>
+                    <label for="t-role">Role/Dept</label>
+                    <input id="t-role" name="town_role"/>
+                  </div>
+                </div>
+                <div class="form-row full">
+                  <div>
+                    <label for="t-focus">What’s the first problem to fix?</label>
+                    <select id="t-focus" name="town_focus">
+                      <option value="" selected disabled>Choose one</option>
+                      <option>Accounts Payable / Turnovers</option>
+                      <option>Licensing / Clerk</option>
+                      <option>DPW / Service Requests</option>
+                      <option>Records / Retention / Naming</option>
+                      <option>Budget / Transparency</option>
+                      <option>Other</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Partner-specific -->
+              <div class="group group-partner hidden">
+                <div class="form-row">
+                  <div>
+                    <label for="p-company">Company</label>
+                    <input id="p-company" name="partner_company"/>
+                  </div>
+                  <div>
+                    <label for="p-role">Role</label>
+                    <input id="p-role" name="partner_role"/>
+                  </div>
+                </div>
+                <div class="form-row full">
+                  <div>
+                    <label for="p-fit">Where do you fit?</label>
+                    <select id="p-fit" name="partner_fit">
+                      <option value="" selected disabled>Choose one</option>
+                      <option>Forms / Front-end</option>
+                      <option>Document / Records / Laserfiche</option>
+                      <option>Workflows / Automation</option>
+                      <option>Storage / M365 / SharePoint</option>
+                      <option>Analytics / Dashboards</option>
+                      <option>Other</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Regional/NGO-specific -->
+              <div class="group group-regional hidden">
+                <div class="form-row">
+                  <div>
+                    <label for="r-org">Organization</label>
+                    <input id="r-org" name="regional_organization"/>
+                  </div>
+                  <div>
+                    <label for="r-role">Role</label>
+                    <input id="r-role" name="regional_role"/>
+                  </div>
+                </div>
+                <div class="form-row full">
+                  <div>
+                    <label for="r-focus">Program focus</label>
+                    <select id="r-focus" name="regional_focus">
+                      <option value="" selected disabled>Choose one</option>
+                      <option>Digital transformation</option>
+                      <option>Transparency / Open Gov</option>
+                      <option>Records / Compliance</option>
+                      <option>Infrastructure / DPW</option>
+                      <option>Other</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Notes (always shown) -->
+              <div class="form-row full">
+                <div>
+                  <label for="notes">Context (optional)</label>
+                  <textarea id="notes" name="notes" placeholder="Deadlines, audits, staffing constraints, or tools you use now…"></textarea>
+                </div>
+              </div>
+
               <div class="submit-wrap">
                 <button type="submit" class="btn-primary">Send</button>
                 <span class="success-msg" aria-live="polite">Thanks — we’ll follow up soon.</span>
                 <span class="error-msg" aria-live="polite">Couldn’t send. Email us instead: hello@publiclogic.org</span>
               </div>
+
               <p class="small-note">We reply as humans, not bots. Your info stays in our email and ticketing tool; we don’t sell or share it.</p>
-            </form>
-          </div>
-
-          <!-- GovTech partners -->
-          <div class="sub-card">
-            <h3>For GovTech Partners</h3>
-            <p>Want to align your product with municipal-first workflows? Let’s map roles and guardrails.</p>
-            <form class="pl-form" data-type="partner">
-              <div class="form-row">
-                <div>
-                  <label for="p-name">Your name</label>
-                  <input id="p-name" name="name" required/>
-                </div>
-                <div>
-                  <label for="p-email">Email</label>
-                  <input id="p-email" name="email" type="email" required/>
-                </div>
-              </div>
-              <div class="form-row">
-                <div>
-                  <label for="p-company">Company</label>
-                  <input id="p-company" name="company" required/>
-                </div>
-                <div>
-                  <label for="p-role">Role</label>
-                  <input id="p-role" name="role" required/>
-                </div>
-              </div>
-              <div class="form-row full">
-                <div>
-                  <label for="p-fit">Where do you fit?</label>
-                  <select id="p-fit" name="fit" required>
-                    <option value="" selected disabled>Choose one</option>
-                    <option>Forms / Front-end</option>
-                    <option>Document / Records / Laserfiche</option>
-                    <option>Workflows / Automation</option>
-                    <option>Storage / M365 / SharePoint</option>
-                    <option>Analytics / Dashboards</option>
-                    <option>Other</option>
-                  </select>
-                </div>
-              </div>
-              <div class="form-row full">
-                <div>
-                  <label for="p-notes">Proposal / intent</label>
-                  <textarea id="p-notes" name="notes" placeholder="Pilot scope, value to towns, pricing thoughts…"></textarea>
-                </div>
-              </div>
-              <div class="submit-wrap">
-                <button type="submit" class="btn-primary">Send</button>
-                <span class="success-msg" aria-live="polite">Thanks — we’ll follow up soon.</span>
-                <span class="error-msg" aria-live="polite">Couldn’t send. Email us instead: partners@publiclogic.org</span>
-              </div>
-              <p class="small-note">We prefer non-exclusive, municipal-first agreements; towns own their data/configs.</p>
-            </form>
-          </div>
-
-          <!-- Regional / NGO -->
-          <div class="sub-card">
-            <h3>For Regional / NGO Partners</h3>
-            <p>COGs, councils, and NGOs — if you help towns, we want to align outcomes and funding.</p>
-            <form class="pl-form" data-type="regional">
-              <div class="form-row">
-                <div>
-                  <label for="r-name">Your name</label>
-                  <input id="r-name" name="name" required/>
-                </div>
-                <div>
-                  <label for="r-email">Email</label>
-                  <input id="r-email" name="email" type="email" required/>
-                </div>
-              </div>
-              <div class="form-row">
-                <div>
-                  <label for="r-org">Organization</label>
-                  <input id="r-org" name="organization" required/>
-                </div>
-                <div>
-                  <label for="r-role">Role</label>
-                  <input id="r-role" name="role" required/>
-                </div>
-              </div>
-              <div class="form-row full">
-                <div>
-                  <label for="r-focus">Program focus</label>
-                  <select id="r-focus" name="focus" required>
-                    <option value="" selected disabled>Choose one</option>
-                    <option>Digital transformation</option>
-                    <option>Transparency / Open Gov</option>
-                    <option>Records / Compliance</option>
-                    <option>Infrastructure / DPW</option>
-                    <option>Other</option>
-                  </select>
-                </div>
-              </div>
-              <div class="form-row full">
-                <div>
-                  <label for="r-notes">How could we help your members?</label>
-                  <textarea id="r-notes" name="notes" placeholder="Regional pilots, shared services, training cohort…"></textarea>
-                </div>
-              </div>
-              <div class="submit-wrap">
-                <button type="submit" class="btn-primary">Send</button>
-                <span class="success-msg" aria-live="polite">Thanks — we’ll follow up soon.</span>
-                <span class="error-msg" aria-live="polite">Couldn’t send. Email us instead: regional@publiclogic.org</span>
-              </div>
-              <p class="small-note">We collaborate in the open. Credit shared. No one gets locked out of their own work.</p>
             </form>
           </div>
         </div>
@@ -478,58 +456,89 @@
     // Dynamic year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Fade-in on scroll
-    const observed = document.querySelectorAll('.fade-in');
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-    }, { threshold: 0.2 });
-    observed.forEach(el => obs.observe(el));
-
-    // Submissions: mailto fallback or JSON POST if PL_ENDPOINT set
-    window.PL_ENDPOINT = window.PL_ENDPOINT || null;
-
-    function toMailto(data, to) {
-      const subject = encodeURIComponent(`Public_Logic: ${data.type} submission from ${data.name || 'unknown'}`);
-      const body = encodeURIComponent(Object.entries(data).map(([k,v]) => `${k}: ${v}`).join('\n'));
-      return `mailto:${to}?subject=${subject}&body=${body}`;
-    }
-
-    function handleSubmit(e) {
-      e.preventDefault();
-      const form = e.currentTarget;
-      const type = form.dataset.type || 'unknown';
-      const data = { type };
-      form.querySelectorAll('input, select, textarea').forEach(el => data[el.name] = el.value);
-
-      const success = form.querySelector('.success-msg');
-      const error = form.querySelector('.error-msg');
-
-      if (window.PL_ENDPOINT) {
-        fetch(window.PL_ENDPOINT, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
-        }).then(res => {
-          if (!res.ok) throw new Error('bad status');
-          if (success) success.style.display = 'inline';
-        }).catch(() => { if (error) error.style.display = 'inline'; });
-      } else {
-        // Fallback to mailto
-        let to = 'hello@publiclogic.org';
-        if (type === 'partner') to = 'partners@publiclogic.org';
-        if (type === 'regional') to = 'regional@publiclogic.org';
-        window.location.href = toMailto(data, to);
-        if (success) success.style.display = 'inline';
-      }
-    }
-    document.querySelectorAll('.pl-form').forEach(f => f.addEventListener('submit', handleSubmit));
-
-    // Subtle visual background motion
+    // Background parallax (subtle)
     document.addEventListener('mousemove', (e) => {
       const mx = e.clientX / window.innerWidth;
       const my = e.clientY / window.innerHeight;
       const mesh = document.querySelector('.mesh-bg');
       if (mesh) mesh.style.transform = `translate(${mx * 16}px, ${my * 16}px) scale(1.02)`;
+    });
+
+    // ----- Submissions: conditional logic + routing -----
+    // If you have a backend, set this:
+    // window.PL_ENDPOINT = 'https://your.api/intake';
+    window.PL_ENDPOINT = window.PL_ENDPOINT || null;
+
+    const form = document.getElementById('pl-intake');
+    const audience = document.getElementById('audience');
+    const groups = {
+      town: document.querySelector('.group-town'),
+      partner: document.querySelector('.group-partner'),
+      regional: document.querySelector('.group-regional')
+    };
+
+    function showGroup(key) {
+      Object.values(groups).forEach(el => el.classList.add('hidden'));
+      // Clear group requireds
+      form.querySelectorAll('.group select, .group input').forEach(el => el.required = false);
+      if (key && groups[key]) {
+        groups[key].classList.remove('hidden');
+        groups[key].querySelectorAll('select, input').forEach(el => el.required = true);
+      }
+    }
+    audience.addEventListener('change', (e) => showGroup(e.target.value));
+
+    function toMailto(data, to) {
+      const subject = encodeURIComponent(`Public_Logic: ${data.audience} submission from ${data.name || 'unknown'}`);
+      const body = encodeURIComponent(Object.entries(data).map(([k,v]) => `${k}: ${v}`).join('\n'));
+      return `mailto:${to}?subject=${subject}&body=${body}`;
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const success = form.querySelector('.success-msg');
+      const error = form.querySelector('.error-msg');
+
+      // Basic validation: ensure audience chosen
+      if (!audience.value) {
+        error.textContent = 'Please choose who you are.';
+        error.style.display = 'inline';
+        return;
+      }
+
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+
+      // Decide where to send based on audience
+      let to = 'hello@publiclogic.org';
+      if (data.audience === 'partner') to = 'partners@publiclogic.org';
+      if (data.audience === 'regional') to = 'regional@publiclogic.org';
+
+      try {
+        if (window.PL_ENDPOINT) {
+          const res = await fetch(window.PL_ENDPOINT, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+          });
+          if (!res.ok) throw new Error('Bad status');
+          success.style.display = 'inline';
+          error.style.display = 'none';
+          form.reset();
+          showGroup(null);
+        } else {
+          // Fallback to mailto
+          window.location.href = toMailto(data, to);
+          success.style.display = 'inline';
+          error.style.display = 'none';
+          form.reset();
+          showGroup(null);
+        }
+      } catch (err) {
+        success.style.display = 'none';
+        error.textContent = `Couldn’t send. Email us instead: ${to}`;
+        error.style.display = 'inline';
+      }
     });
   </script>
 </body>
