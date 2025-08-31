@@ -6,17 +6,20 @@
   <title>Public_Logic — Turn Municipal Chaos into Digital Clarity</title>
 
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap');
 
     :root{
       --pl-green:#00ff88;
       --pl-dark:#0a0a0a;
       --pl-light:#f8fafc;
       --gradient-primary:linear-gradient(135deg,#00ff88 0%,#00d4aa 100%);
+      --glass:rgba(255,255,255,.06);
       --manila:#f3e7c9;
       --paper:#fffef8;
-      --ink:#222;
-      --glass:rgba(255,255,255,.06);
+      --ink:#0f172a;
+      --postit:#fff6a6;
+      --header-bg:rgba(0,0,0,.82);
+      --border:rgba(255,255,255,.16);
     }
 
     *{box-sizing:border-box}
@@ -27,100 +30,98 @@
       color:var(--pl-light);
       line-height:1.6;
     }
-
-    .container{max-width:1200px;margin:0 auto;padding:0 16px}
+    .container{max-width:1200px;margin:0 auto;padding:0 18px}
 
     /* Header */
     header{
-      position:sticky;top:0;z-index:100;
-      background:rgba(0,0,0,.78);
+      position:sticky;top:0;z-index:1000;
+      background:var(--header-bg);
       border-bottom:1px solid rgba(0,255,136,.28);
       backdrop-filter:blur(10px)
     }
     .header-content{
-      height:58px;
-      display:flex;align-items:center;justify-content:space-between;
+      height:70px;display:flex;align-items:center;justify-content:space-between;
     }
-    .brand-wrap{display:flex;align-items:center;gap:.55rem;text-decoration:none}
-    .logo-folder{height:26px;width:auto;display:block;filter:drop-shadow(0 0 8px rgba(0,255,136,.35))}
+    .brand-wrap{display:flex;align-items:center;gap:.65rem;text-decoration:none}
+    .logo-folder{
+      height:34px;width:auto;display:block;
+      filter:drop-shadow(0 0 10px rgba(0,255,136,.35))
+    }
     .brand-text{
-      font-weight:900;font-size:1.15rem;letter-spacing:.2px;
+      font-weight:900;font-size:1.35rem;letter-spacing:.2px;
       background:var(--gradient-primary);
       -webkit-background-clip:text;-webkit-text-fill-color:transparent
     }
 
-    /* Dropdown menu */
+    /* Header menu (matching header style) */
     .menu{position:relative}
     .menu-btn{
-      background:transparent;border:1px solid rgba(255,255,255,.25);
-      color:#fff;border-radius:999px;padding:.5rem .85rem;
-      font-weight:600;cursor:pointer
+      display:flex;align-items:center;gap:.5rem;
+      background:transparent;color:#e9f9f0;
+      border:1px solid var(--border);
+      border-radius:999px;padding:.6rem 1rem;font-weight:800;cursor:pointer;
+      box-shadow:0 2px 12px rgba(0,0,0,.25)
     }
-    .menu-btn:focus{outline:2px solid rgba(0,255,136,.45);outline-offset:3px}
+    .menu-btn:hover{border-color:rgba(0,255,136,.5)}
     .menu-list{
       position:absolute;right:0;top:110%;
-      min-width:200px;background:rgba(10,10,10,.95);
-      border:1px solid rgba(255,255,255,.15);
-      border-radius:10px;box-shadow:0 12px 28px rgba(0,0,0,.4);
-      padding:.4rem;display:none
+      min-width:220px;background:rgba(8,12,20,.98);
+      border:1px solid var(--border);border-radius:12px;padding:.4rem;
+      box-shadow:0 14px 30px rgba(0,0,0,.45);display:none
     }
     .menu[aria-expanded="true"] .menu-list{display:block}
-    .menu a{
-      display:block;padding:.6rem .7rem;border-radius:8px;
-      color:#e8f3ee;text-decoration:none;font-weight:600
+    .menu-list a{
+      display:block;padding:.65rem .75rem;border-radius:8px;
+      color:#e8f3ee;text-decoration:none;font-weight:700
     }
-    .menu a:hover{background:rgba(255,255,255,.08)}
+    .menu-list a:hover{background:rgba(255,255,255,.08)}
     .menu .sep{height:1px;background:rgba(255,255,255,.12);margin:.35rem .25rem}
 
     /* Hero */
     .hero{text-align:center;padding:3.6rem 1rem 2.4rem}
     .hero-content{max-width:1040px;margin:0 auto}
+
     .folder-hero{
-      display:inline-block;position:relative;width:280px;height:190px;margin-bottom:16px
+      display:inline-block;position:relative;width:300px;height:205px;margin-bottom:18px
     }
     .folder-shape{
       position:relative;width:100%;height:100%;background:var(--manila);
-      border-radius:8px;box-shadow:0 10px 26px rgba(0,0,0,.42)
+      border-radius:10px;box-shadow:0 12px 28px rgba(0,0,0,.42)
     }
     .folder-shape::before{
-      content:"";position:absolute;top:-22px;left:0;width:120px;height:22px;
-      background:var(--manila);border-radius:8px 8px 0 0
+      content:"";position:absolute;top:-24px;left:0;width:130px;height:24px;
+      background:var(--manila);border-radius:10px 10px 0 0
     }
-    /* Label sticker with tape — logoA sits inside naturally */
-    .folder-label{
-      position:absolute;bottom:16px;left:18px;
-      background:var(--paper);border:1px solid rgba(0,0,0,.18);
-      border-radius:6px;padding:.35rem .5rem .3rem .5rem;
-      transform:rotate(-2.2deg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.03), 0 6px 14px rgba(0,0,0,.18)
+    /* Post-it note with logoA (more natural, prominent) */
+    .postit{
+      position:absolute;top:18px;right:18px;
+      background:var(--postit);border:1px solid rgba(0,0,0,.25);
+      width:150px;transform:rotate(6deg);
+      box-shadow:0 10px 22px rgba(0,0,0,.22), inset 0 0 0 1px rgba(255,255,255,.35);
+      border-radius:6px;padding:10px 8px 8px;
     }
-    .folder-label::before,.folder-label::after{
-      content:"";position:absolute;top:-10px;width:44px;height:12px;
-      background:rgba(255,255,255,.65);border:1px solid rgba(0,0,0,.15);
-      border-radius:2px;box-shadow:0 2px 4px rgba(0,0,0,.2)
+    .postit::before{
+      content:"";position:absolute;top:-10px;left:18px;width:46px;height:14px;
+      background:rgba(255,255,255,.7);border:1px solid rgba(0,0,0,.2);
+      border-radius:2px;box-shadow:0 3px 4px rgba(0,0,0,.25)
     }
-    .folder-label::before{left:10px;transform:rotate(-6deg)}
-    .folder-label::after{right:10px;transform:rotate(4deg)}
-    .folder-logo{
-      display:block;width:120px;height:auto;
-      filter:grayscale(100%) contrast(1.15) opacity(.92);
-      mix-blend-mode:multiply
-    }
+    .postit img{width:100%;height:auto;display:block;filter:contrast(1.1) opacity(.95)}
 
     .hero-title{
-      white-space:nowrap;font-size:clamp(1.35rem,6vw,2.7rem);
-      font-weight:900;margin:.25rem 0 1rem;
-      background:var(--gradient-primary);
-      -webkit-background-clip:text;-webkit-text-fill-color:transparent
+      white-space:nowrap;font-size:clamp(1.45rem,6.2vw,2.9rem);
+      font-weight:900;margin:.2rem 0 1rem;
+      background:var(--gradient-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent
     }
     .hero-subtitle{
-      font-size:1.05rem;max-width:760px;margin:0 auto 1.2rem;color:rgba(255,255,255,.88)
+      font-size:1.06rem;max-width:760px;margin:0 auto 1.2rem;color:rgba(255,255,255,.9)
     }
-    .cta-group{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap}
+
+    .cta-group{display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap}
     .btn-primary,.btn-secondary{
-      padding:.9rem 1.5rem;border-radius:50px;text-decoration:none;font-weight:700
+      padding:.95rem 1.55rem;border-radius:50px;text-decoration:none;font-weight:800
     }
     .btn-primary{background:var(--gradient-primary);color:var(--pl-dark)}
-    .btn-secondary{border:2px solid rgba(255,255,255,.3);color:var(--pl-light)}
+    .btn-secondary{border:2px solid var(--border);color:var(--pl-light)}
 
     /* Features */
     .features{padding:2.6rem 1rem;background:rgba(0,0,0,.22)}
@@ -133,31 +134,33 @@
       gap:1.2rem;margin-top:1.2rem
     }
     .feature-card{
-      background:var(--glass);border:1px solid rgba(255,255,255,.14);
+      background:var(--glass);border:1px solid var(--border);
       border-radius:14px;padding:1.1rem
     }
-    .feature-title{font-size:1.15rem;font-weight:700;margin:.4rem 0}
+    .feature-title{font-size:1.15rem;font-weight:800;margin:.4rem 0}
     .feature-desc{color:rgba(255,255,255,.9)}
 
-    /* Submissions (single clean form) */
+    /* Submissions (single adaptive form) */
     .submissions{padding:2.8rem 1rem}
     .sub-card{
-      background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.15);
-      border-radius:12px;padding:1.2rem;max-width:720px;margin:0 auto
+      background:rgba(255,255,255,.05);border:1px solid var(--border);
+      border-radius:12px;padding:1.2rem;max-width:760px;margin:0 auto
     }
     .form-row{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:.6rem}
     .form-row.full{grid-template-columns:1fr}
-    label{font-size:.85rem;display:block;margin-bottom:.22rem;color:rgba(255,255,255,.85)}
+    label{font-size:.86rem;color:rgba(255,255,255,.88);display:block;margin-bottom:.22rem}
     input,select,textarea{
-      width:100%;padding:.7rem;border-radius:10px;border:1px solid rgba(255,255,255,.22);
+      width:100%;padding:.75rem;border-radius:10px;border:1px solid rgba(255,255,255,.22);
       background:rgba(0,0,0,.28);color:#fff
     }
     textarea{resize:vertical;min-height:110px}
     .submit-wrap{display:flex;gap:.6rem;align-items:center;margin-top:.6rem}
-    .btn-submit{background:var(--gradient-primary);color:var(--pl-dark);padding:.9rem 1.4rem;border-radius:50px;border:none;font-weight:800;cursor:pointer}
+    .btn-submit{background:var(--gradient-primary);color:var(--pl-dark);padding:.95rem 1.5rem;border-radius:50px;border:none;font-weight:900;cursor:pointer}
     .success-msg,.error-msg{display:none;font-size:.9rem}
     .success-msg{color:#9effc9}.error-msg{color:#ffb4b4}
+    .hidden{display:none !important}
 
+    /* Footer */
     footer{
       background:rgba(0,0,0,.85);border-top:1px solid rgba(0,255,136,.28);
       text-align:center;padding:2rem 1rem
@@ -165,12 +168,14 @@
     .footer-brand{font-weight:800}
     .footer-legal{font-size:.85rem;color:rgba(255,255,255,.6);margin-top:.4rem}
 
-    @media (max-width:640px){
+    @media (max-width:700px){
       .header-content{height:auto;padding:10px 0}
-      .hero-title{font-size:clamp(1.1rem,6.2vw,2rem)}
+      .brand-text{font-size:1.15rem}
+      .logo-folder{height:30px}
+      .hero-title{font-size:clamp(1.2rem,6.5vw,2.2rem)}
       .form-row{grid-template-columns:1fr}
-      .folder-hero{width:250px;height:175px}
-      .folder-logo{width:108px}
+      .folder-hero{width:270px;height:190px}
+      .postit{width:140px}
     }
   </style>
 </head>
@@ -179,13 +184,13 @@
   <header>
     <div class="container">
       <div class="header-content">
-        <!-- Left: brand -->
+        <!-- Left brand -->
         <a class="brand-wrap" href="index.html" aria-label="Public_Logic home">
           <img class="logo-folder" src="vault-lock-folder.png" alt="VAULT folder logo"/>
           <span class="brand-text">Public_Logic</span>
         </a>
 
-        <!-- Right: dropdown menu -->
+        <!-- Right dropdown -->
         <nav class="menu" aria-label="Site menu" aria-expanded="false">
           <button class="menu-btn" aria-haspopup="true" aria-controls="top-menu">Menu ▾</button>
           <div id="top-menu" class="menu-list" role="menu">
@@ -206,15 +211,14 @@
     <section class="hero">
       <div class="container">
         <div class="hero-content">
-          <!-- Manila folder with subtle label sticker (logoA) -->
+          <!-- Manila folder + Post-it note with logoA -->
           <div class="folder-hero" aria-hidden="true">
             <div class="folder-shape"></div>
-            <div class="folder-label">
-              <img class="folder-logo" src="logoA.png" alt="Public_Logic logo on label"/>
+            <div class="postit" title="Public_Logic">
+              <img src="logoA.png" alt="Public_Logic logo on note"/>
             </div>
           </div>
 
-          <!-- One-line headline -->
           <h1 class="hero-title">Turn Municipal Chaos into Digital Clarity</h1>
           <p class="hero-subtitle">
             A practitioner-built framework for how local government actually works.
@@ -251,23 +255,13 @@
       </div>
     </section>
 
-    <!-- Submissions (simple, single block) -->
+    <!-- Submissions: single adaptive form -->
     <section class="submissions" aria-labelledby="submissions-title">
       <div class="container">
         <h2 id="submissions-title" class="section-title">Start a Conversation</h2>
         <div class="sub-card">
           <form id="pl-intake" novalidate>
-            <div class="form-row">
-              <div>
-                <label for="name">Your name</label>
-                <input id="name" name="name" autocomplete="name" required/>
-              </div>
-              <div>
-                <label for="email">Email</label>
-                <input id="email" name="email" type="email" autocomplete="email" required/>
-              </div>
-            </div>
-
+            <!-- Audience -->
             <div class="form-row">
               <div>
                 <label for="audience">I am a…</label>
@@ -292,6 +286,61 @@
               </div>
             </div>
 
+            <!-- Common -->
+            <div class="form-row">
+              <div>
+                <label for="name">Your name</label>
+                <input id="name" name="name" autocomplete="name" required/>
+              </div>
+              <div>
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" autocomplete="email" required/>
+              </div>
+            </div>
+
+            <!-- Group: Town -->
+            <div class="group group-town hidden">
+              <div class="form-row">
+                <div>
+                  <label for="t-org">Town/City</label>
+                  <input id="t-org" name="town_organization"/>
+                </div>
+                <div>
+                  <label for="t-role">Role/Dept</label>
+                  <input id="t-role" name="town_role"/>
+                </div>
+              </div>
+            </div>
+
+            <!-- Group: Partner -->
+            <div class="group group-partner hidden">
+              <div class="form-row">
+                <div>
+                  <label for="p-company">Company</label>
+                  <input id="p-company" name="partner_company"/>
+                </div>
+                <div>
+                  <label for="p-role">Role</label>
+                  <input id="p-role" name="partner_role"/>
+                </div>
+              </div>
+            </div>
+
+            <!-- Group: Regional -->
+            <div class="group group-regional hidden">
+              <div class="form-row">
+                <div>
+                  <label for="r-org">Organization</label>
+                  <input id="r-org" name="regional_organization"/>
+                </div>
+                <div>
+                  <label for="r-role">Role</label>
+                  <input id="r-role" name="regional_role"/>
+                </div>
+              </div>
+            </div>
+
+            <!-- Notes -->
             <div class="form-row full">
               <div>
                 <label for="notes">Context (optional)</label>
@@ -324,34 +373,71 @@
     // Accessible dropdown toggle
     const menu = document.querySelector('.menu');
     const btn = document.querySelector('.menu-btn');
-    const list = document.getElementById('top-menu');
-
     function toggleMenu(force){
-      const expanded = force !== undefined ? force : menu.getAttribute('aria-expanded') !== 'true';
+      const expanded = (force !== undefined) ? force : menu.getAttribute('aria-expanded') !== 'true';
       menu.setAttribute('aria-expanded', expanded ? 'true' : 'false');
     }
     btn.addEventListener('click', ()=> toggleMenu());
-    document.addEventListener('click', (e)=>{
-      if(!menu.contains(e.target)) toggleMenu(false);
-    });
-    btn.addEventListener('keydown', (e)=>{
-      if(e.key === 'Escape') toggleMenu(false);
-    });
+    document.addEventListener('click', (e)=>{ if(!menu.contains(e.target)) toggleMenu(false); });
+    btn.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') toggleMenu(false); });
 
-    // Intake form (mailto fallback to Nathan)
+    // ----- Conditional intake form -----
+    // Optional: set a backend endpoint to POST to (otherwise we use mailto):
+    // window.PL_ENDPOINT = 'https://your.api/intake';
+    window.PL_ENDPOINT = window.PL_ENDPOINT || null;
+
     const form = document.getElementById('pl-intake');
-    form.addEventListener('submit', (e)=>{
-      e.preventDefault();
-      const data = Object.fromEntries(new FormData(form).entries());
-      const subject = encodeURIComponent(`Public_Logic inquiry: ${data.audience || 'General'}`);
-      const body = encodeURIComponent(Object.entries(data).map(([k,v])=>`${k}: ${v}`).join('\n'));
-      const mailto = `mailto:nathan@publiclogic.org?subject=${subject}&body=${body}`;
-      // Trigger mail client
-      window.location.href = mailto;
+    const audience = document.getElementById('audience');
+    const groups = {
+      town: document.querySelector('.group-town'),
+      partner: document.querySelector('.group-partner'),
+      regional: document.querySelector('.group-regional')
+    };
 
-      form.querySelector('.success-msg').style.display='inline';
-      form.querySelector('.error-msg').style.display='none';
-      form.reset();
+    function showGroup(key){
+      Object.values(groups).forEach(el => el.classList.add('hidden'));
+      form.querySelectorAll('.group input').forEach(el => el.required = false);
+      if(key && groups[key]){
+        groups[key].classList.remove('hidden');
+        groups[key].querySelectorAll('input').forEach(el => el.required = true);
+      }
+    }
+    audience.addEventListener('change', e => showGroup(e.target.value));
+
+    function toMailto(data, to){
+      const subject = encodeURIComponent(`Public_Logic inquiry: ${data.audience || 'General'}`);
+      const body = encodeURIComponent(Object.entries(data).map(([k,v]) => `${k}: ${v}`).join('\n'));
+      return `mailto:${to}?subject=${subject}&body=${body}`;
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const success = form.querySelector('.success-msg');
+      const error = form.querySelector('.error-msg');
+
+      const data = Object.fromEntries(new FormData(form).entries());
+      const to = 'nathan@publiclogic.org';
+
+      try{
+        if(window.PL_ENDPOINT){
+          const res = await fetch(window.PL_ENDPOINT, {
+            method:'POST',
+            headers:{'Content-Type':'application/json'},
+            body: JSON.stringify(data)
+          });
+          if(!res.ok) throw new Error('Bad status');
+          success.style.display = 'inline'; error.style.display = 'none';
+          form.reset(); showGroup(null);
+        } else {
+          // mailto fallback
+          window.location.href = toMailto(data, to);
+          success.style.display = 'inline'; error.style.display = 'none';
+          form.reset(); showGroup(null);
+        }
+      } catch(err){
+        success.style.display = 'none';
+        error.style.display = 'inline';
+      }
     });
   </script>
 </body>
