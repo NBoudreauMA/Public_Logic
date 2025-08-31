@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
@@ -6,29 +7,58 @@
   <title>Public_Logic — Municipal Government Digital Transformation | VAULT Framework for Local Government</title>
 
   <!-- SEO Meta Tags -->
+
   <meta name="description" content="Public_Logic transforms municipal government operations with the VAULT framework. Connect people, data, and systems for compliant workflows. Expert local government digital transformation services."/>
   <meta name="keywords" content="municipal government software, local government digital transformation, government workflow automation, municipal records management, civic technology, government compliance software, VAULT framework, municipal operations, government process improvement, local government efficiency"/>
   <meta name="author" content="Public_Logic"/>
   <meta name="robots" content="index, follow"/>
+  <meta name="googlebot" content="index, follow"/>
 
-  <!-- Open Graph -->
+  <!-- Open Graph / Social Media -->
+
   <meta property="og:type" content="website"/>
   <meta property="og:title" content="Public_Logic — Turn Municipal Chaos into Digital Clarity"/>
   <meta property="og:description" content="VAULT framework connects your people, data, and systems into compliant, repeatable workflows for local government operations."/>
   <meta property="og:url" content="https://publiclogic.org"/>
   <meta property="og:site_name" content="Public_Logic"/>
   <meta property="og:image" content="https://publiclogic.org/og-image.jpg"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
 
   <!-- Twitter Card -->
+
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:title" content="Public_Logic — Municipal Government Digital Transformation"/>
   <meta name="twitter:description" content="Transform municipal chaos into digital clarity with the VAULT framework for local government."/>
   <meta name="twitter:image" content="https://publiclogic.org/twitter-card.jpg"/>
 
+  <!-- Structured Data -->
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Public_Logic",
+    "url": "https://publiclogic.org",
+    "logo": "https://publiclogic.org/logoA.png",
+    "description": "Municipal government digital transformation specialists providing the VAULT framework for local government workflow automation, records management, and system integration.",
+    "serviceType": "Municipal Government Digital Transformation",
+    "areaServed": {"@type": "Country", "name": "United States"},
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "nathan@publiclogic.org",
+      "contactType": "Customer Service"
+    },
+    "founder": {"@type": "Person", "name": "Nathan", "email": "nathan@publiclogic.org"}
+  }
+  </script>
+
   <!-- Canonical -->
+
   <link rel="canonical" href="https://publiclogic.org"/>
 
   <!-- Favicon -->
+
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
@@ -47,71 +77,276 @@
       --border:rgba(255,255,255,.16);
     }
 
-    body{margin:0;font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:linear-gradient(135deg,#0a0a0a,#141a2a 55%,#16213e);color:var(--pl-light);line-height:1.6}
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+      background:linear-gradient(135deg,#0a0a0a,#141a2a 55%,#16213e);
+      color:var(--pl-light);
+      line-height:1.6;
+      scroll-behavior:smooth;
+    }
     .container{max-width:1200px;margin:0 auto;padding:0 18px}
 
-    header{position:sticky;top:0;z-index:1000;background:var(--header-bg);border-bottom:1px solid rgba(0,255,136,.28);backdrop-filter:blur(10px)}
+    /* Header */
+    header{
+      position:sticky;top:0;z-index:1000;
+      background:var(--header-bg);
+      border-bottom:1px solid rgba(0,255,136,.28);
+      backdrop-filter:blur(10px);
+    }
     .header-content{height:70px;display:flex;align-items:center;justify-content:space-between}
-    .brand-text{font-weight:900;font-size:1.3rem;background:var(--gradient-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .brand-wrap{display:flex;align-items:center;gap:.6rem;text-decoration:none}
+    .brand-text{
+      font-weight:900;font-size:1.3rem;letter-spacing:.2px;
+      background:var(--gradient-primary);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+    }
+    .underscore{
+      animation:colorCycle 3s ease-in-out infinite;
+    }
+    @keyframes colorCycle{
+      0%,100%{color:#00ff88}
+      25%{color:#00d4aa}
+      50%{color:#ff6b6b}
+      75%{color:#4ecdc4}
+    }
 
+    /* Dropdown */
     .menu{position:relative}
-    .menu-btn{background:transparent;color:#e9f9f0;border:1px solid var(--border);border-radius:999px;padding:.6rem 1rem;font-weight:800;cursor:pointer}
-    .menu-list{position:absolute;right:0;top:110%;min-width:220px;background:rgba(8,12,20,.98);border:1px solid var(--border);border-radius:12px;padding:.4rem;opacity:0;visibility:hidden;transform:translateY(-10px);transition:all .3s}
-    .menu[aria-expanded="true"] .menu-list{opacity:1;visibility:visible;transform:translateY(0)}
-    .menu a{display:block;padding:.65rem .75rem;border-radius:8px;color:#e8f3ee;text-decoration:none;font-weight:700}
+    .menu-btn{
+      background:transparent;color:#e9f9f0;
+      border:1px solid var(--border);border-radius:999px;
+      padding:.6rem 1rem;font-weight:800;cursor:pointer;
+      font-family:inherit;font-size:inherit;
+      transition:all 0.3s ease;
+    }
+    .menu-btn:hover{
+      border-color:rgba(0,255,136,.5);
+      transform:translateY(-1px);
+    }
+    .menu-list{
+      position:absolute;right:0;top:110%;min-width:220px;
+      background:rgba(8,12,20,.98);border:1px solid var(--border);
+      border-radius:12px;padding:.4rem;
+      box-shadow:0 14px 30px rgba(0,0,0,.45);
+      opacity:0;visibility:hidden;transform:translateY(-10px);
+      transition:all 0.3s ease;
+    }
+    .menu[aria-expanded="true"] .menu-list{
+      opacity:1;visibility:visible;transform:translateY(0);
+    }
+    .menu a{
+      display:block;padding:.65rem .75rem;border-radius:8px;
+      color:#e8f3ee;text-decoration:none;font-weight:700;
+      transition:all 0.3s ease;
+    }
+    .menu a:hover{
+      background:rgba(255,255,255,.08);
+      transform:translateX(4px);
+    }
     .menu .sep{height:1px;background:rgba(255,255,255,.12);margin:.35rem .25rem}
 
+    /* Hero */
     .hero{padding:3.6rem 1rem 2.4rem;text-align:center}
-    .folder-hero{display:inline-block;position:relative;width:420px;height:280px;margin-bottom:24px}
-    .folder-shape{width:100%;height:100%;background:var(--manila);border-radius:12px;box-shadow:0 14px 32px rgba(0,0,0,.42)}
-    .folder-shape::before{content:"";position:absolute;top:-28px;left:0;width:160px;height:28px;background:var(--manila);border-radius:12px 12px 0 0}
-    .folder-shape::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.12;background:repeating-linear-gradient(90deg,rgba(0,0,0,.06) 0px,rgba(0,0,0,.06) 1px,transparent 2px,transparent 5px),radial-gradient(1000px 600px at 30% 20%, rgba(0,0,0,.03), transparent 60%),radial-gradient(800px 500px at 70% 80%, rgba(255,255,255,.03), transparent 60%);mix-blend-mode:multiply;border-radius:12px}
-    .folder-logo{position:absolute;top:45%;left:50%;transform:translate(-50%,-50%);width:78%;height:auto;display:block;mix-blend-mode:multiply;opacity:.92;filter:contrast(1.05) saturate(.9) brightness(.98)}
-    .hero-title{font-size:clamp(1.6rem,6.2vw,3rem);font-weight:900;margin:.3rem 0 .9rem;background:var(--gradient-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-    .hero-subtitle{font-size:1.06rem;max-width:780px;margin:0 auto 1.2rem;color:rgba(255,255,255,.9)}
+    .hero-inner{max-width:1040px;margin:0 auto}
 
+    .folder-hero{
+      display:inline-block;position:relative;width:420px;height:280px;margin-bottom:24px;
+      transition:transform 0.4s ease;
+    }
+    .folder-hero:hover{transform:translateY(-8px)}
+    .folder-shape{
+      position:relative;width:100%;height:100%;background:var(--manila);
+      border-radius:12px;
+      box-shadow:0 14px 32px rgba(0,0,0,.42);
+      transition:box-shadow 0.4s ease;
+    }
+    .folder-hero:hover .folder-shape{box-shadow:0 20px 45px rgba(0,0,0,.6)}
+    .folder-shape::before{
+      content:"";position:absolute;top:-28px;left:0;width:160px;height:28px;
+      background:var(--manila);border-radius:12px 12px 0 0;
+    }
+    .folder-logo{
+      position:absolute;top:45%;left:50%;transform:translate(-50%,-50%);
+      width:78%;height:auto;display:block;
+      transition:transform 0.4s ease;
+      mix-blend-mode:multiply;
+      opacity:0.8;
+    }
+    .folder-hero:hover .folder-logo{transform:translate(-50%,-50%) scale(1.02)}
+
+    .hero-title{
+      font-size:clamp(1.6rem,6.2vw,3rem);font-weight:900;margin:.3rem 0 .9rem;
+      background:var(--gradient-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+    }
+    .hero-subtitle{
+      font-size:1.06rem;max-width:780px;margin:0 auto 1.2rem;color:rgba(255,255,255,.9);
+    }
+    .cta{
+      display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap;margin-top:.4rem;
+    }
+    .btn-primary,.btn-secondary{
+      padding:.95rem 1.55rem;border-radius:50px;text-decoration:none;font-weight:800;
+      transition:all 0.3s ease;
+    }
+    .btn-primary{
+      background:var(--gradient-primary);color:var(--pl-dark);
+    }
+    .btn-primary:hover{
+      transform:translateY(-3px);
+      box-shadow:0 8px 25px rgba(0,255,136,.3);
+    }
+    .btn-secondary{
+      border:2px solid var(--border);color:var(--pl-light);
+      background:transparent;
+    }
+    .btn-secondary:hover{
+      border-color:rgba(0,255,136,.6);
+      background:rgba(0,255,136,.1);
+      transform:translateY(-2px);
+    }
+
+    /* Features */
     .features{padding:2.4rem 1rem;background:rgba(0,0,0,.18)}
-    .section-title{text-align:center;font-size:1.9rem;font-weight:900;margin:0 0 .7rem;background:var(--gradient-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.1rem;margin-top:1.1rem}
-    .card{background:var(--glass);border:1px solid var(--border);border-radius:14px;padding:1rem}
+    .section-title{
+      text-align:center;font-size:1.9rem;font-weight:900;margin:0 0 .7rem;
+      background:var(--gradient-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+    }
+    .grid{
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:1.1rem;margin-top:1.1rem;
+    }
+    .card{
+      background:var(--glass);border:1px solid var(--border);border-radius:14px;padding:1rem;
+      transition:all 0.3s ease;cursor:pointer;
+    }
+    .card:hover{
+      transform:translateY(-6px);
+      box-shadow:0 12px 30px rgba(0,255,136,.15);
+      border-color:rgba(0,255,136,.3);
+    }
+    .card h3{margin:.2rem 0 .4rem;font-size:1.14rem;font-weight:800}
+    .card p{color:rgba(255,255,255,.9)}
 
+    /* How It Works */
     .how-it-works{padding:3rem 1rem;background:rgba(0,20,40,.15)}
-    .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;margin-top:2rem}
-    .step{padding:1.5rem;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:16px;text-align:center}
-    .step-number{width:50px;height:50px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--gradient-primary);color:var(--pl-dark);font-weight:900;font-size:1.2rem;margin:0 auto 1rem}
+    .steps{
+      display:grid;grid-template-columns:repeat(4,1fr);
+      gap:1.2rem;margin-top:2rem;max-width:1100px;margin-left:auto;margin-right:auto;
+    }
+    .step{
+      text-align:center;padding:1.2rem .8rem;
+      background:rgba(255,255,255,.03);border:1px solid var(--border);
+      border-radius:16px;transition:all 0.3s ease;
+    }
+    .step:hover{transform:translateY(-4px);border-color:rgba(0,255,136,.4)}
+    .step-number{
+      display:inline-flex;align-items:center;justify-content:center;
+      width:50px;height:50px;border-radius:50%;
+      background:var(--gradient-primary);color:var(--pl-dark);
+      font-weight:900;font-size:1.2rem;margin-bottom:1rem;
+    }
+    .step h3{font-size:1.1rem;font-weight:800;margin:0 0 .5rem}
 
+    /* Social Proof */
     .social-proof{padding:2.5rem 1rem;text-align:center}
-    .testimonial{max-width:700px;margin:0 auto;padding:2rem;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:16px;font-style:italic}
+    .testimonial{
+      max-width:700px;margin:0 auto;padding:2rem;
+      background:rgba(255,255,255,.04);border:1px solid var(--border);
+      border-radius:16px;font-style:italic;font-size:1.1rem;
+    }
     .testimonial-author{margin-top:1rem;font-weight:600;color:var(--pl-green)}
 
+    /* Form */
     .submissions{padding:2.6rem 1rem}
-    .form-wrap{background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:12px;padding:1.2rem;max-width:760px;margin:0 auto}
+    .form-wrap{
+      background:rgba(255,255,255,.05);border:1px solid var(--border);
+      border-radius:12px;padding:1.2rem;max-width:760px;margin:0 auto;
+    }
     .row{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:.6rem}
     .row.full{grid-template-columns:1fr}
-    label{font-size:.86rem;color:rgba(255,255,255,.88);font-weight:600}
-    input,select,textarea{width:100%;padding:.75rem;border-radius:10px;border:1px solid rgba(255,255,255,.22);background:rgba(0,0,0,.28);color:#fff}
-    .btn-submit{background:var(--gradient-primary);color:var(--pl-dark);padding:.95rem 1.5rem;border-radius:50px;border:none;font-weight:900;cursor:pointer}
-    .success,.error{display:none;font-size:.9rem;margin-top:.6rem}
-    .success{color:#9effc9}.error{color:#ffb4b4}
+    label{
+      font-size:.86rem;color:rgba(255,255,255,.88);display:block;margin-bottom:.2rem;
+      font-weight:600;
+    }
+    input,select,textarea{
+      width:100%;padding:.75rem;border-radius:10px;
+      border:1px solid rgba(255,255,255,.22);
+      background:rgba(0,0,0,.28);color:#fff;
+      transition:all 0.3s ease;font-family:inherit;
+    }
+    input:focus,select:focus,textarea:focus{
+      outline:none;border-color:rgba(0,255,136,.5);
+      box-shadow:0 0 0 3px rgba(0,255,136,.1);
+    }
+    textarea{resize:vertical;min-height:110px}
+    .btn-submit{
+      background:var(--gradient-primary);color:var(--pl-dark);
+      padding:.95rem 1.5rem;border-radius:50px;border:none;
+      font-weight:900;cursor:pointer;transition:all 0.3s ease;
+      font-family:inherit;margin-top:.6rem;
+    }
+    .btn-submit:hover{
+      transform:translateY(-2px);
+      box-shadow:0 6px 20px rgba(0,255,136,.3);
+    }
+    .success,.error{display:none;font-size:.9rem;margin-top:.6rem;padding:.5rem;border-radius:8px}
+    .success{color:#9effc9;background:rgba(158,255,201,.1)}
+    .error{color:#ffb4b4;background:rgba(255,180,180,.1)}
 
-    footer{background:rgba(0,0,0,.85);border-top:1px solid rgba(0,255,136,.28);text-align:center;padding:2rem 1rem}
+    /* Footer */
+    footer{
+      background:rgba(0,0,0,.85);border-top:1px solid rgba(0,255,136,.28);
+      text-align:center;padding:2rem 1rem;
+    }
     .footer-brand{font-weight:800;margin-bottom:.5rem}
     .footer-legal{font-size:.85rem;color:rgba(255,255,255,.6)}
+
+    /* Responsive */
+    @media (max-width:900px){
+      .steps{grid-template-columns:repeat(2,1fr);gap:1.5rem}
+    }
+    @media (max-width:720px){
+      .brand-text{font-size:1.18rem}
+      .folder-hero{width:320px;height:220px}
+      .hero-title{font-size:clamp(1.25rem,6.4vw,2.2rem)}
+      .row{grid-template-columns:1fr}
+      .steps{grid-template-columns:1fr;gap:1.5rem}
+    }
+
+    /* Skip link for accessibility */
+    .skip-link{
+      position:absolute;top:-40px;left:6px;
+      background:var(--pl-green);color:var(--pl-dark);
+      padding:8px;text-decoration:none;font-weight:700;
+      transition:top 0.3s;z-index:9999;
+    }
+    .skip-link:focus{top:6px}
   </style>
+
 </head>
 <body>
+  <!-- Skip link for accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Header -->
+
   <header>
     <div class="container">
       <div class="header-content">
-        <a href="index.html"><span class="brand-text">Public_<span>Logic</span></span></a>
+        <a class="brand-wrap" href="index.html" aria-label="Public_Logic Home">
+          <span class="brand-text">Public<span class="underscore">_</span>Logic</span>
+        </a>
         <nav class="menu" aria-expanded="false">
-          <button class="menu-btn">Menu ▾</button>
-          <div class="menu-list">
-            <a href="index.html">Home</a><div class="sep"></div>
-            <a href="framework.html">VAULT Framework</a>
-            <a href="note.html">Field Notes</a>
-            <a href="about.html">About & Services</a>
-            <a href="contact.html">Contact</a>
+          <button class="menu-btn" aria-haspopup="true" aria-controls="top-menu">Menu ▾</button>
+          <div id="top-menu" class="menu-list" role="menu">
+            <a href="index.html" role="menuitem">Home</a>
+            <div class="sep"></div>
+            <a href="framework.html" role="menuitem">VAULT Framework</a>
+            <a href="note.html" role="menuitem">Field Notes</a>
+            <a href="about.html" role="menuitem">About & Services</a>
+            <a href="contact.html" role="menuitem">Contact</a>
           </div>
         </nav>
       </div>
@@ -119,82 +354,232 @@
   </header>
 
   <main id="main-content">
+    <!-- Hero -->
     <section class="hero">
-      <div class="container">
+      <div class="container hero-inner">
+        <!-- Manila folder with logoA printed on it -->
         <div class="folder-hero">
           <div class="folder-shape"></div>
-          <img src="logoA.png" alt="Public_Logic VAULT logo" class="folder-logo"/>
+          <img src="logoA.png" alt="Public_Logic VAULT framework logo" class="folder-logo"/>
         </div>
-        <h1 class="hero-title">Turn Municipal Chaos into Digital Clarity</h1>
-        <p class="hero-subtitle"><strong>VAULT</strong> connects your people, data, and systems into compliant, repeatable workflows — without replacing tools you already use.</p>
-      </div>
-    </section>
 
-    <section class="features">
-      <div class="container">
-        <h2 class="section-title">People_Data_Systems</h2>
-        <div class="grid">
-          <div class="card"><h3>Records that behave</h3><p>Naming, retention, and structure auditors understand — across AP, Licensing, DPW, and more.</p></div>
-          <div class="card"><h3>Routing that finishes</h3><p>Approvals mapped to how your town works — not how a vendor wishes it did.</p></div>
-          <div class="card"><h3>Systems that connect</h3><p>CivicPlus, Microsoft 365, Laserfiche, Power Automate stitched so staff don’t retype or hunt files.</p></div>
-        </div>
-      </div>
-    </section>
+```
+    <h1 class="hero-title">Turn Municipal Chaos into Digital Clarity</h1>
+    <p class="hero-subtitle">
+      A practitioner-built framework for how local government actually works.
+      <strong>VAULT</strong> connects your people, data, and systems into compliant, repeatable workflows — without replacing tools you already use.
+    </p>
 
-    <section class="how-it-works">
-      <div class="container">
-        <h2 class="section-title">How VAULT Transforms Your Operations</h2>
-        <div class="steps">
-          <div class="step"><div class="step-number">1</div><h3>Discovery</h3><p>Map processes, find inefficiencies, check your stack.</p></div>
-          <div class="step"><div class="step-number">2</div><h3>Design</h3><p>Workflows built for compliance & how you actually operate.</p></div>
-          <div class="step"><div class="step-number">3</div><h3>Integration</h3><p>Connect CivicPlus, Microsoft, Laserfiche — no disruption.</p></div>
-          <div class="step"><div class="step-number">4</div><h3>Training</h3><p>Staff training and ongoing support.</p></div>
-        </div>
-      </div>
-    </section>
+    <div class="cta">
+      <a href="#contact-form" class="btn-primary">Start a Conversation</a>
+      <a href="framework.html" class="btn-secondary">Explore VAULT</a>
+    </div>
+  </div>
+</section>
 
-    <section class="social-proof">
-      <div class="container">
-        <h2 class="section-title">Built by Practitioners, for Practitioners</h2>
-        <div class="testimonial">
-          “I built VAULT because I was tired of watching municipal staff waste time fighting their own systems.”
-          <div class="testimonial-author">— Nathan, Founder</div>
-        </div>
-      </div>
-    </section>
+<!-- Features -->
+<section class="features">
+  <div class="container">
+    <h2 class="section-title">People_Data_Systems</h2>
+    <div class="grid">
+      <article class="card">
+        <h3>Records that behave</h3>
+        <p>Naming, retention, and structure auditors understand — across AP, Licensing, DPW, and more. Automated compliance tracking and standardized municipal record keeping.</p>
+      </article>
+      <article class="card">
+        <h3>Routing that finishes</h3>
+        <p>Clean handoffs and approvals mapped to how your town works — not how a vendor wishes it did. Streamlined municipal workflow automation that actually gets completed.</p>
+      </article>
+      <article class="card">
+        <h3>Systems that connect</h3>
+        <p>CivicPlus, Microsoft 365, Laserfiche, and Power Automate stitched so people don't retype or hunt for files. Seamless government software integration.</p>
+      </article>
+    </div>
+  </div>
+</section>
 
-    <section class="submissions" id="contact-form">
-      <div class="container">
-        <h2 class="section-title">Start Your Digital Transformation</h2>
-        <div class="form-wrap">
-          <form name="pl-intake" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-            <input type="hidden" name="form-name" value="pl-intake"/>
-            <p hidden><label>Don’t fill this out <input name="bot-field"/></label></p>
-            <div class="row">
-              <div><label for="audience">I am a…</label><select name="audience" id="audience" required>
-                <option value="">Choose</option><option value="town">Town/City</option><option value="partner">Partner</option><option value="regional">Regional/NGO</option></select></div>
-              <div><label for="focus">Primary need</label><input id="focus" name="focus" required placeholder="Workflow, Records, Integration…"/></div>
-            </div>
-            <div class="row">
-              <div><label for="name">Your name</label><input id="name" name="name" required/></div>
-              <div><label for="email">Email</label><input id="email" type="email" name="email" required/></div>
-            </div>
-            <div class="row full"><label for="notes">Tell us about your challenges (optional)</label><textarea id="notes" name="notes"></textarea></div>
-            <button type="submit" class="btn-submit">Send Message</button>
-            <div class="success">Thanks — we’ll follow up soon.</div>
-          </form>
-        </div>
+<!-- How It Works -->
+<section class="how-it-works">
+  <div class="container">
+    <h2 class="section-title">How VAULT Transforms Your Operations</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-number">1</div>
+        <h3>Discovery</h3>
+        <p>Map processes, find inefficiencies, check your stack.</p>
       </div>
-    </section>
+      <div class="step">
+        <div class="step-number">2</div>
+        <h3>Design</h3>
+        <p>Workflows built for compliance & how you actually operate.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <h3>Integration</h3>
+        <p>Connect CivicPlus, Microsoft, Laserfiche — no disruption.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">4</div>
+        <h3>Training</h3>
+        <p>Staff training and ongoing support.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Social Proof -->
+<section class="social-proof">
+  <div class="container">
+    <h2 class="section-title">Built by Practitioners, for Practitioners</h2>
+    <div class="testimonial">
+      "I built VAULT because I was tired of watching municipal staff waste time fighting their own systems."
+      <div class="testimonial-author">— Nathan, Founder</div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Form -->
+<section class="submissions" id="contact-form">
+  <div class="container">
+    <h2 class="section-title">Start Your Digital Transformation</h2>
+    <div class="form-wrap">
+      <form name="pl-intake" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="pl-intake"/>
+        <p hidden><label>Don't fill this out <input name="bot-field"/></label></p>
+        
+        <div class="row">
+          <div>
+            <label for="audience">I am a…</label>
+            <select name="audience" id="audience" required>
+              <option value="">Choose</option>
+              <option value="town">Town/City</option>
+              <option value="partner">Partner</option>
+              <option value="regional">Regional/NGO</option>
+            </select>
+          </div>
+          <div>
+            <label for="focus">Primary need</label>
+            <input id="focus" name="focus" required placeholder="Workflow, Records, Integration…"/>
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            <label for="name">Your name</label>
+            <input id="name" name="name" required/>
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input id="email" type="email" name="email" required/>
+          </div>
+        </div>
+        <div class="row full">
+          <div>
+            <label for="notes">Tell us about your challenges (optional)</label>
+            <textarea id="notes" name="notes" placeholder="What municipal processes are causing headaches? What systems aren't talking to each other?"></textarea>
+          </div>
+        </div>
+        <button type="submit" class="btn-submit">Send Message</button>
+        <div class="success">Thanks — we'll follow up soon.</div>
+        <div class="error">Couldn't send. Email us instead: nathan@publiclogic.org</div>
+      </form>
+    </div>
+  </div>
+</section>
+```
+
   </main>
 
   <footer>
     <div class="container">
       <div class="footer-brand">People.Data.Systems.</div>
-      <div class="footer-legal">© <span id="year"></span> Public_Logic</div>
+      <div class="footer-legal">© <span id="year"></span> Public_Logic. Municipal Government Digital Transformation Specialists.</div>
     </div>
   </footer>
 
-  <script>document.getElementById('year').textContent=new Date().getFullYear()</script>
+  <script>
+    // Set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Menu functionality
+    const menu = document.querySelector('.menu');
+    const btn = document.querySelector('.menu-btn');
+    
+    function toggleMenu(force) {
+      const expanded = (force !== undefined) ? force : menu.getAttribute('aria-expanded') !== 'true';
+      menu.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+    }
+    
+    btn.addEventListener('click', () => toggleMenu());
+    document.addEventListener('click', (e) => {
+      if (!menu.contains(e.target)) toggleMenu(false);
+    });
+
+    // Form functionality
+    const form = document.querySelector('form[name="pl-intake"]');
+    const submitBtn = document.querySelector('.btn-submit');
+    const successMsg = document.querySelector('.success');
+    const errorMsg = document.querySelector('.error');
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      // Basic validation
+      const requiredFields = form.querySelectorAll('[required]');
+      let isValid = true;
+      
+      requiredFields.forEach(field => {
+        if (!field.value.trim()) {
+          field.style.borderColor = '#ff6b6b';
+          isValid = false;
+        } else {
+          field.style.borderColor = 'rgba(255,255,255,.22)';
+        }
+      });
+
+      if (!isValid) return;
+
+      // Submit form
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+      successMsg.style.display = 'none';
+      errorMsg.style.display = 'none';
+
+      try {
+        const formData = new FormData(form);
+        const response = await fetch('/', {
+          method: 'POST',
+          body: formData
+        });
+
+        if (response.ok) {
+          successMsg.style.display = 'block';
+          form.reset();
+        } else {
+          throw new Error('Network response was not ok');
+        }
+        
+      } catch (error) {
+        errorMsg.style.display = 'block';
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Message';
+      }
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  </script>
+
 </body>
 </html>
