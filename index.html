@@ -4,59 +4,85 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Public_Logic — Now Live</title>
+  <meta name="description" content="Public_Logic — Smart Systems. Stronger Communities. People_Data_Systems.">
   <style>
-    :root { --pl-green:#0f3d2e; --pl-dark:#1e1e1e; --pl-light:#f7f7f7; --pl-teal:#7ee4c7; }
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
-      background:var(--pl-light); color:var(--pl-dark);
-      display:flex;flex-direction:column;min-height:100vh;
+    :root{
+      --pl-green:#0f3d2e; --pl-teal:#7ee4c7; --ink:#111; --bg:#0a0a0a; --paper:#ffffff;
     }
-    .container{width:min(980px,92%);margin:0 auto;padding:1.25rem 1rem}
-    header{background:var(--pl-green);color:#fff;border-bottom:2px solid #0b2c21}
-    header .wrap{display:flex;justify-content:space-between;align-items:center;padding:.75rem 0}
-    .brand{font-weight:900;font-size:1.25rem;text-decoration:none;color:#fff}
-    .brand-underscore{color:var(--pl-teal);font-family:ui-monospace,monospace}
-    .strap{font-weight:700;font-size:.9rem;opacity:.9}
-    main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:3rem 1rem}
-    .folder{display:inline-block;background:#fff;border:2px solid var(--pl-green);border-radius:6px;padding:1.5rem 2rem;box-shadow:0 4px 12px rgba(0,0,0,.08);position:relative;margin-bottom:1.5rem}
-    .folder::before{content:'';position:absolute;top:-12px;left:20px;width:80px;height:12px;background:#fff;border:2px solid var(--pl-green);border-bottom:none;border-radius:4px 4px 0 0}
-    img.logo{max-width:280px;height:auto;display:block}
-    h1{font-size:2.2rem;margin:.5rem 0;color:var(--pl-green)}
-    p{margin:.5rem 0 1.5rem}
-    .btn{background:var(--pl-green);color:#fff;text-decoration:none;padding:.75rem 1.25rem;border-radius:6px;font-weight:600;margin:.25rem;display:inline-block}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;background:#0a0a0a;color:#e9f1ee;min-height:100vh;display:flex;flex-direction:column}
+    .container{width:min(1200px,92%);margin:0 auto;padding:0 1rem}
+
+    /* header */
+    header{position:sticky;top:0;z-index:10;background:rgba(10,10,10,.85);backdrop-filter:blur(12px);border-bottom:1px solid rgba(15,61,46,.25)}
+    .head{display:flex;justify-content:space-between;align-items:center;padding:1rem 0}
+    .brand{font-weight:900;font-size:1.35rem;text-decoration:none;color:#fff}
+    .brand-underscore{color:var(--pl-teal);font-family:ui-monospace,Menlo,monospace}
+    .tag{font-weight:700;font-size:.9rem;opacity:.9}
+
+    /* hero */
+    main{flex:1;display:flex;align-items:center;justify-content:center;text-align:center}
+    h1{font-size:clamp(2.2rem,6vw,4rem);font-weight:900;margin:.75rem 0;color:#caf2e5}
+    .sub{letter-spacing:.1em;text-transform:uppercase;opacity:.9;margin-bottom:1.25rem}
+
+    /* ⬇️ Cleaner folder frame */
+    .folder{
+      display:inline-block;background:#fff;border:2px solid var(--pl-green);
+      border-radius:10px;padding:1.25rem 1.5rem;margin:1.25rem 0 1.5rem; color:var(--ink);
+      box-shadow:0 10px 24px rgba(0,0,0,.18);
+      position:relative;
+    }
+    .folder::before{
+      content:'';position:absolute;top:-10px;left:28px;width:90px;height:14px;background:#fff;
+      border:2px solid var(--pl-green);border-bottom:none;border-radius:6px 6px 0 0;
+    }
+    .folder img{
+      display:block;max-width:min(640px,90vw);height:auto;
+      border-radius:6px; /* subtle rounding on the image itself */
+    }
+
+    .btns{display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center;margin-top:.5rem}
+    .btn{background:var(--pl-green);color:#fff;text-decoration:none;padding:.9rem 1.25rem;border-radius:8px;font-weight:700}
     .btn:hover{background:#0c2e22}
-    footer{background:#0f0f0f;color:#cfcfcf;padding:1rem;text-align:center;border-top:1px solid #1f1f1f}
-    footer p{margin:.25rem 0}
-    .tiny{font-size:.85rem;opacity:.85}
+    .btn.alt{background:#164c3a}
+    footer{background:#0f0f0f;border-top:1px solid #1b1b1b;text-align:center;padding:1.25rem .5rem}
+    footer p{opacity:.85;margin:.3rem 0}
+    .tiny{opacity:.65;font-style:italic}
+    @media (max-width:700px){.tag{display:none}}
   </style>
 </head>
 <body>
-<header>
-  <div class="container wrap">
-    <a class="brand" href="index.html">Public<span class="brand-underscore">_</span>Logic</a>
-    <div class="strap">Smart Systems. Stronger Communities.</div>
-  </div>
-</header>
+  <header>
+    <div class="container head">
+      <a class="brand" href="index.html">Public<span class="brand-underscore">_</span>Logic</a>
+      <div class="tag">Smart Systems. Stronger Communities.</div>
+    </div>
+  </header>
 
-<main>
-  <div class="folder">
-    <img src="assets/logoA.png" alt="Public_Logic Logo" class="logo"/>
-  </div>
-  <h1>Public_Logic is Live</h1>
-  <p class="pds">People_Data_Systems</p>
-  <div>
-    <a href="framework.html" class="btn">Explore VAULT</a>
-    <a href="note.html" class="btn">Read Field Notes</a>
-    <a href="contact.html" class="btn">Request Access</a>
-  </div>
-</main>
+  <main>
+    <div class="container">
+      <!-- Uses your real repo image -->
+      <div class="folder">
+        <img src="vault-lock-folder.png" alt="Public_Logic folder mark">
+      </div>
 
-<footer>
-  <p>People.Data.Systems.</p>
-  <p>© <span id="year"></span> Public_Logic. All rights reserved.</p>
-  <p class="tiny">VAULT™ framework and related marks — patent pending.</p>
-</footer>
-<script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+      <h1>Public_Logic is LIVE</h1>
+      <p class="sub">People_Data_Systems</p>
+
+      <div class="btns">
+        <a class="btn" href="framework.html">Explore VAULT</a>
+        <a class="btn alt" href="note.html">Field Notes</a>
+        <a class="btn" href="work-with-us.html">Work with Us</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>People.Data.Systems.</p>
+    <p>© <span id="year"></span> Public_Logic. All rights reserved.</p>
+    <p class="tiny">VAULT™ framework and related marks — patent pending.</p>
+  </footer>
+
+  <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
 </body>
 </html>
