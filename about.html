@@ -1,39 +1,315 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>About — Public_Logic</title>
-  <link rel="stylesheet" href="css/style.css">
+  <title>About Public_Logic — Municipal-First Frameworks for Town Government</title>
+
+  <!-- SEO -->
+
+  <meta name="description" content="Public_Logic is a municipal-first framework practice. Practitioner-builders who design compliance-forward operating frameworks so staff, boards, and residents get clarity—implemented in days, not years."/>
+  <meta name="keywords" content="municipal frameworks, town government, compliance, clerk, warrants, budget, capital planning, meetings, inspections, health, parks, retention"/>
+  <meta name="author" content="Public_Logic"/>
+  <meta name="robots" content="index, follow"/>
+
+  <!-- Open Graph -->
+
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content="Public_Logic — Smart Systems. Stronger Communities."/>
+  <meta property="og:description" content="Practitioner-built, municipal-first frameworks that make day-to-day work simpler, safer, and faster."/>
+  <meta property="og:url" content="https://publiclogic.org/about.html"/>
+  <meta property="og:image" content="https://publiclogic.org/assets/og-publiclogic.png"/>
+  <meta property="og:image:alt" content="Public_Logic: Smart Systems. Stronger Communities."/>
+
+  <!-- Canonical -->
+
+  <link rel="canonical" href="https://publiclogic.org/about.html"/>
+
+  <!-- Fonts & Styles -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet"/>
+
+  <!-- Structured Data -->
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"Public_Logic",
+    "url":"https://publiclogic.org",
+    "description":"Municipal-first framework practice delivering compliance-forward operating frameworks for towns.",
+    "logo":"https://publiclogic.org/assets/logo-publiclogic.png",
+    "founder": {"@type": "Person", "name": "Nathan"},
+    "areaServed": {"@type": "Country", "name": "United States"},
+    "serviceType": "Municipal Government Frameworks"
+  }
+  </script>
+
+  <style>
+    :root{
+      --pl-green:#00ff88;
+      --pl-light:#f8fafc;
+      --grad:linear-gradient(135deg,#00ff88 0%,#00d4aa 100%);
+      --glass:rgba(255,255,255,.06);
+      --border:rgba(255,255,255,.16);
+      --muted:rgba(255,255,255,.78);
+      --card:rgba(255,255,255,.04);
+    }
+
+    *{box-sizing:border-box}
+    html:focus-within{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+      background:linear-gradient(135deg,#0a0a0a,#141a2a 55%,#16213e);
+      color:var(--pl-light);
+      line-height:1.65;
+      text-rendering:optimizeLegibility;
+    }
+    .container{max-width:1080px;margin:0 auto;padding:0 18px}
+
+    /* Hero */
+    .hero{padding:3.5rem 1rem 2rem;text-align:center}
+    .hero h1{
+      font-size:clamp(1.9rem,6.5vw,3.4rem);font-weight:900;margin:0 0 .6rem;
+      background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent
+    }
+    .hero-tagline{
+      font-size:clamp(1.1rem,3vw,1.35rem);font-weight:700;margin:0 0 1.2rem;
+      color:var(--muted);letter-spacing:.02em
+    }
+
+    /* About */
+    .about{padding:1.2rem 1rem 2rem}
+    .about-content{
+      max-width:860px;margin:0 auto;
+      background:var(--card);border:1px solid var(--border);
+      border-radius:16px;padding:2.2rem
+    }
+    .about h2{
+      font-size:1.7rem;font-weight:900;margin:0 0 1.2rem;color:#dbeafe;letter-spacing:.02em
+    }
+    .about p{font-size:1.08rem;color:var(--muted);margin:0 0 1.2rem}
+    .about p:last-child{margin-bottom:0}
+
+    /* Framework summary */
+    .framework{padding:.5rem 1rem 2.2rem}
+    .framework h2{font-size:1.6rem;font-weight:900;color:#dbeafe;text-align:center;margin:0 0 1.2rem}
+    .arch-card{
+      max-width:920px;margin:0 auto;background:var(--glass);border:1px solid var(--border);
+      border-radius:14px;padding:1.2rem 1.2rem 1rem
+    }
+    .arch-card h3{margin:.1rem 0 .35rem;font-size:1.05rem;color:var(--pl-green)}
+    .arch-card p{margin:.2rem 0;color:var(--muted)}
+    .cta-row{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;margin-top:1rem}
+    .btn{
+      border:1px solid var(--border);border-radius:999px;
+      padding:.7rem 1.1rem;font-weight:800;color:#e8f3ee;text-decoration:none;
+      display:inline-flex;align-items:center;gap:.5rem;
+      transition:all 0.3s ease;
+    }
+    .btn-primary{background:var(--grad);color:#03140d;border-color:transparent}
+    .btn:hover{
+      border-color:rgba(0,255,136,.5);
+      transform:translateY(-1px);
+    }
+    .btn-primary:hover{
+      box-shadow:0 4px 15px rgba(0,255,136,.25);
+    }
+
+    /* Principles */
+    .principles{padding:1.6rem 1rem 2.2rem;background:rgba(0,20,40,.15)}
+    .principles h2{text-align:center;font-size:1.6rem;font-weight:900;margin:0 0 1.4rem;color:#dbeafe}
+    .principles-grid{
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:1.2rem;max-width:980px;margin:0 auto
+    }
+    .principle{
+      background:var(--glass);border:1px solid var(--border);border-radius:12px;padding:1.2rem;text-align:center;
+      transition:all 0.3s ease;
+    }
+    .principle:hover{
+      transform:translateY(-2px);
+      border-color:rgba(0,255,136,.3);
+    }
+    .principle h3{font-size:1.02rem;font-weight:800;margin:0 0 .6rem;color:var(--pl-green)}
+    .principle p{margin:0;color:var(--muted);font-size:.95rem}
+
+    /* Services */
+    .services{padding:1.6rem 1rem 2.2rem}
+    .services .about-content{max-width:860px}
+    .services ul{margin:0 0 1.2rem 1.1rem;line-height:1.7}
+    .services li{margin-bottom:.8rem;color:var(--muted)}
+    .services strong{color:var(--pl-light)}
+    .services a{color:var(--pl-green);text-decoration:none}
+    .services a:hover{text-decoration:underline}
+
+    /* Mission */
+    .mission{padding:2.2rem 1rem;text-align:center}
+    .mission-text{
+      font-size:clamp(1.15rem,4vw,1.75rem);font-weight:800;max-width:680px;margin:0 auto;
+      background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent
+    }
+
+    /* Footer */
+    footer{
+      background:rgba(0,0,0,.85);border-top:1px solid rgba(0,255,136,.28);
+      text-align:center;padding:2rem 1rem;margin-top:2rem
+    }
+    .footer-brand{font-weight:800;margin-bottom:.5rem;font-size:1.05rem}
+    .footer-legal{font-size:.88rem;color:rgba(255,255,255,.65);margin-top:.4rem}
+
+    @media (max-width:720px){
+      .about-content{padding:1.6rem}
+      .principles-grid{grid-template-columns:1fr}
+      .cta-row{flex-direction:column;align-items:center}
+    }
+
+    /* Skip link for accessibility */
+    .skip-link{
+      position:absolute;top:-40px;left:6px;
+      background:var(--pl-green);color:#03140d;
+      padding:8px;text-decoration:none;font-weight:700;
+      transition:top 0.3s;z-index:9999;
+    }
+    .skip-link:focus{top:6px}
+  </style>
+
 </head>
+
 <body>
-<header role="banner">
-  <div class="container wrap">
-    <a class="brand" href="index.html" aria-label="Public Logic home">Public<span class="brand-underscore">_</span>Logic</a>
-    <div class="strap">Smart Systems. Stronger Communities.</div>
+  <!-- Skip link for accessibility -->
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- About page hero -->
+
+  <section class="hero" aria-labelledby="about-hero">
+    <div class="container">
+      <h1 id="about-hero">Public_Logic</h1>
+      <p class="hero-tagline">Smart Systems. Stronger Communities.</p>
+    </div>
+  </section>
+
+  <main id="main" tabindex="-1">
+    <!-- About -->
+    <section class="about" aria-labelledby="about-title">
+      <div class="container">
+        <div class="about-content">
+          <h2 id="about-title">About Public_Logic</h2>
+          <p>
+            We are practitioner-builders. We design municipal-first frameworks that make day-to-day work simpler, safer, and faster.
+            Our practice comes from years inside town government—closing warrants, posting agendas, answering residents, and working inside Massachusetts General Law and local policy.
+          </p>
+          <p>
+            The difference is focus: frameworks, not software. Tools are useful; frameworks make them stick. We start with compliance, map the workflow staff actually live, and deliver adoption in days—not a fiscal year.
+          </p>
+          <p>
+            Public_Logic is platform-agnostic and municipal-first. We work with what you already have and make it work together. The result: clarity for staff, confidence for boards, and transparency for residents.
+          </p>
+        </div>
+      </div>
+    </section>
+
+```
+<!-- Framework summary -->
+<section id="framework" class="framework" aria-labelledby="framework-title">
+  <div class="container">
+    <h2 id="framework-title">The Public_Logic Framework</h2>
+
+    <div class="arch-card" aria-labelledby="archive-title">
+      <h3 id="archive-title">Accountability, Records, Compliance, History, Integrity, Governance, Evidence (ARCHIVE)</h3>
+      <p>
+        ARCHIVE is the logic layer and standard base model. Every module inherits its rules for accountability, records, and compliance—so actions are traceable, decisions are defensible, and continuity survives staff and board transitions.
+      </p>
+      <div class="cta-row" role="group" aria-label="Framework actions">
+        <a class="btn btn-primary" href="framework.html">See the Frameworks</a>
+        <a class="btn" href="contact.html">Start a Pilot</a>
+      </div>
+    </div>
   </div>
-</header>
+</section>
 
-<main class="container">
-  <section class="section">
-    <h2>About Public_Logic</h2>
-    <p class="lead">We are practitioner-builders. We design municipal-first frameworks that make day-to-day work simpler, safer, and faster.</p>
-  </section>
-  <section class="section">
-    <h2>Principles</h2>
-    <ul>
-      <li>Compliance-first by design</li>
-      <li>Platform-agnostic and practical</li>
-      <li>Plain language, clear ownership</li>
-      <li>Automate the boring stuff</li>
-    </ul>
-  </section>
-</main>
+<!-- Principles -->
+<section class="principles" aria-labelledby="principles-title">
+  <div class="container">
+    <h2 id="principles-title">Principles</h2>
+    <div class="principles-grid">
+      <div class="principle">
+        <h3>Compliance-first by design</h3>
+        <p>Every framework starts with statutory requirements, audit readiness, and transparency. Compliance isn't an afterthought.</p>
+      </div>
+      <div class="principle">
+        <h3>Platform-agnostic and practical</h3>
+        <p>Work with what you have. Connect existing systems. Focus on workflow, not vendor lock-in.</p>
+      </div>
+      <div class="principle">
+        <h3>Plain language, clear ownership</h3>
+        <p>Names you can read in a public meeting. Documentation that survives transitions. Accountability that stands up to scrutiny.</p>
+      </div>
+      <div class="principle">
+        <h3>Automate the boring stuff</h3>
+        <p>Free up talented municipal staff to focus on residents and community building, not administrative busy work and system fighting.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-<footer role="contentinfo">
-  <p>People.Data.Systems.</p>
-  <p>© <span id="year"></span> Public_Logic. All rights reserved.</p>
-</footer>
-<script src="js/main.js"></script>
+<!-- Services -->
+<section class="services about" aria-labelledby="services-title">
+  <div class="container">
+    <div class="about-content">
+      <h2 id="services-title">Other Services</h2>
+      <p>
+        Beyond the operating framework, Public_Logic offers municipal-first services that help towns adopt faster, stay compliant, and keep work moving through transitions.
+        For the full operating framework, <a href="framework.html">see the Frameworks page</a>.
+      </p>
+
+      <ul>
+        <li><strong>Pilot Design & Adoption Sprints</strong> — pick 1–3 workflows, map to law, go live in days, not a fiscal year.</li>
+        <li><strong>Compliance & Process Reviews</strong> — MGL, bylaws, policy mapping; gap analysis with practical fixes.</li>
+        <li><strong>Documentation that Survives Turnover</strong> — plain-language SOPs, role handoffs, and board-facing checklists.</li>
+        <li><strong>Board & Staff Training</strong> — Clerk, Finance, Health, Inspections, Planning; meeting-ready materials.</li>
+        <li><strong>Budget Book Production</strong> — unified submissions, narratives, and public-ready budget books.</li>
+        <li><strong>Capital Stewardship Workshops</strong> — lifecycle planning tied to debt schedules and replacement timing.</li>
+        <li><strong>Vendor Alignment</strong> — make CivicPlus, Microsoft 365, Laserfiche, Tyler, and VADAR/MUNIS work together.</li>
+        <li><strong>Transparency & Records</strong> — retention policy alignment, posting calendars, and public access improvements.</li>
+        <li><strong>Grant & Funding Support</strong> — "ready-to-run" scopes, reporting cadence, and board update templates.</li>
+        <li><strong>Regional & Shared Services</strong> — multi-town playbooks, cost-sharing structures, and governance models.</li>
+      </ul>
+
+      <div class="cta-row" role="group" aria-label="Services actions">
+        <a class="btn btn-primary" href="contact.html">Start a Pilot</a>
+        <a class="btn" href="framework.html">See the Frameworks</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Mission -->
+<section class="mission" aria-labelledby="mission-title">
+  <div class="container">
+    <h2 id="mission-title" class="sr-only" style="position:absolute;left:-9999px">Mission</h2>
+    <p class="mission-text">People. Data. Systems.</p>
+  </div>
+</section>
+```
+
+  </main>
+
+  <footer role="contentinfo">
+    <div class="container">
+      <div class="footer-brand">People. Data. Systems.</div>
+      <div class="footer-legal">© <span id="year"></span> Public_Logic. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
 </body>
 </html>
