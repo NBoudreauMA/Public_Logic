@@ -8,157 +8,220 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap');
 
-    :root {
-      --pl-green: #00ff88;
-      --pl-dark: #0a0a0a;
-      --pl-light: #f8fafc;
-      --gradient-primary: linear-gradient(135deg, #00ff88 0%, #00d4aa 100%);
-      --manila: #f3e7c9;
-      --paper: #fffef8;
-      --ink: #222;
+    :root{
+      --pl-green:#00ff88;
+      --pl-dark:#0a0a0a;
+      --pl-light:#f8fafc;
+      --gradient-primary:linear-gradient(135deg,#00ff88 0%,#00d4aa 100%);
+      --manila:#f3e7c9;
+      --paper:#fffef8;
+      --ink:#222;
+      --glass:rgba(255,255,255,.06);
     }
 
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #0a0a0a, #1a1a2e 50%, #16213e);
-      color: var(--pl-light);
-      line-height: 1.6;
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+      background:linear-gradient(135deg,#0a0a0a,#1a1a2e 50%,#16213e);
+      color:var(--pl-light);
+      line-height:1.6;
     }
+
+    .container{max-width:1200px;margin:0 auto;padding:0 16px}
 
     /* Header */
-    header {
-      background: rgba(0,0,0,.75);
-      border-bottom: 1px solid rgba(0,255,136,.3);
-      padding: .7rem 1rem;
-      position: sticky;
-      top: 0; z-index: 100;
+    header{
+      position:sticky;top:0;z-index:100;
+      background:rgba(0,0,0,.78);
+      border-bottom:1px solid rgba(0,255,136,.28);
+      backdrop-filter:blur(10px)
     }
-    .container { max-width: 1100px; margin: 0 auto; }
-    .header-content { display:flex; justify-content:center; align-items:center; }
-    .brand-wrap { display:flex; align-items:center; gap:.5rem; text-decoration:none; }
-    .logo-folder { height: 28px; }
-    .brand-text {
-      font-weight: 900; font-size: 1.2rem;
-      background: var(--gradient-primary);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    .header-content{
+      height:58px;
+      display:flex;align-items:center;justify-content:space-between;
     }
+    .brand-wrap{display:flex;align-items:center;gap:.55rem;text-decoration:none}
+    .logo-folder{height:26px;width:auto;display:block;filter:drop-shadow(0 0 8px rgba(0,255,136,.35))}
+    .brand-text{
+      font-weight:900;font-size:1.15rem;letter-spacing:.2px;
+      background:var(--gradient-primary);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent
+    }
+
+    /* Dropdown menu */
+    .menu{position:relative}
+    .menu-btn{
+      background:transparent;border:1px solid rgba(255,255,255,.25);
+      color:#fff;border-radius:999px;padding:.5rem .85rem;
+      font-weight:600;cursor:pointer
+    }
+    .menu-btn:focus{outline:2px solid rgba(0,255,136,.45);outline-offset:3px}
+    .menu-list{
+      position:absolute;right:0;top:110%;
+      min-width:200px;background:rgba(10,10,10,.95);
+      border:1px solid rgba(255,255,255,.15);
+      border-radius:10px;box-shadow:0 12px 28px rgba(0,0,0,.4);
+      padding:.4rem;display:none
+    }
+    .menu[aria-expanded="true"] .menu-list{display:block}
+    .menu a{
+      display:block;padding:.6rem .7rem;border-radius:8px;
+      color:#e8f3ee;text-decoration:none;font-weight:600
+    }
+    .menu a:hover{background:rgba(255,255,255,.08)}
+    .menu .sep{height:1px;background:rgba(255,255,255,.12);margin:.35rem .25rem}
 
     /* Hero */
-    .hero { text-align:center; padding:4rem 1rem 3rem; }
-    .folder-hero {
-      position: relative; display:inline-block; width:260px; height:180px; margin-bottom:1.5rem;
+    .hero{text-align:center;padding:3.6rem 1rem 2.4rem}
+    .hero-content{max-width:1040px;margin:0 auto}
+    .folder-hero{
+      display:inline-block;position:relative;width:280px;height:190px;margin-bottom:16px
     }
-    .folder-shape {
-      width:100%; height:100%; background:var(--manila);
-      border-radius:6px; box-shadow:0 6px 22px rgba(0,0,0,.4);
+    .folder-shape{
+      position:relative;width:100%;height:100%;background:var(--manila);
+      border-radius:8px;box-shadow:0 10px 26px rgba(0,0,0,.42)
     }
-    .folder-shape::before {
-      content:""; position:absolute; top:-20px; left:0;
-      width:100px; height:20px; background:var(--manila);
-      border-radius:6px 6px 0 0;
+    .folder-shape::before{
+      content:"";position:absolute;top:-22px;left:0;width:120px;height:22px;
+      background:var(--manila);border-radius:8px 8px 0 0
     }
-    .folder-stamp {
-      position:absolute; top:50%; left:50%;
-      transform:translate(-50%,-50%) rotate(-8deg);
-      background:var(--paper);
-      padding:.6rem; border:2px dashed rgba(0,0,0,.25);
-      box-shadow:inset 0 0 4px rgba(0,0,0,.1);
+    /* Label sticker with tape — logoA sits inside naturally */
+    .folder-label{
+      position:absolute;bottom:16px;left:18px;
+      background:var(--paper);border:1px solid rgba(0,0,0,.18);
+      border-radius:6px;padding:.35rem .5rem .3rem .5rem;
+      transform:rotate(-2.2deg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.03), 0 6px 14px rgba(0,0,0,.18)
     }
-    .folder-stamp img { width:120px; opacity:.95; }
+    .folder-label::before,.folder-label::after{
+      content:"";position:absolute;top:-10px;width:44px;height:12px;
+      background:rgba(255,255,255,.65);border:1px solid rgba(0,0,0,.15);
+      border-radius:2px;box-shadow:0 2px 4px rgba(0,0,0,.2)
+    }
+    .folder-label::before{left:10px;transform:rotate(-6deg)}
+    .folder-label::after{right:10px;transform:rotate(4deg)}
+    .folder-logo{
+      display:block;width:120px;height:auto;
+      filter:grayscale(100%) contrast(1.15) opacity(.92);
+      mix-blend-mode:multiply
+    }
 
-    .hero-title {
-      white-space:nowrap; font-size:clamp(1.4rem,6vw,2.8rem);
-      font-weight:900; margin:0 0 1rem;
+    .hero-title{
+      white-space:nowrap;font-size:clamp(1.35rem,6vw,2.7rem);
+      font-weight:900;margin:.25rem 0 1rem;
       background:var(--gradient-primary);
-      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent
     }
-    .hero-subtitle {
-      font-size:1.1rem; max-width:680px; margin:0 auto 1.5rem;
-      color:rgba(255,255,255,.85);
+    .hero-subtitle{
+      font-size:1.05rem;max-width:760px;margin:0 auto 1.2rem;color:rgba(255,255,255,.88)
     }
-    .cta-group { display:flex; flex-wrap:wrap; gap:.8rem; justify-content:center; }
-    .btn-primary,.btn-secondary {
-      padding:.9rem 1.5rem; border-radius:50px;
-      text-decoration:none; font-weight:600;
+    .cta-group{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap}
+    .btn-primary,.btn-secondary{
+      padding:.9rem 1.5rem;border-radius:50px;text-decoration:none;font-weight:700
     }
-    .btn-primary { background:var(--gradient-primary); color:var(--pl-dark); }
-    .btn-secondary { border:2px solid rgba(255,255,255,.3); color:var(--pl-light); }
+    .btn-primary{background:var(--gradient-primary);color:var(--pl-dark)}
+    .btn-secondary{border:2px solid rgba(255,255,255,.3);color:var(--pl-light)}
 
     /* Features */
-    .features { padding:3rem 1rem; background:rgba(0,0,0,.25); }
-    .section-title {
-      font-size:2rem; font-weight:900; text-align:center;
-      background:var(--gradient-primary);
-      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-      margin-bottom:1rem;
+    .features{padding:2.6rem 1rem;background:rgba(0,0,0,.22)}
+    .section-title{
+      text-align:center;font-size:2rem;font-weight:900;margin:0 0 .8rem;
+      background:var(--gradient-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent
     }
-    .features-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.5rem; margin-top:1.5rem; }
-    .feature-card {
-      background:rgba(255,255,255,.06);
-      padding:1.2rem; border-radius:12px;
-      border:1px solid rgba(255,255,255,.15);
+    .features-grid{
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:1.2rem;margin-top:1.2rem
     }
-    .feature-title { font-size:1.2rem; font-weight:700; margin:.5rem 0; }
+    .feature-card{
+      background:var(--glass);border:1px solid rgba(255,255,255,.14);
+      border-radius:14px;padding:1.1rem
+    }
+    .feature-title{font-size:1.15rem;font-weight:700;margin:.4rem 0}
+    .feature-desc{color:rgba(255,255,255,.9)}
 
-    /* Frameworks */
-    .about { padding:3rem 1rem; }
-    .about-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.2rem; margin-top:1.2rem; }
-    .about-card { background:rgba(255,255,255,.05); padding:1rem 1.2rem; border-radius:12px; }
+    /* Submissions (single clean form) */
+    .submissions{padding:2.8rem 1rem}
+    .sub-card{
+      background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.15);
+      border-radius:12px;padding:1.2rem;max-width:720px;margin:0 auto
+    }
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:.6rem}
+    .form-row.full{grid-template-columns:1fr}
+    label{font-size:.85rem;display:block;margin-bottom:.22rem;color:rgba(255,255,255,.85)}
+    input,select,textarea{
+      width:100%;padding:.7rem;border-radius:10px;border:1px solid rgba(255,255,255,.22);
+      background:rgba(0,0,0,.28);color:#fff
+    }
+    textarea{resize:vertical;min-height:110px}
+    .submit-wrap{display:flex;gap:.6rem;align-items:center;margin-top:.6rem}
+    .btn-submit{background:var(--gradient-primary);color:var(--pl-dark);padding:.9rem 1.4rem;border-radius:50px;border:none;font-weight:800;cursor:pointer}
+    .success-msg,.error-msg{display:none;font-size:.9rem}
+    .success-msg{color:#9effc9}.error-msg{color:#ffb4b4}
 
-    /* Submissions */
-    .submissions { padding:3rem 1rem; }
-    .sub-card { background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.15); border-radius:12px; padding:1.2rem; max-width:680px; margin:0 auto; }
-    .form-row { display:grid; grid-template-columns:1fr 1fr; gap:.6rem; margin-bottom:.6rem; }
-    .form-row.full { grid-template-columns:1fr; }
-    label { font-size:.85rem; display:block; margin-bottom:.25rem; color:rgba(255,255,255,.85); }
-    input,select,textarea { width:100%; padding:.7rem; border-radius:8px; border:1px solid rgba(255,255,255,.25); background:rgba(0,0,0,.3); color:#fff; }
-    textarea { resize:vertical; min-height:100px; }
-    .submit-wrap { margin-top:1rem; }
-    .btn-submit { background:var(--gradient-primary); color:var(--pl-dark); padding:.9rem 1.4rem; border-radius:50px; border:none; font-weight:700; cursor:pointer; }
-    .success-msg,.error-msg { display:none; font-size:.9rem; margin-left:.6rem; }
-    .success-msg { color:#9effc9; }
-    .error-msg { color:#ffb4b4; }
-    .hidden { display:none !important; }
+    footer{
+      background:rgba(0,0,0,.85);border-top:1px solid rgba(0,255,136,.28);
+      text-align:center;padding:2rem 1rem
+    }
+    .footer-brand{font-weight:800}
+    .footer-legal{font-size:.85rem;color:rgba(255,255,255,.6);margin-top:.4rem}
 
-    /* Footer */
-    footer { background:rgba(0,0,0,.85); padding:2rem 1rem; text-align:center; border-top:1px solid rgba(0,255,136,.3); }
-    .footer-brand { font-weight:700; font-size:1.1rem; margin-bottom:.4rem; }
-    .footer-tagline { color:rgba(255,255,255,.7); margin-bottom:.6rem; }
-    .footer-legal { font-size:.8rem; color:rgba(255,255,255,.5); }
+    @media (max-width:640px){
+      .header-content{height:auto;padding:10px 0}
+      .hero-title{font-size:clamp(1.1rem,6.2vw,2rem)}
+      .form-row{grid-template-columns:1fr}
+      .folder-hero{width:250px;height:175px}
+      .folder-logo{width:108px}
+    }
   </style>
 </head>
 <body>
+  <!-- Header -->
   <header>
     <div class="container">
       <div class="header-content">
-        <a class="brand-wrap" href="#top">
+        <!-- Left: brand -->
+        <a class="brand-wrap" href="index.html" aria-label="Public_Logic home">
           <img class="logo-folder" src="vault-lock-folder.png" alt="VAULT folder logo"/>
           <span class="brand-text">Public_Logic</span>
         </a>
+
+        <!-- Right: dropdown menu -->
+        <nav class="menu" aria-label="Site menu" aria-expanded="false">
+          <button class="menu-btn" aria-haspopup="true" aria-controls="top-menu">Menu ▾</button>
+          <div id="top-menu" class="menu-list" role="menu">
+            <a role="menuitem" href="index.html">Home</a>
+            <div class="sep" aria-hidden="true"></div>
+            <a role="menuitem" href="framework.html">Frameworks</a>
+            <a role="menuitem" href="note.html">Field Notes</a>
+            <a role="menuitem" href="about.html">About & Services</a>
+            <a role="menuitem" href="contact.html">Contact</a>
+          </div>
+        </nav>
       </div>
     </div>
   </header>
 
   <main>
+    <!-- Hero -->
     <section class="hero">
       <div class="container">
         <div class="hero-content">
-          <!-- Manila folder with logoA stamp -->
-          <div class="folder-hero">
+          <!-- Manila folder with subtle label sticker (logoA) -->
+          <div class="folder-hero" aria-hidden="true">
             <div class="folder-shape"></div>
-            <div class="folder-stamp">
-              <img src="logoA.png" alt="Public_Logic logo"/>
+            <div class="folder-label">
+              <img class="folder-logo" src="logoA.png" alt="Public_Logic logo on label"/>
             </div>
           </div>
 
+          <!-- One-line headline -->
           <h1 class="hero-title">Turn Municipal Chaos into Digital Clarity</h1>
           <p class="hero-subtitle">
             A practitioner-built framework for how local government actually works.
             <strong>VAULT</strong> connects your people, data, and systems into compliant, repeatable workflows — without replacing tools you already use.
           </p>
 
-          <div class="cta-group">
+          <div class="cta-group" role="group" aria-label="Primary actions">
             <a href="contact.html" class="btn-primary">Start a Conversation</a>
             <a href="framework.html" class="btn-secondary">Explore VAULT</a>
           </div>
@@ -166,56 +229,80 @@
       </div>
     </section>
 
-    <section class="features">
+    <!-- Features -->
+    <section class="features" aria-labelledby="pds-title">
       <div class="container">
-        <h2 class="section-title">People_Data_Systems</h2>
+        <h2 id="pds-title" class="section-title">People_Data_Systems</h2>
+
         <div class="features-grid">
-          <div class="feature-card"><h3 class="feature-title">Records that behave</h3><p>Naming, retention, and structure auditors understand and staff can follow.</p></div>
-          <div class="feature-card"><h3 class="feature-title">Routing that finishes</h3><p>Approvals mapped to how your town actually works — not how vendors wish it did.</p></div>
-          <div class="feature-card"><h3 class="feature-title">Systems that connect</h3><p>CivicPlus, Microsoft 365, Laserfiche, Power Automate stitched so no retyping.</p></div>
+          <div class="feature-card">
+            <h3 class="feature-title">Records that behave</h3>
+            <p class="feature-desc">Naming, retention, and structure that auditors understand and staff can actually follow — across AP, Licensing, DPW, and more.</p>
+          </div>
+          <div class="feature-card">
+            <h3 class="feature-title">Routing that finishes</h3>
+            <p class="feature-desc">Clean handoffs and approvals mapped to how your town works — not how a vendor wishes it did.</p>
+          </div>
+          <div class="feature-card">
+            <h3 class="feature-title">Systems that connect</h3>
+            <p class="feature-desc">CivicPlus, Microsoft 365, Laserfiche, and Power Automate stitched together so people don’t retype or hunt for files.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="about">
+    <!-- Submissions (simple, single block) -->
+    <section class="submissions" aria-labelledby="submissions-title">
       <div class="container">
-        <h2 class="section-title">Frameworks (What We Bring)</h2>
-        <div class="about-grid">
-          <div class="about-card"><h3>VAULT Records Model v1.2</h3><ul><li>Standard naming across AP, Licensing, DPW</li><li>Retention mapped to statute</li><li>Folder schemas for SharePoint/Laserfiche</li></ul></div>
-          <div class="about-card"><h3>Routing Maps v1.0</h3><ul><li>Licensing → Clerk → Dept → TA → Board → Archive</li><li>AP → Dept → Accountant → Collector → Archive</li><li>DPW → Intake → Triage → Closed → Archive</li></ul></div>
-          <div class="about-card"><h3>Deployment Kit</h3><ul><li>Forms & JSON schemas</li><li>Power Automate templates</li><li>Training Day-1, 30, 90 checklists</li></ul></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="submissions">
-      <div class="container">
-        <h2 class="section-title">Start a Conversation</h2>
+        <h2 id="submissions-title" class="section-title">Start a Conversation</h2>
         <div class="sub-card">
-          <form id="pl-intake">
-            <div class="form-row full">
+          <form id="pl-intake" novalidate>
+            <div class="form-row">
+              <div>
+                <label for="name">Your name</label>
+                <input id="name" name="name" autocomplete="name" required/>
+              </div>
+              <div>
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" autocomplete="email" required/>
+              </div>
+            </div>
+
+            <div class="form-row">
               <div>
                 <label for="audience">I am a…</label>
                 <select id="audience" name="audience" required>
-                  <option disabled selected>Choose one</option>
+                  <option value="" disabled selected>Choose one</option>
                   <option value="town">Town / City</option>
                   <option value="partner">GovTech Partner</option>
                   <option value="regional">Regional / NGO</option>
                 </select>
               </div>
+              <div>
+                <label for="focus">Primary need</label>
+                <select id="focus" name="focus" required>
+                  <option value="" disabled selected>Choose one</option>
+                  <option>Accounts Payable / Turnovers</option>
+                  <option>Licensing / Clerk</option>
+                  <option>DPW / Service Requests</option>
+                  <option>Records / Retention / Naming</option>
+                  <option>Budget / Transparency</option>
+                  <option>Other</option>
+                </select>
+              </div>
             </div>
-            <div class="form-row">
-              <div><label>Name</label><input name="name" required/></div>
-              <div><label>Email</label><input type="email" name="email" required/></div>
-            </div>
+
             <div class="form-row full">
-              <label>Context (optional)</label>
-              <textarea name="notes"></textarea>
+              <div>
+                <label for="notes">Context (optional)</label>
+                <textarea id="notes" name="notes" placeholder="Deadlines, audits, staffing constraints, tools you use now…"></textarea>
+              </div>
             </div>
+
             <div class="submit-wrap">
               <button type="submit" class="btn-submit">Send</button>
-              <span class="success-msg">Thanks — we’ll follow up soon.</span>
-              <span class="error-msg">Couldn’t send. Email us instead: nathan@publiclogic.org</span>
+              <span class="success-msg" aria-live="polite">Thanks — we’ll follow up soon.</span>
+              <span class="error-msg" aria-live="polite">Couldn’t send. Email us instead: nathan@publiclogic.org</span>
             </div>
           </form>
         </div>
@@ -223,24 +310,47 @@
     </section>
   </main>
 
-  <footer>
+  <footer role="contentinfo">
     <div class="container">
       <div class="footer-brand">People.Data.Systems.</div>
-      <div class="footer-tagline">Smart Systems. Stronger Communities.</div>
       <div class="footer-legal">© <span id="year"></span> Public_Logic. All rights reserved.</div>
     </div>
   </footer>
 
   <script>
+    // Footer year
     document.getElementById('year').textContent = new Date().getFullYear();
 
+    // Accessible dropdown toggle
+    const menu = document.querySelector('.menu');
+    const btn = document.querySelector('.menu-btn');
+    const list = document.getElementById('top-menu');
+
+    function toggleMenu(force){
+      const expanded = force !== undefined ? force : menu.getAttribute('aria-expanded') !== 'true';
+      menu.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+    }
+    btn.addEventListener('click', ()=> toggleMenu());
+    document.addEventListener('click', (e)=>{
+      if(!menu.contains(e.target)) toggleMenu(false);
+    });
+    btn.addEventListener('keydown', (e)=>{
+      if(e.key === 'Escape') toggleMenu(false);
+    });
+
+    // Intake form (mailto fallback to Nathan)
     const form = document.getElementById('pl-intake');
     form.addEventListener('submit', (e)=>{
       e.preventDefault();
-      const success = form.querySelector('.success-msg');
-      const error = form.querySelector('.error-msg');
-      success.style.display = 'inline';
-      error.style.display = 'none';
+      const data = Object.fromEntries(new FormData(form).entries());
+      const subject = encodeURIComponent(`Public_Logic inquiry: ${data.audience || 'General'}`);
+      const body = encodeURIComponent(Object.entries(data).map(([k,v])=>`${k}: ${v}`).join('\n'));
+      const mailto = `mailto:nathan@publiclogic.org?subject=${subject}&body=${body}`;
+      // Trigger mail client
+      window.location.href = mailto;
+
+      form.querySelector('.success-msg').style.display='inline';
+      form.querySelector('.error-msg').style.display='none';
       form.reset();
     });
   </script>
