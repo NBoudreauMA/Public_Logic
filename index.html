@@ -118,9 +118,11 @@
     }
     .brand-wrap:hover{transform:translateY(-1px)}
     .logo-folder{
-      height:28px;width:auto;display:block;
+      height:45px;width:auto;display:block;
       filter:brightness(0) saturate(100%) invert(85%) sepia(13%) saturate(261%) hue-rotate(81deg) brightness(99%) contrast(96%);
+      transition:transform 0.3s ease;
     }
+    .brand-wrap:hover .logo-folder{transform:scale(1.05)}
     .brand-text{
       font-weight:900;font-size:1.3rem;letter-spacing:.2px;
       background:var(--gradient-primary);
@@ -188,8 +190,7 @@
       position:absolute;top:45%;left:50%;transform:translate(-50%,-50%);
       width:60%;height:auto;display:block;
       transition:transform 0.4s ease;
-      mix-blend-mode:multiply;
-      opacity:0.8;
+      filter:brightness(0) saturate(100%) invert(27%) sepia(21%) saturate(1249%) hue-rotate(154deg) brightness(94%) contrast(101%) drop-shadow(0 1px 3px rgba(0,0,0,.2));
     }
     .folder-hero:hover .folder-logo{transform:translate(-50%,-50%) scale(1.05)}
 
@@ -259,8 +260,8 @@
     /* How It Works Section */
     .how-it-works{padding:3rem 1rem;background:rgba(0,20,40,.15)}
     .steps{
-      display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-      gap:2rem;margin-top:2rem;max-width:900px;margin-left:auto;margin-right:auto;
+      display:grid;grid-template-columns:repeat(4,1fr);
+      gap:1.5rem;margin-top:2rem;max-width:1000px;margin-left:auto;margin-right:auto;
     }
     .step{
       text-align:center;padding:1.5rem;
@@ -361,7 +362,7 @@
     /* Responsive */
     @media (max-width:720px){
       .brand-text{font-size:1.18rem}
-      .logo-folder{height:30px}
+      .logo-folder{height:35px}
       .folder-hero{width:320px;height:220px}
       .hero-title{font-size:clamp(1.25rem,6.4vw,2.2rem)}
       .row{grid-template-columns:1fr}
@@ -390,7 +391,7 @@
       <div class="header-content">
         <a class="brand-wrap" href="index.html" aria-label="Public_Logic Home">
           <img class="logo-folder" src="vault-lock-folder.png" alt="VAULT folder logo"/>
-          <span class="brand-text">Public_Logic</span>
+          <span class="brand-text">Public<span class="underscore">_</span>Logic</span>
         </a>
         <nav class="menu" aria-expanded="false">
           <button class="menu-btn" aria-haspopup="true" aria-controls="top-menu" aria-label="Main menu">Menu ▾</button>
@@ -486,8 +487,8 @@
   <div class="container">
     <h2 class="section-title">Built by Practitioners, for Practitioners</h2>
     <div class="testimonial">
-      "Finally, a solution that understands how municipal government actually works. VAULT doesn't force us to change our processes — it makes them better."
-      <div class="testimonial-author">— Municipal Administrator, New England Town</div>
+      "I built VAULT because I was tired of watching talented municipal staff waste time fighting their own systems. Government deserves technology that actually works for the people doing the work."
+      <div class="testimonial-author">— Nathan, Founder of Public_Logic</div>
     </div>
   </div>
 </section>
