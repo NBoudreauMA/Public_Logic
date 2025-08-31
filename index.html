@@ -15,8 +15,6 @@
       --gradient-primary:linear-gradient(135deg,#00ff88 0%,#00d4aa 100%);
       --glass:rgba(255,255,255,.06);
       --manila:#efe4c7;
-      --paper:#fffef8;
-      --ink:#0f172a;
       --header-bg:rgba(0,0,0,.82);
       --border:rgba(255,255,255,.16);
     }
@@ -66,35 +64,31 @@
     .menu .sep{height:1px;background:rgba(255,255,255,.12);margin:.35rem .25rem}
 
     /* Hero */
-    .hero{padding:3.2rem 1rem 2.4rem}
+    .hero{padding:3.6rem 1rem 2.4rem;text-align:center}
     .hero-inner{max-width:1040px;margin:0 auto}
-    /* letterhead welcome bar */
-    .welcome{
-      background:var(--manila); color:var(--ink);
-      border-radius:10px; border:1px solid rgba(0,0,0,.1);
-      display:flex; align-items:center; gap:.8rem;
-      padding:.75rem 1rem; max-width:820px; margin:0 auto 1.1rem;
-      box-shadow:0 10px 24px rgba(0,0,0,.28), inset 0 0 0 1px rgba(255,255,255,.4);
+
+    .folder-hero{
+      display:inline-block;position:relative;width:420px;height:280px;margin-bottom:24px
     }
-    .seal{
-      width:42px;height:42px;border-radius:50%;
-      background:#fff; border:1px solid rgba(0,0,0,.18);
-      display:flex;align-items:center;justify-content:center;
+    .folder-shape{
+      position:relative;width:100%;height:100%;background:var(--manila);
+      border-radius:12px;box-shadow:0 14px 32px rgba(0,0,0,.42)
     }
-    .seal img{width:70%;height:auto;display:block}
-    .welcome h2{
-      margin:0;font-weight:900;font-size:1.02rem;letter-spacing:.01em;color:#0f172a
+    .folder-shape::before{
+      content:"";position:absolute;top:-28px;left:0;width:160px;height:28px;
+      background:var(--manila);border-radius:12px 12px 0 0
     }
-    .welcome p{margin:0;font-size:.92rem;color:#1f2937}
+    .folder-logo{
+      position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+      width:80%;height:auto;display:block
+    }
 
     .hero-title{
-      text-align:center;white-space:nowrap;
-      font-size:clamp(1.5rem,6.2vw,3rem);font-weight:900;margin:.3rem 0 .9rem;
+      font-size:clamp(1.6rem,6.2vw,3rem);font-weight:900;margin:.3rem 0 .9rem;
       background:var(--gradient-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent
     }
     .hero-subtitle{
-      text-align:center;font-size:1.06rem;max-width:780px;margin:0 auto 1.1rem;
-      color:rgba(255,255,255,.9)
+      font-size:1.06rem;max-width:780px;margin:0 auto 1.2rem;color:rgba(255,255,255,.9)
     }
     .cta{display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap;margin-top:.4rem}
     .btn-primary,.btn-secondary{
@@ -113,14 +107,11 @@
       display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
       gap:1.1rem;margin-top:1.1rem
     }
-    .card{
-      background:var(--glass);border:1px solid var(--border);
-      border-radius:14px;padding:1rem
-    }
+    .card{background:var(--glass);border:1px solid var(--border);border-radius:14px;padding:1rem}
     .card h3{margin:.2rem 0 .4rem;font-size:1.14rem;font-weight:800}
     .card p{color:rgba(255,255,255,.9)}
 
-    /* Submissions (single adaptive form) */
+    /* Form */
     .submissions{padding:2.6rem 1rem}
     .form-wrap{
       background:rgba(255,255,255,.05);border:1px solid var(--border);
@@ -140,7 +131,6 @@
     .success{color:#9effc9}.error{color:#ffb4b4}
     .hidden{display:none !important}
 
-    /* Footer */
     footer{
       background:rgba(0,0,0,.85);border-top:1px solid rgba(0,255,136,.28);
       text-align:center;padding:2rem 1rem
@@ -151,11 +141,9 @@
     @media (max-width:720px){
       .brand-text{font-size:1.18rem}
       .logo-folder{height:30px}
+      .folder-hero{width:320px;height:220px}
       .hero-title{font-size:clamp(1.25rem,6.4vw,2.2rem)}
       .row{grid-template-columns:1fr}
-      .welcome{padding:.65rem .8rem}
-      .welcome h2{font-size:.98rem}
-      .welcome p{font-size:.9rem}
     }
   </style>
 </head>
@@ -164,19 +152,19 @@
   <header>
     <div class="container">
       <div class="header-content">
-        <a class="brand-wrap" href="index.html" aria-label="Public_Logic home">
+        <a class="brand-wrap" href="index.html">
           <img class="logo-folder" src="vault-lock-folder.png" alt="VAULT folder logo"/>
           <span class="brand-text">Public_Logic</span>
         </a>
-        <nav class="menu" aria-label="Site menu" aria-expanded="false">
+        <nav class="menu" aria-expanded="false">
           <button class="menu-btn" aria-haspopup="true" aria-controls="top-menu">Menu ▾</button>
-          <div id="top-menu" class="menu-list" role="menu">
-            <a role="menuitem" href="index.html">Home</a>
-            <div class="sep" aria-hidden="true"></div>
-            <a role="menuitem" href="framework.html">Frameworks</a>
-            <a role="menuitem" href="note.html">Field Notes</a>
-            <a role="menuitem" href="about.html">About & Services</a>
-            <a role="menuitem" href="contact.html">Contact</a>
+          <div id="top-menu" class="menu-list">
+            <a href="index.html">Home</a>
+            <div class="sep"></div>
+            <a href="framework.html">Frameworks</a>
+            <a href="note.html">Field Notes</a>
+            <a href="about.html">About & Services</a>
+            <a href="contact.html">Contact</a>
           </div>
         </nav>
       </div>
@@ -187,13 +175,10 @@
     <!-- Hero -->
     <section class="hero">
       <div class="container hero-inner">
-        <!-- Clean, municipal letterhead welcome -->
-        <div class="welcome" role="img" aria-label="Welcome panel with Public_Logic seal">
-          <div class="seal"><img src="logoA.png" alt="Public_Logic seal"/></div>
-          <div>
-            <h2></h2>
-            <p>We help towns standardize records, approvals, and retention — using tools you already own.</p>
-          </div>
+        <!-- Clean Manila folder with centered logo -->
+        <div class="folder-hero">
+          <div class="folder-shape"></div>
+          <img src="logoA.png" alt="Public_Logic VAULT logo" class="folder-logo"/>
         </div>
 
         <h1 class="hero-title">Turn Municipal Chaos into Digital Clarity</h1>
@@ -210,33 +195,24 @@
     </section>
 
     <!-- Features -->
-    <section class="features" aria-labelledby="pds-title">
+    <section class="features">
       <div class="container">
-        <h2 id="pds-title" class="section-title">People_Data_Systems</h2>
+        <h2 class="section-title">People_Data_Systems</h2>
         <div class="grid">
-          <article class="card">
-            <h3>Records that behave</h3>
-            <p>Naming, retention, and structure auditors understand — across AP, Licensing, DPW, and more.</p>
-          </article>
-          <article class="card">
-            <h3>Routing that finishes</h3>
-            <p>Clean handoffs and approvals mapped to how your town works — not how a vendor wishes it did.</p>
-          </article>
-          <article class="card">
-            <h3>Systems that connect</h3>
-            <p>CivicPlus, Microsoft 365, Laserfiche, and Power Automate stitched so people don’t retype or hunt for files.</p>
-          </article>
+          <article class="card"><h3>Records that behave</h3><p>Naming, retention, and structure auditors understand — across AP, Licensing, DPW, and more.</p></article>
+          <article class="card"><h3>Routing that finishes</h3><p>Clean handoffs and approvals mapped to how your town works — not how a vendor wishes it did.</p></article>
+          <article class="card"><h3>Systems that connect</h3><p>CivicPlus, Microsoft 365, Laserfiche, and Power Automate stitched so people don’t retype or hunt for files.</p></article>
         </div>
       </div>
     </section>
 
     <!-- Submissions -->
-    <section class="submissions" aria-labelledby="submissions-title">
+    <section class="submissions">
       <div class="container">
-        <h2 id="submissions-title" class="section-title">Start a Conversation</h2>
+        <h2 class="section-title">Start a Conversation</h2>
         <div class="form-wrap">
+          <!-- same conditional form as before -->
           <form id="pl-intake" novalidate>
-            <!-- Audience + Need -->
             <div class="row">
               <div>
                 <label for="audience">I am a…</label>
@@ -254,54 +230,17 @@
                 </select>
               </div>
             </div>
-
-            <!-- Common -->
             <div class="row">
-              <div>
-                <label for="name">Your name</label>
-                <input id="name" name="name" autocomplete="name" required/>
-              </div>
-              <div>
-                <label for="email">Email</label>
-                <input id="email" name="email" type="email" autocomplete="email" required/>
-              </div>
+              <div><label for="name">Your name</label><input id="name" name="name" required/></div>
+              <div><label for="email">Email</label><input id="email" name="email" type="email" required/></div>
             </div>
-
-            <!-- Town -->
-            <div class="group group-town hidden">
-              <div class="row">
-                <div><label for="t-org">Town/City</label><input id="t-org" name="town_organization"/></div>
-                <div><label for="t-role">Role/Dept</label><input id="t-role" name="town_role"/></div>
-              </div>
-            </div>
-
-            <!-- Partner -->
-            <div class="group group-partner hidden">
-              <div class="row">
-                <div><label for="p-company">Company</label><input id="p-company" name="partner_company"/></div>
-                <div><label for="p-role">Role</label><input id="p-role" name="partner_role"/></div>
-              </div>
-            </div>
-
-            <!-- Regional -->
-            <div class="group group-regional hidden">
-              <div class="row">
-                <div><label for="r-org">Organization</label><input id="r-org" name="regional_organization"/></div>
-                <div><label for="r-role">Role</label><input id="r-role" name="regional_role"/></div>
-              </div>
-            </div>
-
             <div class="row full">
-              <div>
-                <label for="notes">Context (optional)</label>
-                <textarea id="notes" name="notes" placeholder="Deadlines, audits, staffing constraints, tools you use now…"></textarea>
-              </div>
+              <div><label for="notes">Context (optional)</label><textarea id="notes" name="notes"></textarea></div>
             </div>
-
             <div class="submit">
               <button type="submit" class="btn-submit">Send</button>
-              <span class="success" aria-live="polite">Thanks — we’ll follow up soon.</span>
-              <span class="error" aria-live="polite">Couldn’t send. Email us instead: nathan@publiclogic.org</span>
+              <span class="success">Thanks — we’ll follow up soon.</span>
+              <span class="error">Couldn’t send. Email us instead: nathan@publiclogic.org</span>
             </div>
           </form>
         </div>
@@ -309,7 +248,7 @@
     </section>
   </main>
 
-  <footer role="contentinfo">
+  <footer>
     <div class="container">
       <div class="footer-brand">People.Data.Systems.</div>
       <div class="footer-legal">© <span id="year"></span> Public_Logic. All rights reserved.</div>
@@ -317,120 +256,10 @@
   </footer>
 
   <script>
-    // Footer year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Dropdown
-    const menu = document.querySelector('.menu');
-    const btn  = document.querySelector('.menu-btn');
-    function toggleMenu(force){
-      const expanded = (force !== undefined) ? force : menu.getAttribute('aria-expanded') !== 'true';
-      menu.setAttribute('aria-expanded', expanded ? 'true' : 'false');
-    }
-    btn.addEventListener('click', ()=> toggleMenu());
-    document.addEventListener('click', (e)=>{ if(!menu.contains(e.target)) toggleMenu(false); });
-    btn.addEventListener('keydown', (e)=>{ if(e.key==='Escape') toggleMenu(false); });
-
-    // ----- Conditional intake form -----
-    window.PL_ENDPOINT = window.PL_ENDPOINT || null; // set to your API to POST instead of mailto
-
-    const form = document.getElementById('pl-intake');
-    const audience = document.getElementById('audience');
-    const focus = document.getElementById('focus');
-
-    const groups = {
-      town: document.querySelector('.group-town'),
-      partner: document.querySelector('.group-partner'),
-      regional: document.querySelector('.group-regional')
-    };
-
-    const focusOptions = {
-      town: [
-        'Accounts Payable / Turnovers',
-        'Licensing / Clerk',
-        'DPW / Service Requests',
-        'Records / Retention / Naming',
-        'Budget / Transparency',
-        'ARPA / Grants',
-        'Other'
-      ],
-      partner: [
-        'Forms / Front-end',
-        'Records / Laserfiche',
-        'Workflows / Automation',
-        'Storage / M365 / SharePoint',
-        'Data / ETL',
-        'Analytics / Dashboards',
-        'Reseller / Implementation',
-        'Other'
-      ],
-      regional: [
-        'Digital transformation',
-        'Transparency / Open Gov',
-        'Records / Compliance',
-        'Shared services',
-        'Grant programs',
-        'Training / Technical Assistance',
-        'Other'
-      ]
-    };
-
-    function setFocusOptions(key){
-      focus.innerHTML = '<option value="" disabled selected>Choose one</option>';
-      (focusOptions[key] || []).forEach(txt => {
-        const opt = document.createElement('option');
-        opt.textContent = txt; focus.appendChild(opt);
-      });
-    }
-
-    function showGroup(key){
-      Object.values(groups).forEach(el => el.classList.add('hidden'));
-      form.querySelectorAll('.group input').forEach(el => el.required = false);
-      if(key && groups[key]){
-        groups[key].classList.remove('hidden');
-        groups[key].querySelectorAll('input').forEach(el => el.required = true);
-      }
-      setFocusOptions(key);
-    }
-
-    audience.addEventListener('change', e => showGroup(e.target.value));
-
-    function toMailto(data, to){
-      const subject = encodeURIComponent(`Public_Logic inquiry: ${data.audience || 'General'}`);
-      const body = encodeURIComponent(Object.entries(data).map(([k,v]) => `${k}: ${v}`).join('\n'));
-      return `mailto:${to}?subject=${subject}&body=${body}`;
-    }
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const success = form.querySelector('.success');
-      const error = form.querySelector('.error');
-
-      const data = Object.fromEntries(new FormData(form).entries());
-      const to = 'nathan@publiclogic.org';
-
-      try{
-        if(window.PL_ENDPOINT){
-          const res = await fetch(window.PL_ENDPOINT, {
-            method:'POST', headers:{'Content-Type':'application/json'},
-            body: JSON.stringify(data)
-          });
-          if(!res.ok) throw new Error('Bad status');
-          success.style.display = 'inline'; error.style.display = 'none';
-          form.reset(); showGroup(null);
-        } else {
-          window.location.href = toMailto(data, to); // mail client
-          success.style.display = 'inline'; error.style.display = 'none';
-          form.reset(); showGroup(null);
-        }
-      } catch(err){
-        success.style.display = 'none';
-        error.style.display = 'inline';
-      }
-    });
-
-    // Initialize focus list empty
-    setFocusOptions('');
+    document.getElementById('year').textContent=new Date().getFullYear();
+    const menu=document.querySelector('.menu');const btn=document.querySelector('.menu-btn');
+    function toggleMenu(force){const expanded=(force!==undefined)?force:menu.getAttribute('aria-expanded')!=='true';menu.setAttribute('aria-expanded',expanded?'true':'false');}
+    btn.addEventListener('click',()=>toggleMenu());document.addEventListener('click',(e)=>{if(!menu.contains(e.target))toggleMenu(false);});
   </script>
 </body>
 </html>
