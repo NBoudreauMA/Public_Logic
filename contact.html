@@ -5,20 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Contact — Public_Logic</title>
 
-  <meta name="description" content="Contact Public_Logic — municipal-first partnerships and team-based frameworks. Tell us about your community or project and we’ll follow up."/>
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Contact Public_Logic — municipal-first partnerships and team-based framework practice. Start a conversation about pilots, vendor alignment, or regional collaboration."/>
   <meta name="robots" content="index, follow"/>
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet"/>
+  <!-- Open Graph -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content="Contact — Public_Logic"/>
+  <meta property="og:description" content="Municipal-first, partnership-driven. Tell us about your community, team, or project."/>
+  <meta property="og:url" content="https://publiclogic.org/contact.html"/>
+  <meta property="og:site_name" content="Public_Logic"/>
 
+  <!-- Canonical -->
+  <link rel="canonical" href="https://publiclogic.org/contact.html"/>
+
+  <!-- Favicon (optional if already site-wide) -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
+
+  <!-- Fonts + Styles (match site) -->
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap');
+
     :root{
       --pl-green:#00ff88;
+      --pl-dark:#0b0f14;
       --pl-light:#f8fafc;
-      --grad:linear-gradient(135deg,#00ff88 0%,#00d4aa 100%);
+      --gradient-primary:linear-gradient(135deg,#00ff88 0%,#00d4aa 100%);
+      --glass:rgba(255,255,255,.06);
+      --header-bg:rgba(0,0,0,.82);
       --border:rgba(255,255,255,.16);
       --muted:rgba(255,255,255,.78);
-      --card:rgba(255,255,255,.04);
-      --header-bg:rgba(0,0,0,.82);
     }
 
     *{box-sizing:border-box}
@@ -27,79 +43,128 @@
       font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
       background:linear-gradient(135deg,#0a0a0a,#141a2a 55%,#16213e);
       color:var(--pl-light);
-      line-height:1.65;
+      line-height:1.6;
+      scroll-behavior:smooth;
     }
-    .container{max-width:1080px;margin:0 auto;padding:0 18px}
+    .container{max-width:1200px;margin:0 auto;padding:0 18px}
 
-    /* Header */
+    /* Header (match site) */
     header{
       position:sticky;top:0;z-index:1000;
       background:var(--header-bg);
       border-bottom:1px solid rgba(0,255,136,.28);
-      backdrop-filter:blur(10px)
+      backdrop-filter:blur(10px);
     }
     .header-content{height:70px;display:flex;align-items:center;justify-content:space-between}
     .brand-wrap{display:flex;align-items:center;gap:.6rem;text-decoration:none}
     .brand-text{
       font-weight:900;font-size:1.3rem;letter-spacing:.2px;
-      background:var(--grad);
-      -webkit-background-clip:text;-webkit-text-fill-color:transparent
+      background:var(--gradient-primary);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;
     }
-    .underscore{color:var(--pl-green)}
+    .underscore{
+      animation:colorCycle 3s ease-in-out infinite;
+    }
+    @keyframes colorCycle{
+      0%,100%{color:#00ff88}
+      25%{color:#00d4aa}
+      50%{color:#ff6b6b}
+      75%{color:#4ecdc4}
+    }
+    .menu{position:relative}
+    .menu-btn{
+      background:transparent;color:#e9f9f0;
+      border:1px solid var(--border);border-radius:999px;
+      padding:.6rem 1rem;font-weight:800;cursor:pointer;
+      font-family:inherit;font-size:inherit;transition:all .3s ease;
+    }
+    .menu-btn:hover{border-color:rgba(0,255,136,.5);transform:translateY(-1px)}
+    .menu-list{
+      position:absolute;right:0;top:110%;min-width:220px;
+      background:rgba(8,12,20,.98);border:1px solid var(--border);
+      border-radius:12px;padding:.4rem;box-shadow:0 14px 30px rgba(0,0,0,.45);
+      opacity:0;visibility:hidden;transform:translateY(-10px);transition:all .3s ease;
+    }
+    .menu[aria-expanded="true"] .menu-list{opacity:1;visibility:visible;transform:translateY(0)}
+    .menu a{display:block;padding:.65rem .75rem;border-radius:8px;color:#e8f3ee;text-decoration:none;font-weight:700;transition:.2s}
+    .menu a:hover{background:rgba(255,255,255,.08);transform:translateX(4px)}
+    .menu .sep{height:1px;background:rgba(255,255,255,.12);margin:.35rem .25rem}
 
     /* Hero */
-    .hero{padding:3.5rem 1rem 1.25rem;text-align:center}
+    .hero{padding:3.4rem 1rem 1.8rem;text-align:center}
     .hero h1{
       margin:0 0 .6rem;
-      font-size:clamp(1.9rem,6.5vw,3.4rem);font-weight:900;
-      background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent
+      font-size:clamp(1.9rem,6.5vw,3.2rem);font-weight:900;
+      background:var(--gradient-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;
     }
     .hero p{margin:0;color:var(--muted);font-size:clamp(1.05rem,3vw,1.25rem)}
 
-    /* Form */
+    /* Form card (match cards on site) */
     .form-wrap{
-      max-width:700px;margin:2rem auto;padding:2rem;
-      background:var(--card);border:1px solid var(--border);border-radius:14px;
+      max-width:780px;margin:2rem auto;padding:2rem;
+      background:var(--glass);border:1px solid var(--border);border-radius:14px;
+      box-shadow:0 12px 30px rgba(0,0,0,.18);
     }
     form.contact label{display:block;font-weight:700;margin:.9rem 0 .35rem}
     form.contact input,form.contact textarea,form.contact select{
-      width:100%;padding:.65rem .75rem;border-radius:8px;
-      border:1px solid var(--border);background:rgba(255,255,255,.06);
-      color:var(--pl-light);font-size:1rem
+      width:100%;padding:.7rem .8rem;border-radius:10px;
+      border:1px solid var(--border);background:rgba(0,0,0,.28);
+      color:var(--pl-light);font-size:1rem;
+      transition:border-color .2s, box-shadow .2s;
     }
-    form.contact textarea{min-height:120px;resize:vertical}
-    .form-row{margin-top:1.2rem}
+    form.contact textarea{min-height:130px;resize:vertical}
+    form.contact input:focus,form.contact textarea:focus,form.contact select:focus{
+      outline:none;border-color:rgba(0,255,136,.5);box-shadow:0 0 0 3px rgba(0,255,136,.12)
+    }
+    .form-row{margin-top:1.2rem;display:flex;gap:.8rem;flex-wrap:wrap}
     .btn{
-      background:var(--grad);color:#000;font-weight:800;
-      border:none;padding:.7rem 1.4rem;border-radius:999px;cursor:pointer;
-      transition:.2s ease-in-out
+      background:var(--gradient-primary);color:var(--pl-dark);font-weight:900;
+      border:none;padding:.8rem 1.4rem;border-radius:999px;cursor:pointer;transition:.2s;
     }
-    .btn:hover{opacity:.9}
-    .form-help{color:var(--muted);font-size:.88rem;margin-top:.4rem}
-    #status{margin-top:.6rem;font-weight:700}
+    .btn:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(0,255,136,.25)}
+    .form-help{color:var(--muted);font-size:.9rem;margin-top:.45rem}
+    #status{margin-top:.6rem;font-weight:800}
 
-    /* Footer */
+    /* Footer (match site) */
     footer{
       background:rgba(0,0,0,.85);border-top:1px solid rgba(0,255,136,.28);
-      text-align:center;padding:2rem 1rem;margin-top:2.2rem
+      text-align:center;padding:2rem 1rem;margin-top:2.2rem;
     }
-    .footer-brand{font-weight:800;margin-bottom:.5rem;font-size:1.05rem}
-    .footer-legal{font-size:.88rem;color:rgba(255,255,255,.65);margin-top:.4rem}
+    .footer-brand{font-weight:800;margin-bottom:.5rem}
+    .footer-legal{font-size:.85rem;color:rgba(255,255,255,.6)}
+
+    /* Responsive */
+    @media (max-width:720px){
+      .brand-text{font-size:1.18rem}
+      .form-wrap{padding:1.4rem}
+    }
   </style>
 </head>
 <body>
-  <!-- HEADER -->
+
+  <!-- Header (identical structure) -->
   <header>
     <div class="container">
       <div class="header-content">
-        <a class="brand-wrap" href="index.html">
+        <a class="brand-wrap" href="index.html" aria-label="Public_Logic Home">
           <span class="brand-text">Public<span class="underscore">_</span>Logic</span>
         </a>
+        <nav class="menu" aria-expanded="false">
+          <button class="menu-btn" aria-haspopup="true" aria-controls="top-menu">Menu ▾</button>
+          <div id="top-menu" class="menu-list" role="menu">
+            <a href="index.html" role="menuitem">Home</a>
+            <div class="sep" aria-hidden="true"></div>
+            <a href="framework.html" role="menuitem">VAULT Framework</a>
+            <a href="field_notes.html" role="menuitem">Field Notes</a>
+            <a href="about.html" role="menuitem">About & Services</a>
+            <a href="contact.html" role="menuitem" aria-current="page">Contact</a>
+          </div>
+        </nav>
       </div>
     </div>
   </header>
 
-  <!-- HERO -->
+  <!-- Hero -->
   <section class="hero">
     <div class="container">
       <h1>Contact</h1>
@@ -107,8 +172,8 @@
     </div>
   </section>
 
-  <!-- FORM -->
-  <main class="container">
+  <!-- Contact Form -->
+  <main class="container" id="main-content" role="main">
     <div class="form-wrap">
       <form class="contact" id="contactForm" novalidate>
         <label for="name">Name</label>
@@ -136,17 +201,18 @@
         <div class="form-row">
           <button class="btn" type="submit">Send</button>
         </div>
+
         <p class="form-help">Your information is kept confidential and used only to respond to your inquiry.</p>
         <p id="status" class="form-help" role="status" aria-live="polite"></p>
       </form>
     </div>
 
-    <p style="text-align:center;margin-top:1.4rem">
+    <p style="text-align:center;margin-top:1.2rem">
       Prefer email? Reach us at <a href="mailto:nathan@publiclogic.org">nathan@publiclogic.org</a>.
     </p>
   </main>
 
-  <!-- FOOTER -->
+  <!-- Footer (identical structure) -->
   <footer role="contentinfo">
     <div class="container">
       <div class="footer-brand">People.Data.Systems.</div>
@@ -155,11 +221,26 @@
   </footer>
 
   <script>
+    // Footer year
     document.getElementById('year').textContent = new Date().getFullYear();
 
+    // Dropdown toggle (match site)
+    const menu = document.querySelector('.menu');
+    const btn = document.querySelector('.menu-btn');
+    function toggleMenu(force){
+      const expanded = (force !== undefined) ? force : menu.getAttribute('aria-expanded') !== 'true';
+      menu.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+    }
+    btn.addEventListener('click', () => toggleMenu());
+    document.addEventListener('click', (e) => { if(!menu.contains(e.target)) toggleMenu(false); });
+    btn.addEventListener('keydown', (e) => { if(e.key === 'Escape') toggleMenu(false); });
+
+    // Contact form (endpoint abstract on purpose)
     const form = document.getElementById('contactForm');
     const statusEl = document.getElementById('status');
-    const ENDPOINT = "https://example.com/your-endpoint";
+    const ENDPOINT = "https://example.com/replace-with-your-endpoint"; // replace privately
+
+    const emailOK = v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v || "");
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -169,21 +250,27 @@
         email: form.email.value.trim(),
         topic: form.topic.value,
         message: form.message.value.trim(),
+        page: location.href,
         ts: new Date().toISOString()
       };
 
-      if(!payload.name||!payload.organization||!payload.email||!payload.topic||!payload.message){
-        statusEl.textContent = "Please complete all fields.";return;
+      if(!payload.name || !payload.organization || !emailOK(payload.email) || !payload.topic || !payload.message){
+        statusEl.textContent = "Please complete all fields with a valid email.";
+        return;
       }
 
       statusEl.textContent = "Sending…";
-      try {
-        const res = await fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+      try{
+        const res = await fetch(ENDPOINT, {
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body:JSON.stringify(payload)
+        });
         if(!res.ok) throw new Error();
         statusEl.textContent = "Thanks — we’ll be in touch soon.";
         form.reset();
-      } catch(err){
-        statusEl.textContent = "Couldn’t send. Please try again later.";
+      }catch(err){
+        statusEl.textContent = "Couldn’t send. Please try again later or email us directly.";
       }
     });
   </script>
