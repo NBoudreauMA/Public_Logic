@@ -5,20 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Field Notes — Public_Logic</title>
 
-  <!-- SEO -->
   <meta name="description" content="Public_Logic Field Notes — municipal-first reflections and practical frameworks for town government."/>
   <meta name="robots" content="index, follow"/>
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="website"/>
-  <meta property="og:title" content="Field Notes — Public_Logic"/>
-  <meta property="og:description" content="Practitioner-built notes on smart systems for stronger communities."/>
-  <meta property="og:url" content="https://publiclogic.org/field_notes.html"/>
-
-  <!-- Canonical -->
-  <link rel="canonical" href="https://publiclogic.org/field_notes.html"/>
-
-  <!-- Fonts & Styles (match site) -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet"/>
 
   <style>
@@ -34,14 +23,12 @@
     }
 
     *{box-sizing:border-box}
-    html:focus-within{scroll-behavior:smooth}
     body{
       margin:0;
       font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
       background:linear-gradient(135deg,#0a0a0a,#141a2a 55%,#16213e);
       color:var(--pl-light);
       line-height:1.65;
-      text-rendering:optimizeLegibility;
     }
     .container{max-width:1080px;margin:0 auto;padding:0 18px}
 
@@ -103,7 +90,7 @@
     .chip .dot{width:8px;height:8px;border-radius:50%;background:var(--pl-green)}
     .chip:hover{border-color:rgba(0,255,136,.5)}
 
-    /* Notes (accordion) */
+    /* Notes */
     .notes{padding:1.2rem 1rem 2.6rem}
     .docket{max-width:980px;margin:0 auto;border:1px solid var(--border);border-radius:14px;overflow:hidden}
     details.note{background:var(--card);border-bottom:1px solid var(--border)}
@@ -117,7 +104,7 @@
     .badge{
       display:inline-block;padding:.2rem .6rem;border-radius:6px;
       border:1px solid rgba(0,255,136,.25);background:rgba(0,255,136,.08);
-      color:#b9ffe0;font-weight:800;font-size:.8rem;letter-spacing:.2px
+      color:#b9ffe0;font-weight:800;font-size:.8rem
     }
     .title{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}
     .subtitle{color:var(--muted);font-weight:700;font-size:.95rem}
@@ -126,7 +113,7 @@
     details.note[open] summary{background:rgba(0,255,136,.06)}
 
     .note-body{padding:1.05rem 1rem 1.2rem 2.2rem;border-top:1px solid var(--border);color:#dbe7f4}
-    .note-body h3{margin:0 0 .35rem;font-size:1.02rem;color:var(--pl-green)}
+    .note-body h3{margin:1.2rem 0 .35rem;font-size:1.02rem;color:var(--pl-green)}
     .note-body p{margin:.65rem 0}
 
     /* Footer */
@@ -147,14 +134,14 @@
           <span class="brand-text">Public<span class="underscore">_</span>Logic</span>
         </a>
         <nav class="menu" aria-label="Site menu" aria-expanded="false">
-          <button class="menu-btn" aria-haspopup="true" aria-controls="top-menu">Menu ▾</button>
-          <div id="top-menu" class="menu-list" role="menu">
-            <a role="menuitem" href="index.html">Home</a>
+          <button class="menu-btn">Menu ▾</button>
+          <div class="menu-list" id="top-menu">
+            <a href="index.html">Home</a>
             <div class="sep"></div>
-            <a role="menuitem" href="framework.html">VAULT Framework</a>
-            <a role="menuitem" href="field_notes.html">Field Notes</a>
-            <a role="menuitem" href="about.html">About & Services</a>
-            <a role="menuitem" href="contact.html">Contact</a>
+            <a href="framework.html">VAULT Framework</a>
+            <a href="field_notes.html">Field Notes</a>
+            <a href="about.html">About & Services</a>
+            <a href="contact.html">Contact</a>
           </div>
         </nav>
       </div>
@@ -170,7 +157,7 @@
   </section>
 
   <!-- JUMP LIST -->
-  <nav class="jump" aria-label="Jump to a specific Field Note">
+  <nav class="jump">
     <div class="container">
       <div class="bar">
         <a class="chip" href="#002" data-open="002"><span class="dot"></span> Field_Note_002</a>
@@ -180,23 +167,38 @@
   </nav>
 
   <!-- NOTES -->
-  <main class="notes" id="main">
+  <main class="notes">
     <div class="container">
       <div class="docket">
-        <!-- Newest first -->
+
+        <!-- 002 -->
         <details class="note" id="002">
           <summary>
             <span class="dot"></span>
-            <span class="title"><span>Field_Note_002 — Public_Logic</span><span class="subtitle">Smart Systems. Stronger Communities.</span></span>
+            <span class="title"><span>Field_Note_002 — Public_Logic</span><span class="subtitle">Launch Day</span></span>
             <span class="when"><span class="badge">002</span>&nbsp; Sep 1, 2025</span>
           </summary>
           <div class="note-body">
-            <h3>Municipal-First by Design</h3>
-            <p>Public_Logic didn’t start in a boardroom. It started in a life that needed clarity — and in town halls that needed the same thing.</p>
-            <p>We’re not selling another municipal app. We’re delivering a framework so staff, boards, and residents can see the work and trust the process.</p>
+            <p>Public_Logic didn’t start in a boardroom. It started in my life — rebuilding from health setbacks, career uncertainty, and the kind of gray every municipal employee knows too well. Gray processes. Gray accountability. Gray systems that don’t connect.</p>
+            <p>This is our launch day. Public_Logic isn’t about selling another municipal app. It’s about giving staff, boards, and residents the clarity they need to succeed. We’re practitioner-builders: we know what it feels like to be on the inside of a Select Board meeting with no clean packet, or at a desk where payroll, turnovers, and licenses all live in different places with different rules. That’s what we’re fixing.</p>
+
+            <h3>Why Frameworks, Not Apps</h3>
+            <p>Technology isn’t the problem. Vendors are full of good-intentioned people. The breakdown happens when compliance, cadence, and turnover aren’t built into the plan. Frameworks solve that gap. They connect law → workflow → staff → boards → residents. They make adoption possible in days, not years.</p>
+
+            <h3>Proof and Pilots</h3>
+            <p>In Hubbardston, we’ve already proven this. Even at 30% rollout, HubbCONNECT is handling DPW requests, turnovers, and licenses through unified workflows. Not perfect, but a real-world proof point that replacing gray with structure works.</p>
+            <p>Now, we’re moving forward with pilots. Three to five towns. Regional groups. Partners like CivicPlus, Microsoft 365, Laserfiche, Tyler, VADAR, and Polimorphic. We’re not replacing them — we’re making their deployments stick.</p>
+
+            <h3>Flipping the Script</h3>
+            <p>Innovation funding almost always flows uphill to larger cities and gateway communities. Small towns are told to wait. Public_Logic flips that script. The cracks start in small towns — that’s where the fixes should start too. That’s why 5–10% of proceeds fund the <strong>Diane & Fidèle Boudreau Public Innovation Legacy Fund</strong>, focused on communities under 25,000 people who’ve historically been left out.</p>
+
+            <h3>Call to Action</h3>
+            <p>This is Public_Logic. Frameworks that staff can run, boards can trust, and residents can see. Less gray. More clarity.</p>
+            <p><strong>Smart Systems. Stronger Communities. People. Data. Systems.</strong></p>
           </div>
         </details>
 
+        <!-- 001 -->
         <details class="note" id="001">
           <summary>
             <span class="dot"></span>
@@ -204,8 +206,12 @@
             <span class="when"><span class="badge">001</span>&nbsp; Aug 24, 2025</span>
           </summary>
           <div class="note-body">
-            <h3>Pieces and Frameworks</h3>
-            <p>Everything breaks into pieces. Career. Health. Even mistakes. The same applies to municipal work. Break the gray into pieces, and you can build a framework.</p>
+            <p>I’ve worked in and alongside towns from four thousand to forty thousand. The story is the same: good people trying to do the right thing fighting through unclear processes and disconnected systems. That’s where this starts — with people, not platforms.</p>
+            <p>This first Field_Note is about breaking things down, building them back stronger, and giving staff, boards, and residents the clarity they need to succeed.</p>
+            <h3>The Gray Problem</h3>
+            <p>Towns are drowning in gray — unclear processes, conflicting systems, buried data. People. Data. Systems. Break the gray into pieces, and you can build a framework.</p>
+            <h3>One Pathway Forward</h3>
+            <p>HubbCONNECT is proving it. With about 30% rolled out, DPW requests, turnovers, and licenses are already flowing through unified processes. Not perfect, but proof that replacing gray with structure works.</p>
           </div>
         </details>
       </div>
