@@ -3,47 +3,287 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Field Note_001 — Public_Logic</title>
-  <link rel="stylesheet" href="css/style.css">
+  <title>Field Notes — Public_Logic</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Public_Logic Field Notes — municipal-first reflections and practical frameworks for town government."/>
+  <meta name="robots" content="index, follow"/>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content="Field Notes — Public_Logic"/>
+  <meta property="og:description" content="Practitioner-built notes on smart systems for stronger communities."/>
+  <meta property="og:url" content="https://publiclogic.org/field_notes.html"/>
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://publiclogic.org/field_notes.html"/>
+
+  <!-- Fonts & Styles (match site) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root{
+      --pl-green:#00ff88;
+      --pl-light:#f8fafc;
+      --grad:linear-gradient(135deg,#00ff88 0%,#00d4aa 100%);
+      --glass:rgba(255,255,255,.06);
+      --border:rgba(255,255,255,.16);
+      --muted:rgba(255,255,255,.78);
+      --card:rgba(255,255,255,.04);
+    }
+
+    *{box-sizing:border-box}
+    html:focus-within{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+      background:linear-gradient(135deg,#0a0a0a,#141a2a 55%,#16213e);
+      color:var(--pl-light);
+      line-height:1.65;
+      text-rendering:optimizeLegibility;
+    }
+    .container{max-width:1080px;margin:0 auto;padding:0 18px}
+
+    /* HERO (no global header) */
+    .hero{padding:3.5rem 1rem 1.25rem;text-align:center}
+    .hero h1{
+      margin:0 0 .6rem;
+      font-size:clamp(1.9rem,6.5vw,3.4rem);font-weight:900;
+      background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent
+    }
+    .hero p{margin:0;color:var(--muted);font-size:clamp(1.05rem,3vw,1.25rem)}
+
+    /* Jump list */
+    .jump{
+      padding:0 1rem 1.2rem
+    }
+    .jump .bar{
+      background:var(--card);border:1px solid var(--border);border-radius:14px;
+      padding:.75rem;display:flex;flex-wrap:wrap;gap:.5rem .6rem;justify-content:center;
+      box-shadow:0 10px 26px rgba(0,0,0,.18)
+    }
+    .chip{
+      display:inline-flex;align-items:center;gap:.45rem;
+      padding:.45rem .7rem;border-radius:999px;border:1px solid var(--border);
+      color:#e8f3ee;text-decoration:none;font-weight:800
+    }
+    .chip .dot{width:8px;height:8px;border-radius:50%;background:var(--pl-green)}
+    .chip:hover{border-color:rgba(0,255,136,.5)}
+
+    /* NOTES (accordion / municipal docket) */
+    .notes{padding:1.2rem 1rem 2.6rem}
+    .docket{max-width:980px;margin:0 auto;border:1px solid var(--border);border-radius:14px;overflow:hidden}
+    details.note{background:var(--card);border-bottom:1px solid var(--border)}
+    details.note:last-of-type{border-bottom:none}
+    details.note summary{
+      list-style:none;cursor:pointer;padding:1rem .9rem;
+      display:grid;grid-template-columns:28px 1fr auto;gap:.6rem;align-items:center;
+      font-weight:900;color:#eafcff
+    }
+    details.note summary::-webkit-details-marker{display:none}
+    .badge{
+      display:inline-block;padding:.2rem .6rem;border-radius:6px;
+      border:1px solid rgba(0,255,136,.25);background:rgba(0,255,136,.08);
+      color:#b9ffe0;font-weight:800;font-size:.8rem;letter-spacing:.2px
+    }
+    .title{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}
+    .subtitle{color:var(--muted);font-weight:700;font-size:.95rem}
+    .dot{width:10px;height:10px;border-radius:50%;background:var(--pl-green);box-shadow:0 0 0 2px rgba(0,255,136,.18)}
+    .when{color:#a7b5c2;font-weight:800;font-size:.92rem}
+    details.note[open] summary{background:rgba(0,255,136,.06)}
+
+    .note-body{padding:1.05rem 1rem 1.2rem 2.2rem;border-top:1px solid var(--border);color:#dbe7f4}
+    .note-body h3{margin:0 0 .35rem;font-size:1.02rem;color:var(--pl-green)}
+    .note-body p{margin:.65rem 0}
+    .note-body .meta{display:flex;gap:.6rem;flex-wrap:wrap;color:#a7b5c2;font-weight:700;font-size:.9rem;margin:.1rem 0 .6rem}
+    .note-body a{color:#9dffd0;font-weight:800;text-decoration:none;border-bottom:2px solid rgba(0,255,136,.25)}
+    .note-body a:hover{border-color:rgba(0,255,136,.5)}
+
+    /* CTA strip */
+    .cta{
+      margin-top:1.1rem;display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center
+    }
+    .btn{
+      border:1px solid var(--border);border-radius:999px;
+      padding:.7rem 1.1rem;font-weight:800;color:#e8f3ee;text-decoration:none;
+      display:inline-flex;align-items:center;gap:.5rem
+    }
+    .btn-primary{background:var(--grad);color:#03140d;border-color:transparent}
+    .btn:hover{border-color:rgba(0,255,136,.5)}
+
+    /* Footer */
+    footer{
+      background:rgba(0,0,0,.85);border-top:1px solid rgba(0,255,136,.28);
+      text-align:center;padding:2rem 1rem;margin-top:1.2rem
+    }
+    .footer-brand{font-weight:800;margin-bottom:.5rem;font-size:1.05rem}
+    .footer-legal{font-size:.88rem;color:rgba(255,255,255,.65);margin-top:.4rem}
+
+    @media (max-width:720px){
+      .note-body{padding-left:1.2rem}
+      details.note summary{grid-template-columns:22px 1fr auto}
+    }
+  </style>
 </head>
+
 <body>
-<header role="banner">
-  <div class="container wrap">
-    <a class="brand" href="index.html" aria-label="Public Logic home">Public<span class="brand-underscore">_</span>Logic</a>
-    <div class="strap">Smart Systems. Stronger Communities.</div>
-  </div>
-</header>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <h1>Field Notes</h1>
+      <p>Plain-language reflections from municipal practice — one note at a time.</p>
+    </div>
+  </section>
 
-<main class="container note">
-  <h1>Field Note_001</h1>
-  <p><time datetime="2025-09-01">September 1, 2025</time></p>
-  <p class="lead">Launch day thoughts: building municipal systems that actually work for staff and residents.</p>
+  <!-- JUMP LIST -->
+  <nav class="jump" aria-label="Jump to a specific Field Note">
+    <div class="container">
+      <div class="bar">
+        <!-- Newest first -->
+        <a class="chip" href="#002" data-open="002"><span class="dot" aria-hidden="true"></span> Field_Note_002</a>
+        <a class="chip" href="#001" data-open="001"><span class="dot" aria-hidden="true"></span> Field_Note_001</a>
+      </div>
+    </div>
+  </nav>
 
-  <h2>What we’re doing</h2>
-  <p>Public_Logic builds compliance-first, human-friendly operating frameworks for towns. VAULT™ standardizes naming, retention, and workflow logic across your existing platforms — CivicPlus, Microsoft 365, and more.</p>
+  <!-- NOTES (Newest at top, all collapsible) -->
+  <main class="notes" id="main" tabindex="-1">
+    <div class="container">
+      <div class="docket" role="list">
 
-  <h2>Why this matters</h2>
-  <ul>
-    <li>Clarity: everyone files and finds the same way.</li>
-    <li>Compliance: retention and audit logs are baked in.</li>
-    <li>Speed: automation handles the boring stuff.</li>
-  </ul>
+        <!-- ===== FIELD NOTE 002 (NEWEST) ===== -->
+        <details class="note" id="002" role="listitem">
+          <summary>
+            <span class="dot" aria-hidden="true"></span>
+            <span class="title">
+              <span>Field_Note_002 — Public_Logic</span>
+              <span class="subtitle">Smart Systems. Stronger Communities.</span>
+            </span>
+            <span class="when"><span class="badge">002</span>&nbsp; Sep 1, 2025 • ~8–10 min</span>
+          </summary>
+          <div class="note-body">
+            <div class="meta">By Nathan R. Boudreau • <a href="mailto:nathan@publiclogic.org">nathan@publiclogic.org</a></div>
 
-  <h2>What’s next</h2>
-  <p>Week 1 is about pilots, feedback, and tightening the playbook. If you want early access, reach out.</p>
+            <h3>Municipal-First by Design</h3>
+            <p>
+              Public_Logic didn’t start in a boardroom. It started in a life that needed clarity — and in town halls that needed the same thing. We are not selling another municipal app. We’re delivering a municipal operating framework so staff, boards, and residents can actually see the work and trust the process.
+            </p>
+            <p>Frameworks connect law → workflow → staff → residents. When that connection is missing, adoption fails. When it’s present, implementation happens in days, not years.</p>
 
-  <p style="margin-top:1.5rem;">
-    <a class="btn" href="contact.html">Request Early Access</a>
-    <a class="btn" href="framework.html" style="margin-left:.5rem;">Explore VAULT</a>
-  </p>
-</main>
+            <h3>Good People, Stalled Systems</h3>
+            <p>
+              Vendors aren’t the enemy; most are full of good-intentioned people. The problem isn’t the tools — it’s the fit. Municipal reality is compliance cadence, meeting cycles, capacity, and turnover. Public_Logic partners with CivicPlus, Microsoft 365, Laserfiche, Tyler, VADAR/MUNIS, and Polimorphic so deployments stick.
+            </p>
 
-<footer role="contentinfo">
-  <p>People.Data.Systems.</p>
-  <p>© <span id="year"></span> Public_Logic. All rights reserved.</p>
-  <p class="tiny">VAULT<span style="font-variant-caps: all-small-caps;">™</span> framework and related marks — patent pending.</p>
-</footer>
+            <h3>Lost in Transition</h3>
+            <p>A grant-funded “modernization” launched and then was lost three times across transitions. Not malicious — just no framework. When adoption depends on a person, it dies with turnover. When adoption is a framework, it survives it.</p>
 
-<script src="js/main.js"></script>
+            <h3>ARCHIVE — The Base Model</h3>
+            <p><strong>Accountability, Records, Compliance, History, Integrity, Governance, Evidence (ARCHIVE)</strong> is the logic layer. Every module inherits its rules so actions are traceable, decisions are defensible, and continuity holds across boards and budgets.</p>
+
+            <h3>The Operating System</h3>
+            <p>
+              On ARCHIVE sits the named suite of municipal frameworks — governance, finance, operations, regulation — each written in full and designed to be read in a public meeting. For the full map, see the Frameworks page.
+            </p>
+
+            <div class="cta">
+              <a class="btn btn-primary" href="framework.html">See the Frameworks</a>
+              <a class="btn" href="contact.html">Start a Pilot</a>
+            </div>
+          </div>
+        </details>
+
+        <!-- ===== FIELD NOTE 001 ===== -->
+        <details class="note" id="001" role="listitem">
+          <summary>
+            <span class="dot" aria-hidden="true"></span>
+            <span class="title">
+              <span>Field_Note_001 — Pieces and Frameworks</span>
+              <span class="subtitle">Breaking things down — and building them back stronger.</span>
+            </span>
+            <span class="when"><span class="badge">001</span>&nbsp; Aug 24, 2025 • ~5 min</span>
+          </summary>
+          <div class="note-body">
+            <div class="meta">By Nathan R. Boudreau • <a href="mailto:nathan@publiclogic.org">nathan@publiclogic.org</a></div>
+
+            <h3>Opening</h3>
+            <p>
+              I’ve worked in and alongside towns from four thousand to forty thousand. The pattern is the same: good people fighting through unclear processes and disconnected systems. This starts with people, not platforms.
+            </p>
+
+            <h3>Pieces and Frameworks</h3>
+            <p>
+              Hard seasons taught me to break things down: loops from an addictive personality, a cancer diagnosis that stopped everything, years of ethical uncertainty. The way through was one piece at a time — and the same applies to municipal work.
+            </p>
+
+            <h3>The Gray Problem</h3>
+            <p>Towns drown in gray — unclear processes, conflicting systems, buried data. People. Data. Systems. Break the gray into pieces, and you can build a framework.</p>
+
+            <h3>One Pathway Forward</h3>
+            <p>
+              HubbCONNECT is proving it. About 30% rolled out: DPW requests, turnovers, and licensing flowing through unified processes. Not perfect, but proof that structure beats gray. That’s Public_Logic: Verified Automation & Unified Logic for Towns (VAULT™). The underscore is the through-line.
+            </p>
+
+            <div class="cta">
+              <a class="btn btn-primary" href="framework.html">See the Frameworks</a>
+              <a class="btn" href="contact.html">Start a Pilot</a>
+            </div>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </main>
+
+  <footer role="contentinfo">
+    <div class="container">
+      <div class="footer-brand">People. Data. Systems.</div>
+      <div class="footer-legal">© <span id="year"></span> Public_Logic. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Accordion behavior: only one open at a time
+    const notes = document.querySelectorAll('details.note');
+    function closeOthers(openEl){
+      notes.forEach(n => { if(n !== openEl) n.removeAttribute('open'); });
+    }
+    notes.forEach(n => n.addEventListener('toggle', () => { if(n.open) closeOthers(n); }));
+
+    // Jump chips open the correct note and focus it
+    const chips = document.querySelectorAll('.chip[data-open]');
+    chips.forEach(chip => {
+      chip.addEventListener('click', (e) => {
+        const id = chip.getAttribute('data-open');
+        const target = document.getElementById(id);
+        if(target){
+          e.preventDefault();
+          target.setAttribute('open','');
+          closeOthers(target);
+          target.scrollIntoView({behavior:'smooth', block:'start'});
+          history.replaceState(null, '', `#${id}`);
+        }
+      });
+    });
+
+    // If loaded with hash (#001 or #002), open that note
+    if(location.hash){
+      const target = document.querySelector(location.hash);
+      if(target && target.tagName.toLowerCase()==='details'){
+        target.setAttribute('open','');
+        closeOthers(target);
+        setTimeout(()=>target.scrollIntoView({behavior:'smooth', block:'start'}), 50);
+      }
+    } else {
+      // Default: open newest (002)
+      const newest = document.getElementById('002');
+      if(newest){ newest.setAttribute('open',''); }
+    }
+  </script>
 </body>
 </html>
