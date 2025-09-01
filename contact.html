@@ -4,75 +4,188 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Contact — Public_Logic</title>
-  <link rel="stylesheet" href="css/style.css">
+
+  <meta name="description" content="Contact Public_Logic — municipal-first partnerships and team-based frameworks. Tell us about your community or project and we’ll follow up."/>
+  <meta name="robots" content="index, follow"/>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root{
+      --pl-green:#00ff88;
+      --pl-light:#f8fafc;
+      --grad:linear-gradient(135deg,#00ff88 0%,#00d4aa 100%);
+      --border:rgba(255,255,255,.16);
+      --muted:rgba(255,255,255,.78);
+      --card:rgba(255,255,255,.04);
+      --header-bg:rgba(0,0,0,.82);
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+      background:linear-gradient(135deg,#0a0a0a,#141a2a 55%,#16213e);
+      color:var(--pl-light);
+      line-height:1.65;
+    }
+    .container{max-width:1080px;margin:0 auto;padding:0 18px}
+
+    /* Header */
+    header{
+      position:sticky;top:0;z-index:1000;
+      background:var(--header-bg);
+      border-bottom:1px solid rgba(0,255,136,.28);
+      backdrop-filter:blur(10px)
+    }
+    .header-content{height:70px;display:flex;align-items:center;justify-content:space-between}
+    .brand-wrap{display:flex;align-items:center;gap:.6rem;text-decoration:none}
+    .brand-text{
+      font-weight:900;font-size:1.3rem;letter-spacing:.2px;
+      background:var(--grad);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent
+    }
+    .underscore{color:var(--pl-green)}
+
+    /* Hero */
+    .hero{padding:3.5rem 1rem 1.25rem;text-align:center}
+    .hero h1{
+      margin:0 0 .6rem;
+      font-size:clamp(1.9rem,6.5vw,3.4rem);font-weight:900;
+      background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent
+    }
+    .hero p{margin:0;color:var(--muted);font-size:clamp(1.05rem,3vw,1.25rem)}
+
+    /* Form */
+    .form-wrap{
+      max-width:700px;margin:2rem auto;padding:2rem;
+      background:var(--card);border:1px solid var(--border);border-radius:14px;
+    }
+    form.contact label{display:block;font-weight:700;margin:.9rem 0 .35rem}
+    form.contact input,form.contact textarea,form.contact select{
+      width:100%;padding:.65rem .75rem;border-radius:8px;
+      border:1px solid var(--border);background:rgba(255,255,255,.06);
+      color:var(--pl-light);font-size:1rem
+    }
+    form.contact textarea{min-height:120px;resize:vertical}
+    .form-row{margin-top:1.2rem}
+    .btn{
+      background:var(--grad);color:#000;font-weight:800;
+      border:none;padding:.7rem 1.4rem;border-radius:999px;cursor:pointer;
+      transition:.2s ease-in-out
+    }
+    .btn:hover{opacity:.9}
+    .form-help{color:var(--muted);font-size:.88rem;margin-top:.4rem}
+    #status{margin-top:.6rem;font-weight:700}
+
+    /* Footer */
+    footer{
+      background:rgba(0,0,0,.85);border-top:1px solid rgba(0,255,136,.28);
+      text-align:center;padding:2rem 1rem;margin-top:2.2rem
+    }
+    .footer-brand{font-weight:800;margin-bottom:.5rem;font-size:1.05rem}
+    .footer-legal{font-size:.88rem;color:rgba(255,255,255,.65);margin-top:.4rem}
+  </style>
 </head>
 <body>
-<header role="banner">
-  <div class="container wrap">
-    <a class="brand" href="index.html" aria-label="Public Logic home">Public<span class="brand-underscore">_</span>Logic</a>
-    <div class="strap">Smart Systems. Stronger Communities.</div>
-  </div>
-</header>
-
-<main class="container">
-  <section class="section">
-    <h2>Request Early Access</h2>
-    <p class="lead">Fill this out and we’ll get back to you. Replace FLOW_URL in the script with your Power Automate HTTP trigger URL to receive submissions.</p>
-    <div class="alert">Demo only: this page uses a placeholder endpoint. Replace <code>FLOW_URL</code> and publish.</div>
-    <form class="contact" id="contactForm">
-      <label for="name">Name</label>
-      <input id="name" name="name" type="text" required/>
-
-      <label for="email">Email</label>
-      <input id="email" name="email" type="email" required/>
-
-      <label for="message">What are you hoping to build?</label>
-      <textarea id="message" name="message" required></textarea>
-
-      <div class="form-row">
-        <button class="btn" type="submit">Send</button>
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <a class="brand-wrap" href="index.html">
+          <span class="brand-text">Public<span class="underscore">_</span>Logic</span>
+        </a>
       </div>
-      <p class="form-help">Your info is sent securely to your Microsoft 365 tenant via Power Automate when FLOW_URL is configured.</p>
-    </form>
-    <p id="status" class="form-help"></p>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <h1>Contact</h1>
+      <p>Municipal-first. Team-based. Partnership-driven.</p>
+    </div>
   </section>
-</main>
 
-<footer role="contentinfo">
-  <p>People.Data.Systems.</p>
-  <p>© <span id="year"></span> Public_Logic. All rights reserved.</p>
-</footer>
+  <!-- FORM -->
+  <main class="container">
+    <div class="form-wrap">
+      <form class="contact" id="contactForm" novalidate>
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" required/>
 
-<script src="js/main.js"></script>
-<script>
-const FLOW_URL = "https://example.com/replace-with-your-flow-url";
-const form = document.getElementById('contactForm');
-const statusEl = document.getElementById('status');
+        <label for="organization">Organization / Municipality</label>
+        <input id="organization" name="organization" type="text" required/>
 
-form.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const payload = {
-    name: form.name.value.trim(),
-    email: form.email.value.trim(),
-    message: form.message.value.trim(),
-    page: location.href,
-    ts: new Date().toISOString()
-  };
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required/>
 
-  statusEl.textContent = "Sending…";
-  try {
-    const res = await fetch(FLOW_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
+        <label for="topic">How do you want to work together?</label>
+        <select id="topic" name="topic" required>
+          <option value="" selected disabled>Choose one…</option>
+          <option value="partnership">Partnership / Co-delivery</option>
+          <option value="pilot">Pilot (framework modules)</option>
+          <option value="regional">Regional / Shared services</option>
+          <option value="vendor">Vendor alignment</option>
+          <option value="other">Other</option>
+        </select>
+
+        <label for="message">Tell us a bit more</label>
+        <textarea id="message" name="message" required placeholder="A sentence or two about your goals, pain points, or the module(s) you’re interested in (e.g., APEX, CLERK, FIX, AGENDA, FISCAL)."></textarea>
+
+        <div class="form-row">
+          <button class="btn" type="submit">Send</button>
+        </div>
+        <p class="form-help">Your information is kept confidential and used only to respond to your inquiry.</p>
+        <p id="status" class="form-help" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+
+    <p style="text-align:center;margin-top:1.4rem">
+      Prefer email? Reach us at <a href="mailto:nathan@publiclogic.org">nathan@publiclogic.org</a>.
+    </p>
+  </main>
+
+  <!-- FOOTER -->
+  <footer role="contentinfo">
+    <div class="container">
+      <div class="footer-brand">People.Data.Systems.</div>
+      <div class="footer-legal">© <span id="year"></span> Public_Logic. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const form = document.getElementById('contactForm');
+    const statusEl = document.getElementById('status');
+    const ENDPOINT = "https://example.com/your-endpoint";
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const payload = {
+        name: form.name.value.trim(),
+        organization: form.organization.value.trim(),
+        email: form.email.value.trim(),
+        topic: form.topic.value,
+        message: form.message.value.trim(),
+        ts: new Date().toISOString()
+      };
+
+      if(!payload.name||!payload.organization||!payload.email||!payload.topic||!payload.message){
+        statusEl.textContent = "Please complete all fields.";return;
+      }
+
+      statusEl.textContent = "Sending…";
+      try {
+        const res = await fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+        if(!res.ok) throw new Error();
+        statusEl.textContent = "Thanks — we’ll be in touch soon.";
+        form.reset();
+      } catch(err){
+        statusEl.textContent = "Couldn’t send. Please try again later.";
+      }
     });
-    if (!res.ok) throw new Error('Network response was not ok');
-    statusEl.textContent = "Thanks! We’ll be in touch.";
-    form.reset();
-  } catch (err) {
-    statusEl.textContent = "Couldn’t send. Check FLOW_URL and CORS settings.";
-  }
-});
-</script>
+  </script>
 </body>
 </html>
