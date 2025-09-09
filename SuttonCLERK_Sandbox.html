@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SuttonCLERK – Town of Sutton</title>
+<meta name="description" content="Interactive clerk request portal for the Town of Sutton. Submit business certificates (DBA), public records requests, meeting postings, or general clerk inquiries in one place." />
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --poli-blue:#0894cf;
+    --poli-blue-light:#e6f4fa;
+    --poli-blue-lightest:#f4fafd;
+    --poli-green:#009c6d;
+    --poli-green-light:#e6f5f0;
+    --dark-steel:#1a2232;
+    --steel:#7c889f;
+    --bg:var(--poli-blue-lightest);
+    --card:#ffffff;
+    --ink:var(--dark-steel);
+    --muted:var(--steel);
+    --warn:#ed1c24;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font:16px/1.45 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+  }
+  .wrap{max-width:980px;margin:0 auto;padding:24px}
+  header{display:flex;gap:16px;align-items:center;margin-bottom:18px}
+  header img{width:64px;height:64px;object-fit:contain}
+  h1{font-size:1.9rem;margin:.1em 0}
+  .tagline{font-size:1.1rem;color:var(--steel);margin-top:-6px}
+  .card{
+    background:var(--card);
+    border:1px solid rgba(0,0,0,0.05);
+    border-radius:12px;
+    box-shadow:0 4px 16px rgba(0,0,0,.06);
+    padding:20px;
+    margin-bottom:24px;
+  }
+  label{display:block;font-weight:600;margin:8px 0 6px}
+  input[type="text"],input[type="email"],input[type="tel"],input[type="date"],input[type="time"],textarea,select{
+    width:100%;padding:10px 12px;border:1px solid #ced4da;border-radius:10px;background:#fff;font:inherit;transition:border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  }
+  input:focus,textarea:focus,select:focus{
+    outline:2px solid var(--poli-blue);
+    box-shadow:0 0 0 2px rgba(8,148,207,0.2);
+  }
+  textarea{min-height:110px;resize:vertical}
+  .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .btn{
+    appearance:none;
+    border:1px solid var(--poli-blue);
+    background:var(--poli-blue);
+    color:#fff;
+    border-radius:10px;
+    padding:10px 16px;
+    cursor:pointer;
+    font-weight:600;
+    transition:background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+    text-decoration:none;
+    display:inline-block;
+  }
+  .btn.secondary{
+    background:#fff;
+    color:var(--poli-blue);
+  }
+  .btn:hover{filter:brightness(0.95)}
+  .muted{color:var(--muted);font-size:0.9rem}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+  .hidden{display:none;}
+  .status{margin-top:12px;padding:12px 14px;border-radius:10px;display:none}
+  .ok{display:block;background:#e6f5f0;border:1px solid #ccebe2}
+  .err{display:block;background:#fde8e9;border:1px solid #fbd2d3;color:var(--warn)}
+  @media(max-width:720px){ .grid{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <img alt="Town of Sutton seal" src="https://upload.wikimedia.org/wikipedia/commons/2/27/Seal_of_Sutton%2C_Massachusetts.png?20231220025329" />
+    <div>
+      <h1>SuttonCLERK</h1>
+      <div class="tagline">Digital clerk services for the Town of Sutton</div>
+    </div>
+  </header>
+
+  <div class="card">
+    <h2 style="margin-top:0;font-size:1.5rem">Town Clerk Portal – Workflow Guide</h2>
+    <p>Use this portal to submit common clerk requests with conditional logic, digital certification and automatic routing. It combines multiple paper forms into a single, unified application maintained by the Town of Sutton. The services covered include business certificates (DBA), public records requests, meeting postings, general clerk inquiries, board &amp; committee applications, dog license applications, and vital records requests. <strong>Please note:</strong> voter registration is managed by the Commonwealth of Massachusetts, pole hearings are handled by the Department of Public Works, and swearing‑in appointments are still scheduled manually. If you prefer a paper form for dog licensing or vital records, you can <a href="https://www.suttonma.org/town-clerk/files/dog-licenses" target="_blank" rel="noopener">download the dog license PDF application</a> or use the <a href="https://www.suttonma.org/town-clerk/files/vital-records-request-form" target="_blank" rel="noopener">vital records request form</a>.</p>
+  </div>
+
+  <!-- Request Type selection -->
+  <div class="card">
+    <h3 style="margin-top:0">Select Request Type</h3>
+    <div class="grid">
+      <div>
+        <label for="request_type">Request Type *</label>
+        <select id="request_type" name="request_type" required>
+          <option value="">Choose…</option>
+          <option value="business_certificate">Business Certificate (DBA)</option>
+          <option value="public_records">Public Records Request</option>
+          <option value="meeting_posting">Meeting Posting</option>
+          <option value="general_clerk">General Clerk Request</option>
+          <option value="board_application">Board &amp; Committee Application</option>
+          <option value="dog_license">Dog License Application</option>
+          <option value="vital_records">Vital Records Request</option>
+        </select>
+      </div>
+    </div>
+    <div class="muted" style="margin-top:4px">Fields below will appear based on your selection.</div>
+  </div>
+
+  <!-- Dynamic Forms -->
+  <form id="clerk_form" class="card" novalidate>
+    <input type="hidden" id="clerk_request_type" name="clerk_request_type" />
+    <!-- Business Certificate Fields -->
+    <div id="business_fields" class="hidden">
+      <h3>Business Certificate (DBA)</h3>
+      <div class="grid">
+        <div>
+          <label for="biz_name">Business Name (DBA) *</label>
+          <input id="biz_name" name="biz_name" type="text" />
+        </div>
+        <div>
+          <label for="biz_owner">Owner Name *</label>
+          <input id="biz_owner" name="biz_owner" type="text" />
+        </div>
+      </div>
+      <div class="grid">
+        <div>
+          <label for="biz_address">Business Address *</label>
+          <input id="biz_address" name="biz_address" type="text" />
+        </div>
+        <div>
+          <label for="biz_email">Owner Email *</label>
+          <input id="biz_email" name="biz_email" type="email" />
+        </div>
+      </div>
+      <div class="grid">
+        <div>
+          <label for="biz_phone">Owner Phone *</label>
+          <input id="biz_phone" name="biz_phone" type="tel" />
+        </div>
+        <div>
+          <label for="biz_type">Type of Business *</label>
+          <input id="biz_type" name="biz_type" type="text" placeholder="e.g., Retail, Service" />
+        </div>
+      </div>
+      <label for="biz_description">Brief Description of Business *</label>
+      <textarea id="biz_description" name="biz_description" placeholder="Describe the nature of your business"></textarea>
+      <label for="biz_upload_signature">Upload Signature Form *</label>
+      <input id="biz_upload_signature" name="biz_upload_signature" type="file" accept="application/pdf,image/*" />
+      <label for="biz_upload_lease">Upload Lease/Property Permission *</label>
+      <input id="biz_upload_lease" name="biz_upload_lease" type="file" accept="application/pdf,image/*" />
+    </div>
+    <!-- Public Records Request Fields -->
+    <div id="records_fields" class="hidden">
+      <h3>Public Records Request</h3>
+      <div class="grid">
+        <div>
+          <label for="pr_name">Requestor Name *</label>
+          <input id="pr_name" name="pr_name" type="text" />
+        </div>
+        <div>
+          <label for="pr_email">Email *</label>
+          <input id="pr_email" name="pr_email" type="email" />
+        </div>
+      </div>
+      <div class="grid">
+        <div>
+          <label for="pr_phone">Phone (optional)</label>
+          <input id="pr_phone" name="pr_phone" type="tel" />
+        </div>
+        <div>
+          <label for="pr_department">Department (if known)</label>
+          <input id="pr_department" name="pr_department" type="text" placeholder="e.g., Building, Assessors" />
+        </div>
+      </div>
+      <label for="pr_description">Describe the records you’re requesting *</label>
+      <textarea id="pr_description" name="pr_description" placeholder="Be specific so we can locate the records"></textarea>
+      <label for="pr_uploads">Upload supporting documentation (optional)</label>
+      <input id="pr_uploads" name="pr_uploads" type="file" accept="application/pdf,image/*" multiple />
+    </div>
+    <!-- Meeting Posting Fields -->
+    <div id="meeting_fields" class="hidden">
+      <h3>Meeting Posting</h3>
+      <div class="grid">
+        <div>
+          <label for="mp_board">Board / Committee Name *</label>
+          <input id="mp_board" name="mp_board" type="text" placeholder="e.g., Select Board" />
+        </div>
+        <div>
+          <label for="mp_contact_email">Contact Email *</label>
+          <input id="mp_contact_email" name="mp_contact_email" type="email" placeholder="Clerk or Board contact" />
+        </div>
+      </div>
+      <div class="grid">
+        <div>
+          <label for="mp_date">Meeting Date *</label>
+          <input id="mp_date" name="mp_date" type="date" />
+        </div>
+        <div>
+          <label for="mp_time">Meeting Time *</label>
+          <input id="mp_time" name="mp_time" type="time" />
+        </div>
+      </div>
+      <div class="grid">
+        <div>
+          <label for="mp_location">Meeting Location *</label>
+          <input id="mp_location" name="mp_location" type="text" placeholder="e.g., Town Hall Room 1" />
+        </div>
+        <div>
+          <label for="mp_agenda_title">Agenda Title *</label>
+          <input id="mp_agenda_title" name="mp_agenda_title" type="text" />
+        </div>
+      </div>
+      <label for="mp_description">Agenda Description / Notes *</label>
+      <textarea id="mp_description" name="mp_description" placeholder="Provide context or a brief summary of the agenda"></textarea>
+      <label for="mp_agenda_upload">Upload Meeting Agenda (PDF/DOC) *</label>
+      <input id="mp_agenda_upload" name="mp_agenda_upload" type="file" accept="application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" />
+    </div>
+    <!-- General Clerk Request Fields -->
+    <div id="general_fields" class="hidden">
+      <h3>General Clerk Request</h3>
+      <div class="grid">
+        <div>
+          <label for="gc_subject">Subject *</label>
+          <input id="gc_subject" name="gc_subject" type="text" placeholder="Brief subject" />
+        </div>
+        <div>
+          <label for="gc_email">Your Email *</label>
+          <input id="gc_email" name="gc_email" type="email" />
+        </div>
+      </div>
+      <label for="gc_description">Describe your request *</label>
+      <textarea id="gc_description" name="gc_description" placeholder="Tell us what you need"></textarea>
+      <label for="gc_uploads">Upload supporting file (optional)</label>
+      <input id="gc_uploads" name="gc_uploads" type="file" accept="application/pdf,image/*" multiple />
+    </div>
+
+    <!-- Board & Committee Application Fields -->
+    <div id="board_fields" class="hidden">
+      <h3>Board &amp; Committee Application</h3>
+      <p class="muted" style="margin-top:0">Select the board(s) or committee(s) you wish to serve on and provide your information below. You must be in good standing with the Town (no delinquent taxes or fees) to be considered.</p>
+      <fieldset style="border:none;padding:0;margin:0 0 12px 0">
+        <legend style="font-weight:600;margin-bottom:6px">Boards &amp; Committees (select all that apply) *</legend>
+        <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px">
+          <label><input type="checkbox" name="ba_boards" value="Board of Registrars" /> Board of Registrars</label>
+          <label><input type="checkbox" name="ba_boards" value="Board of Health" /> Board of Health</label>
+          <label><input type="checkbox" name="ba_boards" value="Council on Aging" /> Council on Aging</label>
+          <label><input type="checkbox" name="ba_boards" value="Conservation Commission" /> Conservation Commission</label>
+          <label><input type="checkbox" name="ba_boards" value="Finance &amp; Warrant Advisory Committee" /> Finance &amp; Warrant Advisory Committee</label>
+          <label><input type="checkbox" name="ba_boards" value="Cultural Council" /> Cultural Council</label>
+          <label><input type="checkbox" name="ba_boards" value="Historical Commission" /> Historical Commission</label>
+          <label><input type="checkbox" name="ba_boards" value="Cemetery Commission" /> Cemetery Commission</label>
+          <label><input type="checkbox" name="ba_boards" value="Recreation Commission" /> Recreation Commission</label>
+          <label><input type="checkbox" name="ba_boards" value="Planning Board" /> Planning Board</label>
+          <label><input type="checkbox" name="ba_boards" value="Zoning Board of Appeals" /> Zoning Board of Appeals</label>
+          <label><input type="checkbox" name="ba_boards" value="Sewer Commission" /> Sewer Commission</label>
+          <label><input type="checkbox" name="ba_boards" value="Other" /> Other</label>
+        </div>
+        <label for="ba_board_other" style="margin-top:6px">If "Other", please specify</label>
+        <input id="ba_board_other" name="ba_board_other" type="text" placeholder="List other board(s) or committee(s)" />
+      </fieldset>
+      <div class="grid">
+        <div>
+          <label for="ba_name">Your Name *</label>
+          <input id="ba_name" name="ba_name" type="text" />
+        </div>
+        <div>
+          <label for="ba_registered">Registered Voter *</label>
+          <select id="ba_registered" name="ba_registered">
+            <option value="">Choose…</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+        </div>
+      </div>
+      <div class="grid">
+        <div>
+          <label for="ba_address">Address *</label>
+          <input id="ba_address" name="ba_address" type="text" />
+        </div>
+        <div>
+          <label for="ba_phone">Cell Phone *</label>
+          <input id="ba_phone" name="ba_phone" type="tel" />
+        </div>
+      </div>
+      <div class="grid">
+        <div>
+          <label for="ba_alt_phone">Alternate Phone (optional)</label>
+          <input id="ba_alt_phone" name="ba_alt_phone" type="tel" />
+        </div>
+        <div>
+          <label for="ba_email">Email *</label>
+          <input id="ba_email" name="ba_email" type="email" />
+        </div>
+      </div>
+      <label for="ba_occupation">Occupation (optional)</label>
+      <input id="ba_occupation" name="ba_occupation" type="text" />
+      <label for="ba_conflicts">Potential Conflicts of Interest *</label>
+      <textarea id="ba_conflicts" name="ba_conflicts" placeholder="List any current memberships, business affiliations, etc."></textarea>
+      <label for="ba_skills">Special Interests &amp; Skills *</label>
+      <textarea id="ba_skills" name="ba_skills" placeholder="Describe your relevant interests and skills"></textarea>
+      <label for="ba_experience">Education &amp; Experience *</label>
+      <textarea id="ba_experience" name="ba_experience" placeholder="Summarize your education and experience"></textarea>
+      <label for="ba_reasons">Reason(s) for Wanting to Serve *</label>
+      <textarea id="ba_reasons" name="ba_reasons" placeholder="Tell us why you want to serve on this board or committee"></textarea>
+      <label for="ba_resume_upload">Upload Resume or Supporting Document (optional)</label>
+      <input id="ba_resume_upload" name="ba_resume_upload" type="file" accept="application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/*" />
+    </div>
+
+    <!-- Dog License Application Fields -->
+    <div id="dog_fields" class="hidden">
+      <h3>Dog License Application</h3>
+      <p class="muted" style="margin-top:0">Complete the information below for each dog you wish to license. A maximum of three dogs can be registered using this form; if you have more than three dogs, please contact the Clerk’s office directly.</p>
+      <div class="grid">
+        <div>
+          <label for="dog_owner_name">Owner’s Name *</label>
+          <input id="dog_owner_name" name="dog_owner_name" type="text" />
+        </div>
+        <div>
+          <label for="dog_owner_phone">Phone Number *</label>
+          <input id="dog_owner_phone" name="dog_owner_phone" type="tel" />
+        </div>
+      </div>
+      <div class="grid">
+        <div>
+          <label for="dog_owner_address">Address *</label>
+          <input id="dog_owner_address" name="dog_owner_address" type="text" />
+        </div>
+        <div>
+          <label for="dog_owner_pobox">P.O. Box (optional)</label>
+          <input id="dog_owner_pobox" name="dog_owner_pobox" type="text" />
+        </div>
+      </div>
+      <!-- Dog 1 -->
+      <h4 style="margin-top:16px">Dog #1</h4>
+      <div class="grid">
+        <div>
+          <label for="dog1_name">Dog’s Name *</label>
+          <input id="dog1_name" name="dog1_name" type="text" />
+        </div>
+        <div>
+          <label for="dog1_breed">Breed *</label>
+          <input id="dog1_breed" name="dog1_breed" type="text" />
+        </div>
+      </div>
+      <div class="grid">
+        <div>
+          <label for="dog1_color">Color *</label>
+          <input id="dog1_color" name="dog1_color" type="text" />
+        </div>
+        <div>
+          <label for="dog1_age">Age *</label>
+          <input id="dog1_age" name="dog1_age" type="text" />
+        </div>
+      </div>
+      <div class="grid">
+        <div>
+          <label for="dog1_clinic">Animal Clinic (optional)</label>
+          <input id="dog1_clinic" name="dog1_clinic" type="text" />
+        </div>
+        <div>
+          <label for="dog1_rabies_exp">Rabies Expiration Date *</label>
+          <input id="dog1_rabies_exp" name="dog1_rabies_exp" type="date" />
+        </div>
+      </div>
+      <div class="grid">
+        <div>
+          <label for="dog1_rabies_tag">Rabies Tag # *</label>
+          <input id="dog1_rabies_tag" name="dog1_rabies_tag" type="text" />
+        </div>
+        <div>
+          <label for="dog1_type">Sex &amp; Status *</label>
+          <select id="dog1_type" name="dog1_type">
+            <option value="">Choose…</option>
+            <option value="Male fixed">Male fixed ($15)</option>
+            <option value="Female fixed">Female fixed ($15)</option>
+            <option value="Male intact">Male intact ($20)</option>
+            <option value="Female intact">Female intact ($20)</option>
+          </select>
+        </div>
+      </div>
+      <!-- Dog 2 -->
+      <h4 style="margin-top:16px">Dog #2 (optional)</h4>
+      <div class="grid">
+        <div>
+          <label for="dog2_name">Dog’s Name</label>
+          <input id="dog2_name" name="dog2_name" type="text" />
+        </div>
+        <div>
+          <label for="dog2_breed">Breed</label>
+          <input id="dog2_breed" name="dog2_breed" type="text" />
+        </div>
+      </div>
+      <div class="grid">
+        <div>
+          <label for="dog2_color">Color</label>
+          <input id="dog2_color" name="dog2_color" type="text" />
+        </div>
+        <div>
+          <label for="dog2_age">Age</label>
+          <input id="dog2_age" name="dog2_age" type="text" />
+        </div>
+      </div>
+      <div class="grid">
+        <div>
+          <label for="dog2_clinic">Animal Clinic</label>
+          <input id="dog2_clinic" name="dog2_clinic" type="text" />
+        </div>
+        <div>
+          <label for="dog2_rabies_exp">Rabies Expiration Date</label>
+          <input id="dog2_rabies_exp" name="dog2_rabies_exp" type="date" />
+        </div>
+      </div>
+      <div class="grid">
+        <div>
+          <label for="dog2_rabies_tag">Rabies Tag #</label>
+          <input id="dog2_rabies_tag" name="dog2_rabies_tag" type="text" />
+        </div>
+        <div>
+          <label for="dog2_type">Sex &amp; Status</label>
+          <select id="dog2_type" name="dog2_type">
+            <option value="">Choose…</option>
+            <option value="Male fixed">Male fixed ($15)</option>
+            <option value="Female fixed">Female fixed ($15)</option>
+            <option value="Male intact">Male intact ($20)</option>
+            <option value="Female intact">Female intact ($20)</option>
+          </select>
+        </div>
+      </div>
+      <!-- Dog 3 -->
+      <h4 style="margin-top:16px">Dog #3 (optional)</h4>
+      <div class="grid">
+        <div>
+          <label for="dog3_name">Dog’s Name</label>
+          <input id="dog3_name" name="dog3_name" type="text" />
+        </div>
+        <div>
+          <label for="dog3_breed">Breed</label>
+          <input id="dog3_breed" name="dog3_breed" type="text" />
+        </div>
+      </div>
+      <div class="grid">
+        <div>
+          <label for="dog3_color">Color</label>
+          <input id="dog3_color" name="dog3_color" type="text" />
+        </div>
+        <div>
+          <label for="dog3_age">Age</label>
+          <input id="dog3_age" name="dog3_age" type="text" />
+        </div>
+      </div>
+      <div class="grid">
+        <div>
+          <label for="dog3_clinic">Animal Clinic</label>
+          <input id="dog3_clinic" name="dog3_clinic" type="text" />
+        </div>
+        <div>
+          <label for="dog3_rabies_exp">Rabies Expiration Date</label>
+          <input id="dog3_rabies_exp" name="dog3_rabies_exp" type="date" />
+        </div>
+      </div>
+      <div class="grid">
+        <div>
+          <label for="dog3_rabies_tag">Rabies Tag #</label>
+          <input id="dog3_rabies_tag" name="dog3_rabies_tag" type="text" />
+        </div>
+        <div>
+          <label for="dog3_type">Sex &amp; Status</label>
+          <select id="dog3_type" name="dog3_type">
+            <option value="">Choose…</option>
+            <option value="Male fixed">Male fixed ($15)</option>
+            <option value="Female fixed">Female fixed ($15)</option>
+            <option value="Male intact">Male intact ($20)</option>
+            <option value="Female intact">Female intact ($20)</option>
+          </select>
+        </div>
+      </div>
+      <label for="dog_uploads">Upload rabies certificate or spay/neuter proof (optional)</label>
+      <input id="dog_uploads" name="dog_uploads" type="file" accept="application/pdf,image/*" multiple />
+      <div class="muted" style="margin-top:4px">If your dog(s) are fixed, please include proof of spay/neuter. Rabies certificates are recommended.</div>
+    </div>
+
+    <!-- Vital Records Request Fields -->
+    <div id="vital_fields" class="hidden">
+      <h3>Vital Records Request</h3>
+      <p class="muted" style="margin-top:0">Request certified copies of Birth, Death or Marriage certificates. Each copy costs $5.00. Please note that payment and a self‑addressed stamped envelope are required to complete your request.</p>
+      <fieldset style="border:none;padding:0;margin:0 0 12px 0">
+        <legend style="font-weight:600;margin-bottom:6px">Record Type(s) *</legend>
+        <div class="row" style="flex-wrap:wrap;gap:12px">
+          <label><input type="checkbox" name="vr_types" value="Birth" /> Birth</label>
+          <label><input type="checkbox" name="vr_types" value="Death" /> Death</label>
+          <label><input type="checkbox" name="vr_types" value="Marriage" /> Marriage</label>
+        </div>
+      </fieldset>
+      <!-- Certificate entries -->
+      <h4 style="margin-top:8px">Certificate 1 *</h4>
+      <div class="grid">
+        <div>
+          <label for="vr_name1">Name on Certificate *</label>
+          <input id="vr_name1" name="vr_name1" type="text" />
+        </div>
+        <div>
+          <label for="vr_date1">Date on Certificate *</label>
+          <input id="vr_date1" name="vr_date1" type="date" />
+        </div>
+        <div>
+          <label for="vr_copies1"># of Copies *</label>
+          <input id="vr_copies1" name="vr_copies1" type="number" min="1" max="10" value="1" />
+        </div>
+      </div>
+      <h4 style="margin-top:8px">Certificate 2 (optional)</h4>
+      <div class="grid">
+        <div>
+          <label for="vr_name2">Name on Certificate</label>
+          <input id="vr_name2" name="vr_name2" type="text" />
+        </div>
+        <div>
+          <label for="vr_date2">Date on Certificate</label>
+          <input id="vr_date2" name="vr_date2" type="date" />
+        </div>
+        <div>
+          <label for="vr_copies2"># of Copies</label>
+          <input id="vr_copies2" name="vr_copies2" type="number" min="1" max="10" />
+        </div>
+      </div>
+      <h4 style="margin-top:8px">Certificate 3 (optional)</h4>
+      <div class="grid">
+        <div>
+          <label for="vr_name3">Name on Certificate</label>
+          <input id="vr_name3" name="vr_name3" type="text" />
+        </div>
+        <div>
+          <label for="vr_date3">Date on Certificate</label>
+          <input id="vr_date3" name="vr_date3" type="date" />
+        </div>
+        <div>
+          <label for="vr_copies3"># of Copies</label>
+          <input id="vr_copies3" name="vr_copies3" type="number" min="1" max="10" />
+        </div>
+      </div>
+      <h4 style="margin-top:8px">Requestor Information</h4>
+      <div class="grid">
+        <div>
+          <label for="vr_requestor_name">Your Name *</label>
+          <input id="vr_requestor_name" name="vr_requestor_name" type="text" />
+        </div>
+        <div>
+          <label for="vr_requestor_phone">Phone Number *</label>
+          <input id="vr_requestor_phone" name="vr_requestor_phone" type="tel" />
+        </div>
+      </div>
+      <div class="grid">
+        <div>
+          <label for="vr_requestor_address">Address *</label>
+          <input id="vr_requestor_address" name="vr_requestor_address" type="text" />
+        </div>
+        <div>
+          <label for="vr_relationship">Relationship to Person(s) on Certificate *</label>
+          <input id="vr_relationship" name="vr_relationship" type="text" placeholder="e.g., Self, Parent, Child" />
+        </div>
+      </div>
+      <label for="vr_uploads">Upload supporting documents (optional)</label>
+      <input id="vr_uploads" name="vr_uploads" type="file" accept="application/pdf,image/*" multiple />
+    </div>
+    <!-- Certification & Signature -->
+    <div id="cert_section" class="hidden">
+      <h3>Certification</h3>
+      <div class="row">
+        <input id="certify" name="certify" type="checkbox" />
+        <label for="certify" style="margin:0">I certify that the information provided is true and accurate and constitutes a formal submission to the Town Clerk.</label>
+      </div>
+      <label for="digital_sig" style="margin-top:8px">Digital Signature *</label>
+      <input id="digital_sig" name="digital_sig" type="text" placeholder="Type your full name" />
+      <div class="muted" style="margin-top:4px">Your signature will be timestamped upon submission.</div>
+      <div class="row" style="margin-top:12px">
+        <button class="btn" type="submit" id="clerk_submit">Submit Request</button>
+        <button class="btn secondary" type="reset" id="clerk_reset">Reset</button>
+        <div id="clerk_spinner" class="muted" aria-live="polite" style="display:none">Submitting…</div>
+      </div>
+      <div id="clerk_ok" class="status ok" role="status">Thank you! Your request has been submitted.</div>
+      <div id="clerk_err" class="status err" role="alert">Sorry, something went wrong. Please try again later.</div>
+    </div>
+  </form>
+
+  <div class="card" style="font-size:.85rem">
+    <h4 style="margin-top:0">Legal &amp; Policy Basis</h4>
+    <div style="overflow-x:auto">
+      <table style="border-collapse:collapse;width:100%">
+        <thead>
+          <tr style="background-color:var(--poli-blue-light)">
+            <th style="text-align:left;padding:8px">Request Type</th>
+            <th style="text-align:left;padding:8px">Legal Authority / Policy</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:8px">Business Certificate</td>
+            <td style="padding:8px">M.G.L. c. 110 §5</td>
+          </tr>
+          <tr style="background-color:var(--poli-blue-lightest)">
+            <td style="padding:8px">Public Records Request</td>
+            <td style="padding:8px">M.G.L. c. 66 §10</td>
+          </tr>
+          <tr>
+            <td style="padding:8px">Meeting Posting</td>
+            <td style="padding:8px">Open Meeting Law &amp; Local Practice</td>
+          </tr>
+          <tr style="background-color:var(--poli-blue-lightest)">
+            <td style="padding:8px">General Clerk Requests</td>
+            <td style="padding:8px">Internal administrative policies</td>
+          </tr>
+          <tr>
+            <td style="padding:8px">Board &amp; Committee Applications</td>
+            <td style="padding:8px">Local appointment policy &amp; good standing requirement</td>
+          </tr>
+          <tr style="background-color:var(--poli-blue-lightest)">
+            <td style="padding:8px">Dog License Application</td>
+            <td style="padding:8px">M.G.L. c. 140 §137 &amp; local bylaws</td>
+          </tr>
+          <tr>
+            <td style="padding:8px">Vital Records Request</td>
+            <td style="padding:8px">M.G.L. c. 46 §13 &amp; Public Records Law</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card" style="font-size:.85rem">
+    <h4 style="margin-top:0">Routing &amp; Approvals</h4>
+    <p class="muted" style="margin-top:0">Requests are routed automatically based on type. Each step supports approvals, rejections, requests for more information, comments and PDF generation.</p>
+    <div style="overflow-x:auto">
+      <table style="border-collapse:collapse;width:100%">
+        <thead>
+          <tr style="background-color:var(--poli-blue-light)">
+            <th style="text-align:left;padding:8px">Request Type</th>
+            <th style="text-align:left;padding:8px">Workflow</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:8px">Business Certificate</td>
+            <td style="padding:8px">Clerk → Board of Health (if needed) → Assessor → Clerk Final Sign-Off</td>
+          </tr>
+          <tr style="background-color:var(--poli-blue-lightest)">
+            <td style="padding:8px">Public Records</td>
+            <td style="padding:8px">Clerk → Relevant Dept Head (if applicable) → Clerk Response &amp; Archive</td>
+          </tr>
+          <tr>
+            <td style="padding:8px">Meeting Posting</td>
+            <td style="padding:8px">Clerk Review → Timestamp → Optional Admin Notification</td>
+          </tr>
+          <tr style="background-color:var(--poli-blue-lightest)">
+            <td style="padding:8px">General Request</td>
+            <td style="padding:8px">Clerk Intake → Manually Assigned (if needed)</td>
+          </tr>
+          <tr>
+            <td style="padding:8px">Board &amp; Committee Application</td>
+            <td style="padding:8px">Clerk Intake → Select Board or Appointing Authority Review</td>
+          </tr>
+          <tr style="background-color:var(--poli-blue-lightest)">
+            <td style="padding:8px">Dog License Application</td>
+            <td style="padding:8px">Clerk Review → Issue License &amp; Tag</td>
+          </tr>
+          <tr>
+            <td style="padding:8px">Vital Records Request</td>
+            <td style="padding:8px">Clerk Intake → Verify eligibility → Produce Certificate &amp; Mail</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card" style="font-size:.85rem">
+    <h4 style="margin-top:0">Upload Requirements</h4>
+    <div style="overflow-x:auto">
+      <table style="border-collapse:collapse;width:100%">
+        <thead>
+          <tr style="background-color:var(--poli-blue-light)">
+            <th style="text-align:left;padding:8px">Request Type</th>
+            <th style="text-align:left;padding:8px">Required Uploads</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:8px">Business Certificate</td>
+            <td style="padding:8px">Signature Form, Lease/Property Permission</td>
+          </tr>
+          <tr style="background-color:var(--poli-blue-lightest)">
+            <td style="padding:8px">Public Records</td>
+            <td style="padding:8px">Optional documentation for clarification</td>
+          </tr>
+          <tr>
+            <td style="padding:8px">Meeting Posting</td>
+            <td style="padding:8px">Meeting Agenda (PDF/DOC preferred)</td>
+          </tr>
+          <tr style="background-color:var(--poli-blue-lightest)">
+            <td style="padding:8px">General Request</td>
+            <td style="padding:8px">Uploads optional (case by case)</td>
+          </tr>
+          <tr>
+            <td style="padding:8px">Board &amp; Committee Application</td>
+            <td style="padding:8px">Resume or supporting document (optional)</td>
+          </tr>
+          <tr style="background-color:var(--poli-blue-lightest)">
+            <td style="padding:8px">Dog License Application</td>
+            <td style="padding:8px">Rabies certificate &amp; spay/neuter proof (optional)</td>
+          </tr>
+          <tr>
+            <td style="padding:8px">Vital Records Request</td>
+            <td style="padding:8px">Payment &amp; self-addressed stamped envelope (handled offline)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  <div class="card" style="font-size:.9rem">
+    <h4 style="margin-top:0">Other Clerk Services</h4>
+    <p class="muted">Looking for another clerk service? Explore these resources:</p>
+    <ul style="margin:0;padding-left:18px">
+      <li><a href="https://www.suttonma.org/town-clerk/files/dog-licenses" target="_blank" rel="noopener">Print Dog License Application (PDF)</a></li>
+      <li><a href="https://www.suttonma.org/town-clerk/pages/forms" target="_blank" rel="noopener">Absentee Voting &amp; Election Forms</a></li>
+      <li><a href="https://www.suttonma.org/town-clerk/pages/forms" target="_blank" rel="noopener">Marriage Licenses</a></li>
+      <li><a href="https://www.suttonma.org/town-clerk/files/vital-records-request-form" target="_blank" rel="noopener">Print Vital Records Request Form (PDF)</a></li>
+    </ul>
+  </div>
+  </div>
+
+  <footer style="margin-top:24px;color:var(--muted);font-size:.95rem">
+    Town of Sutton • 4 Uxbridge Road, Sutton, MA 01590 • (508) 917-7000
+  </footer>
+</div>
+
+<script>
+/* ======= CONFIG ======= */
+const GAS_ENDPOINT = 'https://script.google.com/macros/s/YOUR-DEPLOYMENT-ID/exec';
+
+// Show dynamic fields based on request type
+const requestTypeSelect = document.getElementById('request_type');
+const form = document.getElementById('clerk_form');
+const sections = {
+  business_certificate: document.getElementById('business_fields'),
+  public_records: document.getElementById('records_fields'),
+  meeting_posting: document.getElementById('meeting_fields'),
+  general_clerk: document.getElementById('general_fields'),
+  board_application: document.getElementById('board_fields')
+  ,dog_license: document.getElementById('dog_fields')
+  ,vital_records: document.getElementById('vital_fields')
+};
+const certSection = document.getElementById('cert_section');
+
+requestTypeSelect.addEventListener('change', (e) => {
+  const value = e.target.value;
+  // Hide all sections
+  Object.values(sections).forEach(sec => sec.classList.add('hidden'));
+  certSection.classList.add('hidden');
+  form.reset();
+  // Show selected section if any
+  if(sections[value]){
+    sections[value].classList.remove('hidden');
+    certSection.classList.remove('hidden');
+    document.getElementById('clerk_request_type').value = value;
+  } else {
+    document.getElementById('clerk_request_type').value = '';
+  }
+});
+
+// Reset forms when hitting reset button
+document.getElementById('clerk_reset').addEventListener('click', ()=>{
+  // Clear fields and hide sections
+  Object.values(sections).forEach(sec => sec.classList.add('hidden'));
+  certSection.classList.add('hidden');
+  requestTypeSelect.value = '';
+  document.getElementById('clerk_request_type').value = '';
+});
+
+// Submit handler for clerk form
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const spinner = document.getElementById('clerk_spinner');
+  const ok = document.getElementById('clerk_ok');
+  const err = document.getElementById('clerk_err');
+  ok.style.display = 'none'; err.style.display = 'none';
+  spinner.style.display = 'inline';
+  // Validate general required fields: request type, certification, signature
+  if(!document.getElementById('clerk_request_type').value){ err.textContent = 'Please select a request type.'; err.style.display = 'block'; spinner.style.display='none'; return; }
+  if(!document.getElementById('certify').checked){ err.textContent = 'Please certify the submission.'; err.style.display = 'block'; spinner.style.display='none'; return; }
+  if(!document.getElementById('digital_sig').value.trim()){ err.textContent = 'Please provide your digital signature.'; err.style.display = 'block'; spinner.style.display='none'; return; }
+  // Validate fields specific to the selected request type
+  const type = document.getElementById('clerk_request_type').value;
+  const requiredIds = {
+    business_certificate: ['biz_name','biz_owner','biz_address','biz_email','biz_phone','biz_type','biz_description','biz_upload_signature','biz_upload_lease'],
+    public_records: ['pr_name','pr_email','pr_description'],
+    meeting_posting: ['mp_board','mp_contact_email','mp_date','mp_time','mp_location','mp_agenda_title','mp_description','mp_agenda_upload'],
+    general_clerk: ['gc_subject','gc_email','gc_description']
+    ,board_application: ['ba_name','ba_registered','ba_address','ba_phone','ba_email','ba_conflicts','ba_skills','ba_experience','ba_reasons']
+    ,dog_license: ['dog_owner_name','dog_owner_phone','dog_owner_address','dog1_name','dog1_breed','dog1_color','dog1_age','dog1_rabies_exp','dog1_rabies_tag','dog1_type']
+    ,vital_records: ['vr_name1','vr_date1','vr_copies1','vr_requestor_name','vr_requestor_phone','vr_requestor_address','vr_relationship']
+  };
+  const fieldsToCheck = requiredIds[type] || [];
+  for(const id of fieldsToCheck){
+    const el = document.getElementById(id);
+    if(!el || !el.value || (el.type==='file' && !el.files.length)){
+      err.textContent = 'Please complete all required fields marked with *.';
+      err.style.display = 'block'; spinner.style.display='none';
+      return;
+    }
+  }
+  // Additional validation for board application: ensure a board is selected
+  if(type==='board_application'){
+    const boardsChecked = document.querySelectorAll('input[name="ba_boards"]:checked');
+    if(!boardsChecked.length){
+      err.textContent = 'Please select at least one board or committee.';
+      err.style.display = 'block'; spinner.style.display='none';
+      return;
+    }
+  }
+  // Additional validation for vital records request: ensure a record type is selected
+  if(type==='vital_records'){
+    const typesChecked = document.querySelectorAll('input[name="vr_types"]:checked');
+    if(!typesChecked.length){
+      err.textContent = 'Please select at least one record type (Birth, Death or Marriage).';
+      err.style.display = 'block'; spinner.style.display='none';
+      return;
+    }
+    // Ensure certificate 1 has name and date and copies; but required IDs already check; optional: check at least one certificate entry
+  }
+  // Build payload
+  const payload = {form_type:'clerk_request', request_type:type};
+  // Add general certification fields
+  payload.certified = document.getElementById('certify').checked;
+  payload.digital_signature = document.getElementById('digital_sig').value.trim();
+  payload.signature_timestamp = new Date().toISOString();
+  // Add fields based on type
+  function addField(id){ const el=document.getElementById(id); if(!el) return; payload[id] = el.value.trim(); }
+  if(type==='business_certificate'){
+    ['biz_name','biz_owner','biz_address','biz_email','biz_phone','biz_type','biz_description'].forEach(addField);
+    payload.biz_uploads = [];
+    const sigFile = document.getElementById('biz_upload_signature').files[0];
+    const leaseFile = document.getElementById('biz_upload_lease').files[0];
+    const files = [sigFile, leaseFile];
+    for(const f of files){
+      const b64 = await fileToBase64(f);
+      payload.biz_uploads.push({name:f.name,type:f.type,data:b64});
+    }
+  }
+  else if(type==='public_records'){
+    ['pr_name','pr_email','pr_phone','pr_department','pr_description'].forEach(addField);
+    const uploads = Array.from(document.getElementById('pr_uploads').files || []);
+    if(uploads.length){
+      payload.pr_uploads = [];
+      for(const f of uploads.slice(0,6)){
+        const b64 = await fileToBase64(f);
+        payload.pr_uploads.push({name:f.name,type:f.type,data:b64});
+      }
+    }
+  }
+  else if(type==='meeting_posting'){
+    ['mp_board','mp_contact_email','mp_date','mp_time','mp_location','mp_agenda_title','mp_description'].forEach(addField);
+    const agendaFile = document.getElementById('mp_agenda_upload').files[0];
+    if(agendaFile){
+      payload.mp_agenda_upload = {name:agendaFile.name,type:agendaFile.type,data: await fileToBase64(agendaFile)};
+    }
+  }
+  else if(type==='general_clerk'){
+    ['gc_subject','gc_email','gc_description'].forEach(addField);
+    const uploads = Array.from(document.getElementById('gc_uploads').files || []);
+    if(uploads.length){
+      payload.gc_uploads = [];
+      for(const f of uploads.slice(0,6)){
+        payload.gc_uploads.push({name:f.name,type:f.type,data: await fileToBase64(f)});
+      }
+    }
+  }
+  else if(type==='board_application'){
+    // Collect fields for board & committee application
+    ['ba_name','ba_registered','ba_address','ba_phone','ba_alt_phone','ba_email','ba_occupation','ba_conflicts','ba_skills','ba_experience','ba_reasons','ba_board_other'].forEach(addField);
+    // Collect selected boards (checkboxes)
+    const boards = Array.from(document.querySelectorAll('input[name="ba_boards"]:checked')).map(el => el.value);
+    payload.ba_boards = boards;
+    // Collect resume upload if provided
+    const resumeFile = document.getElementById('ba_resume_upload').files[0];
+    if(resumeFile){
+      payload.ba_resume_upload = {name:resumeFile.name,type:resumeFile.type,data: await fileToBase64(resumeFile)};
+    }
+  }
+  else if(type==='dog_license'){
+    // Collect owner information
+    ['dog_owner_name','dog_owner_phone','dog_owner_address','dog_owner_pobox'].forEach(addField);
+    payload.dogs = [];
+    // Helper to collect dog fields
+    function collectDog(prefix){
+      const dog = {};
+      const name = document.getElementById(prefix + '_name').value.trim();
+      const breed = document.getElementById(prefix + '_breed').value.trim();
+      const color = document.getElementById(prefix + '_color').value.trim();
+      const age = document.getElementById(prefix + '_age').value.trim();
+      const clinic = document.getElementById(prefix + '_clinic').value.trim();
+      const rabExp = document.getElementById(prefix + '_rabies_exp').value;
+      const rabTag = document.getElementById(prefix + '_rabies_tag').value.trim();
+      const typeVal = document.getElementById(prefix + '_type').value;
+      // Add to dog object if name provided
+      if(name || breed || color || age || rabExp || rabTag || typeVal){
+        dog.name = name;
+        dog.breed = breed;
+        dog.color = color;
+        dog.age = age;
+        dog.clinic = clinic;
+        dog.rabies_exp = rabExp;
+        dog.rabies_tag = rabTag;
+        dog.sex_status = typeVal;
+        payload.dogs.push(dog);
+      }
+    }
+    // Collect up to 3 dogs
+    collectDog('dog1');
+    collectDog('dog2');
+    collectDog('dog3');
+    // Upload optional files
+    const dUploads = Array.from(document.getElementById('dog_uploads').files || []);
+    if(dUploads.length){
+      payload.dog_uploads = [];
+      for(const f of dUploads.slice(0,6)){
+        payload.dog_uploads.push({name:f.name,type:f.type,data: await fileToBase64(f)});
+      }
+    }
+  }
+  else if(type==='vital_records'){
+    // Collect selected record types
+    const types = Array.from(document.querySelectorAll('input[name="vr_types"]:checked')).map(el => el.value);
+    payload.vr_types = types;
+    // Certificate entries
+    payload.vr_certificates = [];
+    function collectCert(index){
+      const name = document.getElementById('vr_name'+index).value.trim();
+      const date = document.getElementById('vr_date'+index).value;
+      const copies = document.getElementById('vr_copies'+index).value;
+      if(name || date || copies){
+        payload.vr_certificates.push({name_on_certificate:name,date_on_certificate:date,copies:copies});
+      }
+    }
+    // At least certificate 1 will exist due to required fields
+    collectCert(1);
+    collectCert(2);
+    collectCert(3);
+    // Requestor information
+    ['vr_requestor_name','vr_requestor_phone','vr_requestor_address','vr_relationship'].forEach(addField);
+    // Optional uploads
+    const vrUp = Array.from(document.getElementById('vr_uploads').files || []);
+    if(vrUp.length){
+      payload.vr_uploads = [];
+      for(const f of vrUp.slice(0,6)){
+        payload.vr_uploads.push({name:f.name,type:f.type,data: await fileToBase64(f)});
+      }
+    }
+  }
+  // Submit to endpoint
+  try{
+    const res = await fetch(GAS_ENDPOINT, {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify(payload)
+    });
+    const data = await res.json().catch(()=> ({}));
+    spinner.style.display = 'none';
+    if(res.ok && data.ok){
+      ok.style.display = 'block';
+      form.reset();
+      // hide dynamic sections and certification
+      Object.values(sections).forEach(sec => sec.classList.add('hidden'));
+      certSection.classList.add('hidden');
+      requestTypeSelect.value = '';
+      document.getElementById('clerk_request_type').value = '';
+    }else{
+      err.textContent = 'Submission failed. Please try again shortly.';
+      err.style.display = 'block';
+    }
+  }catch(ex){
+    spinner.style.display = 'none';
+    err.textContent = 'Network error. Please try again.';
+    err.style.display = 'block';
+  }
+});
+
+async function fileToBase64(file){
+  return new Promise((resolve,reject)=>{
+    const r = new FileReader();
+    r.onload = ()=> resolve(String(r.result).split(',')[1] || '');
+    r.onerror = reject;
+    r.readAsDataURL(file);
+  });
+}
+</script>
+</body>
+</html>

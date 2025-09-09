@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>SuttonFIX — DPW Services &amp; Permits</title>
+<meta name="description" content="Report an issue or apply for common DPW permits in the Town of Sutton. Route to the right crew and get status updates." />
+<style>
+  :root{
+    --pl-green:#2e7d32;
+    --pl-green-dark:#1b5e20;
+    --ink:#0e1116;
+    --muted:#5a6a72;
+    --bg:#f7f8f9;
+    --card:#ffffff;
+    --warn:#b71c1c;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font:16px/1.45 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+  .wrap{max-width:980px;margin:0 auto;padding:24px}
+  header{display:flex;gap:16px;align-items:center;margin-bottom:18px}
+  header img{width:64px;height:64px;object-fit:contain}
+  h1{font-size:1.9rem;margin:.1em 0}
+  .card{background:var(--card);border:1px solid #e5e8eb;border-radius:12px;box-shadow:0 4px 16px rgba(0,0,0,.04);padding:18px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .grid-1{grid-template-columns:1fr}
+  label{display:block;font-weight:600;margin:8px 0 6px}
+  input[type="text"],input[type="email"],input[type="tel"],input[type="file"],select,textarea{
+    width:100%;padding:10px 12px;border:1px solid #ced4da;border-radius:10px;background:#fff;font:inherit
+  }
+  textarea{min-height:110px;resize:vertical}
+  .hint{color:var(--muted);font-size:.9rem}
+  .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .btn{appearance:none;border:1px solid var(--pl-green-dark);background:var(--pl-green);color:#fff;border-radius:10px;padding:10px 14px;cursor:pointer;font-weight:600}
+  .btn.secondary{background:#fff;color:var(--pl-green-dark)}
+  .btn:disabled{opacity:.65;cursor:not-allowed}
+  details{margin:10px 0 18px}
+  summary{font-weight:600;cursor:pointer}
+  .status{margin-top:12px;padding:12px 14px;border-radius:10px;display:none}
+  .ok{display:block;background:#e8f5e9;border:1px solid #c8e6c9}
+  .err{display:block;background:#ffebee;border:1px solid #ffcdd2;color:var(--warn)}
+  footer{margin:18px 4px;color:var(--muted);font-size:.95rem}
+  .pillbar{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 14px}
+  .pill{padding:8px 10px;border-radius:999px;border:1px solid var(--pl-green-dark);color:#fff;background:var(--pl-green);text-decoration:none;font-size:.92rem}
+  .pill:focus,.pill:hover{background:var(--pl-green-dark)}
+  /* Permit forms additional styling */
+  .permit-form{margin-top:12px}
+  .permit-form label{font-weight:600;margin:6px 0 4px}
+  .permit-form .grid{gap:10px}
+  .permit-form button{margin-top:12px}
+  @media (max-width:720px){ .grid{grid-template-columns:1fr} header{flex-direction:row} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="row">
+    <img id="seal" alt="Town of Sutton seal" src="https://upload.wikimedia.org/wikipedia/commons/2/27/Seal_of_Sutton%2C_Massachusetts.png?20231220025329" />
+    <div>
+      <h1>SuttonFIX</h1>
+      <div class="hint">Report an issue or apply for common permits. We’ll route it to the right crew and keep you posted.</div>
+    </div>
+  </header>
+
+  <!-- Quick-pick categories (prefills the select) -->
+  <nav class="pillbar" aria-label="Common categories">
+    <a class="pill" href="#sf" data-category="roads_sidewalks">Roads &amp; Sidewalks</a>
+    <a class="pill" href="#sf" data-category="trees_row">Trees &amp; Vegetation</a>
+    <a class="pill" href="#sf" data-category="signs_markings">Signs &amp; Markings</a>
+    <a class="pill" href="#sf" data-category="drainage_stormwater">Drainage &amp; Stormwater</a>
+    <a class="pill" href="#sf" data-category="litter_dumping">Litter &amp; Dumping</a>
+    <a class="pill" href="#sf" data-category="sewer">Sewer</a>
+  </nav>
+
+  <details class="card">
+    <summary>Before you report (quick tips)</summary>
+    <ul>
+      <li>Downed lines? Call 911 or your utility first.</li>
+      <li>After-hours storm issues: submit here; crews triage by safety first.</li>
+      <li>Photos help. Add a landmark if no street number exists.</li>
+    </ul>
+  </details>
+
+  <!-- Issue Report Form -->
+  <form id="sf" class="card" novalidate>
+    <h2 style="margin-top:0">Report an Issue / Request Service</h2>
+    <div class="grid">
+      <div>
+        <label for="category">Category *</label>
+        <select id="category" name="category" required>
+          <option value="">Choose…</option>
+          <option value="roads_sidewalks">Roads &amp; Sidewalks</option>
+          <option value="trees_row">Trees &amp; Vegetation (ROW)</option>
+          <option value="signs_markings">Signs &amp; Markings</option>
+          <option value="drainage_stormwater">Drainage &amp; Stormwater</option>
+          <option value="snow_ice">Snow &amp; Ice</option>
+          <option value="litter_dumping">Litter &amp; Illegal Dumping</option>
+          <option value="facilities_grounds">Facilities &amp; Grounds</option>
+          <option value="sewer">Sewer (routing)</option>
+        </select>
+      </div>
+      <div>
+        <label for="subcategory">Subcategory (optional)</label>
+        <input id="subcategory" name="subcategory" type="text" placeholder="e.g., Pothole, Missing sign, Blocked basin" />
+      </div>
+    </div>
+
+    <label for="description">Describe the issue *</label>
+    <textarea id="description" name="description" minlength="12" required placeholder="What’s happening? Include landmarks, direction of travel, etc."></textarea>
+
+    <div class="grid">
+      <div>
+        <label for="address">Street address or nearest landmark</label>
+        <input id="address" name="address" type="text" placeholder="123 Main St or ‘near ballfield gate’" />
+      </div>
+      <div>
+        <label>GPS (optional)</label>
+        <div class="row">
+          <input id="lat" name="lat" type="text" inputmode="decimal" placeholder="lat" style="max-width:46%" />
+          <input id="lng" name="lng" type="text" inputmode="decimal" placeholder="lng" style="max-width:46%" />
+          <button id="geo" type="button" class="btn secondary">Use my location</button>
+        </div>
+        <div class="hint">Using GPS is optional but helpful for pinpointing.</div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div>
+        <label for="reporter_name">Your name *</label>
+        <input id="reporter_name" name="reporter_name" type="text" required />
+      </div>
+      <div>
+        <label for="reporter_email">Email *</label>
+        <input id="reporter_email" name="reporter_email" type="email" required />
+      </div>
+    </div>
+
+    <div class="grid">
+      <div>
+        <label for="reporter_phone">Phone (optional)</label>
+        <input id="reporter_phone" name="reporter_phone" type="tel" />
+      </div>
+      <div>
+        <label for="priority_hint">Priority</label>
+        <select id="priority_hint" name="priority_hint">
+          <option value="normal">Normal</option>
+          <option value="high">High (safety-related)</option>
+          <option value="low">Low</option>
+        </select>
+      </div>
+    </div>
+
+    <label for="photo">Photo(s) (optional)</label>
+    <input id="photo" name="photo" type="file" accept="image/*" multiple />
+
+    <div class="hint" style="margin:8px 0 14px">
+      By submitting, you understand this submission may be a public record. Please avoid sensitive information.
+    </div>
+
+    <div class="row">
+      <button class="btn" id="submit">Submit report</button>
+      <button class="btn secondary" type="reset">Reset</button>
+      <div id="spinner" class="hint" aria-live="polite" style="display:none">Submitting…</div>
+    </div>
+
+    <div id="ok" class="status ok" role="status">Thanks! We received your report. Check your email for a confirmation.</div>
+    <div id="err" class="status err" role="alert">Sorry, something went wrong. Please try again in a minute.</div>
+  </form>
+
+  <!-- Permit Forms Section -->
+  <div class="card">
+    <h2 style="margin-top:0">Apply for a Permit</h2>
+    <p class="hint">Select and complete the permit form you need. Submitted applications are routed to the DPW for processing.</p>
+    <!-- Road Opening Permit -->
+    <details>
+      <summary>Road Opening Permit</summary>
+      <form id="road_permit_form" class="permit-form" novalidate>
+        <input type="hidden" name="permit_type" value="road_opening" />
+        <div class="grid">
+          <div>
+            <label for="rop_applicant_name">Applicant Name *</label>
+            <input id="rop_applicant_name" name="applicant_name" type="text" required />
+          </div>
+          <div>
+            <label for="rop_applicant_phone">Applicant Phone *</label>
+            <input id="rop_applicant_phone" name="applicant_phone" type="tel" required />
+          </div>
+        </div>
+        <div class="grid">
+          <div>
+            <label for="rop_applicant_address">Applicant Address *</label>
+            <input id="rop_applicant_address" name="applicant_address" type="text" required />
+          </div>
+          <div>
+            <label for="rop_date">Date of Application *</label>
+            <input id="rop_date" name="date_of_application" type="date" required />
+          </div>
+        </div>
+        <div class="grid">
+          <div>
+            <label for="rop_location">Proposed Road Opening Location *</label>
+            <input id="rop_location" name="location" type="text" required />
+          </div>
+          <div>
+            <label for="rop_contractor">Contractor Name *</label>
+            <input id="rop_contractor" name="contractor_name" type="text" required />
+          </div>
+        </div>
+        <div class="grid">
+          <div>
+            <label for="rop_contractor_address">Contractor Address *</label>
+            <input id="rop_contractor_address" name="contractor_address" type="text" required />
+          </div>
+          <div>
+            <label for="rop_digsafe">Dig Safe #</label>
+            <input id="rop_digsafe" name="dig_safe_number" type="text" />
+          </div>
+        </div>
+        <div class="grid">
+          <div>
+            <label>Certificate of Insurance *</label>
+            <select name="certificate_of_insurance" required>
+              <option value="">Select</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+          <div>
+            <label>Bond Received *</label>
+            <select name="bond_received" required>
+              <option value="">Select</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+        </div>
+        <label for="rop_notes">Additional Notes / Description</label>
+        <textarea id="rop_notes" name="notes" placeholder="Describe work scope, schedule, etc."></textarea>
+        <button class="btn" type="submit">Submit Road Opening Application</button>
+        <div id="rop_ok" class="status ok" role="status">Thank you! Your road opening permit application has been submitted.</div>
+        <div id="rop_err" class="status err" role="alert">There was an error submitting your road opening application. Please try again.</div>
+      </form>
+    </details>
+    <!-- Drain Layer License -->
+    <details>
+      <summary>Drain Layer’s License</summary>
+      <form id="drain_permit_form" class="permit-form" novalidate>
+        <input type="hidden" name="permit_type" value="drain_license" />
+        <div class="grid">
+          <div>
+            <label for="dl_applicant_name">Applicant Name *</label>
+            <input id="dl_applicant_name" name="applicant_name" type="text" required />
+          </div>
+          <div>
+            <label for="dl_company_name">Company / Employer *</label>
+            <input id="dl_company_name" name="company_name" type="text" required />
+          </div>
+        </div>
+        <div class="grid">
+          <div>
+            <label for="dl_applicant_address">Address *</label>
+            <input id="dl_applicant_address" name="address" type="text" required />
+          </div>
+          <div>
+            <label for="dl_email">Email *</label>
+            <input id="dl_email" name="email" type="email" required />
+          </div>
+        </div>
+        <div class="grid">
+          <div>
+            <label for="dl_phone">Phone *</label>
+            <input id="dl_phone" name="phone" type="tel" required />
+          </div>
+          <div>
+            <label for="dl_experience">Years of experience *</label>
+            <input id="dl_experience" name="experience" type="number" min="0" required />
+          </div>
+        </div>
+        <label for="dl_notes">Describe your experience installing drain lines</label>
+        <textarea id="dl_notes" name="notes" placeholder="List projects, certifications, or references"></textarea>
+        <div class="grid">
+          <div>
+            <label>Certificate of Insurance *</label>
+            <select name="certificate_of_insurance" required>
+              <option value="">Select</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+          <div>
+            <label>Copy of Bond *</label>
+            <select name="bond_received" required>
+              <option value="">Select</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn" type="submit">Submit Drain License Application</button>
+        <div id="dl_ok" class="status ok" role="status">Thank you! Your drain layer’s license application has been submitted.</div>
+        <div id="dl_err" class="status err" role="alert">There was an error submitting your drain license application. Please try again.</div>
+      </form>
+    </details>
+    <!-- Sewer Connection Application -->
+    <details>
+      <summary>Sewer Connection Application</summary>
+      <form id="sewer_permit_form" class="permit-form" novalidate>
+        <input type="hidden" name="permit_type" value="sewer_connection" />
+        <div class="grid">
+          <div>
+            <label for="se_property_location">Property Location *</label>
+            <input id="se_property_location" name="property_location" type="text" required />
+          </div>
+          <div>
+            <label for="se_map_parcel">Map &amp; Parcel</label>
+            <input id="se_map_parcel" name="map_parcel" type="text" />
+          </div>
+        </div>
+        <div class="grid">
+          <div>
+            <label for="se_subdivision">Subdivision</label>
+            <input id="se_subdivision" name="subdivision" type="text" />
+          </div>
+          <div>
+            <label for="se_lot">Lot #</label>
+            <input id="se_lot" name="lot_number" type="text" />
+          </div>
+        </div>
+        <div class="grid">
+          <div>
+            <label for="se_owner_name">Property Owner *</label>
+            <input id="se_owner_name" name="owner_name" type="text" required />
+          </div>
+          <div>
+            <label for="se_mailing">Mailing Address *</label>
+            <input id="se_mailing" name="mailing_address" type="text" required />
+          </div>
+        </div>
+        <div class="grid">
+          <div>
+            <label for="se_agent">Agent for Owner (optional)</label>
+            <input id="se_agent" name="agent_name" type="text" />
+          </div>
+          <div>
+            <label for="se_service_type">Service Type *</label>
+            <select id="se_service_type" name="service_type" required>
+              <option value="">Select</option>
+              <option value="residential">Residential</option>
+              <option value="commercial">Commercial</option>
+              <option value="industrial">Industrial</option>
+            </select>
+          </div>
+        </div>
+        <div class="grid">
+          <div>
+            <label for="se_max_persons">Maximum # of persons (residence)</label>
+            <input id="se_max_persons" name="max_persons" type="number" min="0" />
+          </div>
+          <div>
+            <label for="se_bedrooms">Number of bedrooms (residence)</label>
+            <input id="se_bedrooms" name="bedrooms" type="number" min="0" />
+          </div>
+        </div>
+        <div class="grid">
+          <div>
+            <label for="se_firm_name">Authorized Firm Performing Work *</label>
+            <input id="se_firm_name" name="firm_name" type="text" required />
+          </div>
+          <div>
+            <label for="se_firm_phone">Firm Phone *</label>
+            <input id="se_firm_phone" name="firm_phone" type="tel" required />
+          </div>
+        </div>
+        <label for="se_notes">Additional Notes / Comments</label>
+        <textarea id="se_notes" name="notes" placeholder="Include any details about your sewer connection project"></textarea>
+        <button class="btn" type="submit">Submit Sewer Application</button>
+        <div id="se_ok" class="status ok" role="status">Thank you! Your sewer connection application has been submitted.</div>
+        <div id="se_err" class="status err" role="alert">There was an error submitting your sewer application. Please try again.</div>
+      </form>
+    </details>
+  </div>
+
+  <footer>
+    Town of Sutton • 4 Uxbridge Road, Sutton, MA 01590 • (508) 917-7000
+  </footer>
+</div>
+
+<script>
+/* ======= CONFIG ======= */
+// Replace with your Apps Script web app endpoint (doPost)
+const GAS_ENDPOINT = 'https://script.google.com/macros/s/YOUR-DEPLOYMENT-ID/exec';
+
+/* ======= Prefill category when clicking pills ======= */
+document.querySelectorAll('.pill').forEach(pill => {
+  pill.addEventListener('click', (e) => {
+    const cat = pill.dataset.category;
+    const sel = document.getElementById('category');
+    if(sel) sel.value = cat;
+  });
+});
+
+/* ======= Prefill category from URL ======= */
+(function prefill(){
+  const p = new URLSearchParams(location.search);
+  const cat = p.get('category');
+  if(cat){ const sel = document.getElementById('category'); if(sel) sel.value = cat; }
+})();
+
+/* ======= Geolocation helper ======= */
+document.getElementById('geo').addEventListener('click', async () => {
+  try{
+    if(!navigator.geolocation) return alert('Geolocation not supported on this device/browser.');
+    document.getElementById('geo').disabled = true;
+    navigator.geolocation.getCurrentPosition(pos=>{
+      document.getElementById('lat').value = pos.coords.latitude.toFixed(6);
+      document.getElementById('lng').value = pos.coords.longitude.toFixed(6);
+      document.getElementById('geo').disabled = false;
+    }, err=>{
+      alert('Could not get location: ' + err.message);
+      document.getElementById('geo').disabled = false;
+    }, {enableHighAccuracy:true, timeout:10000, maximumAge:0});
+  }catch(e){ console.error(e); }
+});
+
+/* ======= Main Issue Submit handler ======= */
+document.getElementById('sf').addEventListener('submit', async (e)=>{
+  e.preventDefault();
+  const form = e.currentTarget;
+  const spinner = document.getElementById('spinner');
+  const ok = document.getElementById('ok');
+  const err = document.getElementById('err');
+  ok.style.display = 'none'; err.style.display = 'none';
+  if(!form.reporter_email.value || !form.reporter_name.value || !form.description.value || !form.category.value){
+    err.textContent = 'Please complete the required fields (Category, Description, Name, Email).';
+    err.style.display = 'block'; return;
+  }
+  const payload = {
+    form_type:'issue_report',
+    category: form.category.value,
+    subcategory: form.subcategory.value.trim(),
+    description: form.description.value.trim(),
+    address: form.address.value.trim(),
+    lat: form.lat.value.trim(),
+    lng: form.lng.value.trim(),
+    reporter_name: form.reporter_name.value.trim(),
+    reporter_email: form.reporter_email.value.trim(),
+    reporter_phone: form.reporter_phone.value.trim(),
+    priority_hint: form.priority_hint.value
+  };
+  const files = Array.from(form.photo.files || []);
+  if(files.length){
+    payload.photos = [];
+    for(const f of files.slice(0,6)){
+      const b64 = await fileToBase64(f);
+      payload.photos.push({name:f.name, type:f.type, data:b64});
+    }
+  }
+  spinner.style.display = 'inline';
+  try{
+    const res = await fetch(GAS_ENDPOINT, {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify(payload)
+    });
+    const data = await res.json().catch(()=> ({}));
+    spinner.style.display = 'none';
+    if(res.ok && data.ok){
+      ok.style.display = 'block';
+      form.reset();
+    }else{
+      err.textContent = 'Submission failed. Please try again shortly.';
+      err.style.display = 'block';
+    }
+  }catch(ex){
+    spinner.style.display = 'none';
+    err.textContent = 'Network error. Please try again.';
+    err.style.display = 'block';
+  }
+});
+
+/* ======= Permit form submission (generic) ======= */
+['road_permit_form','drain_permit_form','sewer_permit_form'].forEach(formId => {
+  const form = document.getElementById(formId);
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const okEl = form.querySelector('.ok');
+    const errEl = form.querySelector('.err');
+    okEl.style.display = 'none'; errEl.style.display = 'none';
+    // Basic required validation
+    const invalid = Array.from(form.elements).some(el => el.required && !el.value.trim());
+    if(invalid){ errEl.textContent = 'Please complete all required fields.'; errEl.style.display = 'block'; return; }
+    const payload = {form_type:'permit_application'};
+    Array.from(form.elements).forEach(el => {
+      if(!el.name) return;
+      if(el.type==='file') return;
+      payload[el.name] = el.value.trim();
+    });
+    try{
+      const res = await fetch(GAS_ENDPOINT, {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify(payload)
+      });
+      const data = await res.json().catch(()=> ({}));
+      if(res.ok && data.ok){
+        okEl.style.display = 'block';
+        form.reset();
+      }else{
+        errEl.textContent = 'Submission failed. Please try again shortly.';
+        errEl.style.display = 'block';
+      }
+    }catch(err){
+      errEl.textContent = 'Network error. Please try again.';
+      errEl.style.display = 'block';
+    }
+  });
+});
+
+async function fileToBase64(file){
+  return new Promise((resolve,reject)=>{
+    const r = new FileReader();
+    r.onload = ()=> resolve(String(r.result).split(',')[1] || '');
+    r.onerror = reject;
+    r.readAsDataURL(file);
+  });
+}
+</script>
+</body>
+</html>
