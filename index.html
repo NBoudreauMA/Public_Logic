@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="en" data-theme="auto" class="no-js">
+<html lang="en" data-theme="light" class="no-js">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>PublicLogic™ — Smarter Systems. Stronger Communities.</title>
-  <meta name="description" content="PublicLogic™ modernizes Massachusetts town services with compliance-first, staff-friendly frameworks that keep municipal ownership and control. Built by a Town Administrator, for towns." />
+  <meta name="description" content="PublicLogic™ modernizes municipal services with compliance-first, staff-friendly frameworks that keep town ownership and control." />
   <link rel="icon" href="logo.png" type="image/png" />
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -12,38 +12,24 @@
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
 
+<!-- HEADER (logob.png in the corner; acts as Home) -->
 <header class="site-header" role="banner">
   <div class="container site-header__inner">
-    <a class="brand" href="/" aria-label="PublicLogic home">
-      <img src="logo.png" alt="PublicLogic logo" width="48" height="48" />
-      <span class="brand-text">Public_Logic</span>
+    <a class="brand brand--corner" href="/" aria-label="PublicLogic home">
+      <img src="logob.png" alt="PublicLogic icon" class="brand__logo" width="44" height="44" />
+      <span class="brand__text">Public_Logic</span>
     </a>
 
-    <details class="site-nav site-nav--mobile">
-      <summary class="site-nav__summary" aria-controls="nav-mobile">Menu</summary>
-      <nav id="nav-mobile" class="site-nav__panel" aria-label="Mobile">
-        <ul class="site-nav__list">
-          <li><a href="#values">About</a></li>
-          <li><a href="#framework">Framework</a></li>
-          <li><a href="#modules">Modules</a></li>
-          <li><a href="notes.html">Field Notes</a></li>
-          <li><a href="partners.html">Partners</a></li>
-          <li><a class="btn btn--primary" href="#survey">Take the Survey</a></li>
-        </ul>
-      </nav>
-    </details>
-
-    <nav class="site-nav site-nav--desktop" aria-label="Primary">
+    <nav class="site-nav" aria-label="Primary">
       <ul class="site-nav__list">
         <li><a href="#values">About</a></li>
         <li><a href="#framework">Framework</a></li>
         <li><a href="#modules">Modules</a></li>
         <li><a href="notes.html">Field Notes</a></li>
         <li><a href="partners.html">Partners</a></li>
+        <li><a class="btn btn--primary" href="#survey">Take the Survey</a></li>
       </ul>
     </nav>
-
-    <a class="site-header__cta btn btn--primary" href="#survey">Take the Survey</a>
   </div>
 </header>
 
@@ -51,9 +37,9 @@
 <section class="hero hero--centered" id="top">
   <div class="container hero__inner text-center">
     <img src="logo.png" alt="PublicLogic logo" class="hero__logo" width="220" height="220" loading="eager" />
-    <h1 class="h1">Smarter Systems.<br />Stronger Communities.</h1>
-    <p class="lead mt-sm">
-      PublicLogic™ helps Massachusetts communities modernize services with auditable workflows that keep 
+    <h1 class="h1">Smarter Systems. Stronger Communities.</h1>
+    <p class="lead">
+      Practitioner-built modernization for Massachusetts towns with auditable workflows that keep
       <em>municipal ownership & control</em>.
     </p>
 
@@ -117,13 +103,12 @@
       <h2>The PublicLogic Framework</h2>
       <div class="grid grid--2 mt-lg">
         <div class="about__copy">
-          <p class="lead"><strong>VAULT™</strong> governs routing, retention, transparency, and auditability across modules.  
-            <strong>ARCHIEVE™</strong> enforces rules and holds based on state retention schedules.  
-            (High-level only; mechanics are proprietary.)</p>
+          <p class="lead"><strong>VAULT™</strong> governs routing, retention, transparency, and auditability across modules. 
+          <strong>ARCHIEVE™</strong> enforces rules and holds based on state retention schedules. (High-level only; mechanics are proprietary.)</p>
           <details class="accordion">
             <summary>How vendors plug in without lock-in</summary>
             <div class="accordion__content">
-              PublicLogic defines the process and compliance layer; vendors (e.g., Polimorphic, CivicOptimize) provide the UI.  
+              PublicLogic defines the process and compliance layer; vendors (e.g., Polimorphic, CivicOptimize) provide the UI.
               Towns keep IDs, records, and audit logs.
             </div>
           </details>
@@ -155,8 +140,7 @@
     <div class="container text-center">
       <h2>PublicLogic Survey</h2>
       <p class="lead">
-        Help us understand how towns across Massachusetts are approaching modernization, automation, and compliance.  
-        Take the quick PublicLogic Survey and share your perspective.
+        Help us understand how towns across Massachusetts are approaching modernization, automation, and compliance.
       </p>
       <a class="btn btn--primary" href="#" target="_blank" rel="noopener">Launch the Survey</a>
       <p class="muted mt-lg">We’ll add the live survey link here soon.</p>
@@ -182,6 +166,5 @@
 </footer>
 
 <script src="app.js" defer></script>
-<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
