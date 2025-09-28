@@ -1,367 +1,144 @@
-/*
-  PublicLogic™ — styles.css
-  - WCAG 2.1 AA
-  - Mobile-first
-  - System font stack; no external calls
-*/
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PublicLogic™ — Compliance-First Modernization for Massachusetts Towns</title>
+  <meta name="description" content="PublicLogic™ helps Massachusetts towns modernize safely. Built by practitioners, for practitioners. Compliance-first frameworks that keep municipal ownership and control." />
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+<a href="#main" class="skip">Skip to main content</a>
 
-/* =========================
-   CSS Variables (Design Tokens)
-   ========================= */
-:root {
-  --pl-ink: #1F2A44;         /* ink */
-  --pl-teal: #2EC4B6;        /* accent */
-  --pl-orange: #FF7A59;      /* cta */
-  --pl-bg: #FFFFFF;          /* base */
-  --pl-bg-alt: #F5F7FA;
-  --pl-text: #1C2333;
-  --pl-border: #E5E9F2;
+<header class="site-header" role="banner">
+  <div class="wrap">
+    <nav class="nav" aria-label="Primary">
+      <a class="brand" href="/">
+        <img src="assets/logo.svg" alt="PublicLogic logo" width="32" height="32" />
+        <span>PublicLogic™</span>
+      </a>
+      <ul class="menu">
+        <li><a href="framework.html">Framework</a></li>
+        <li><a href="modules.html">Modules</a></li>
+        <li><a href="notes.html">Field Notes</a></li>
+        <li><a href="partners.html">Partners</a></li>
+        <li><a href="#contact" class="button primary">Book Readiness Scan</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
-  --radius: 10px;
-  --shadow-1: 0 2px 8px rgba(0,0,0,0.06);
-  --shadow-2: 0 8px 24px rgba(0,0,0,0.08);
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="wrap grid-2">
+    <div>
+      <h1 class="h1">Modernizing town government — without risking compliance, staff comfort, or control.</h1>
+      <p class="lede">
+        PublicLogic™ is a practitioner-led framework built by <strong>Nathan Boudreau, MPA, MCPPO</strong> — Town Administrator of Hubbardston, MA.
+        We modernize municipal services safely, clearly, and on your terms.
+      </p>
+      <div class="cta-row">
+        <a href="#contact" class="button primary">Start a Readiness Scan</a>
+        <a href="notes.html" class="button">Read Field Notes</a>
+      </div>
+      <ul class="meta">
+        <li>Pilots: HubbCONNECT · SuttonCLERK · SuttonFIX</li>
+        <li>Aligned with M.G.L. c.30A, c.66 §10, c.140/c.138, c.143, 201 CMR 17.00, ADA</li>
+      </ul>
+    </div>
+    <div aria-hidden="true">
+      <img src="assets/pattern.svg" alt="" class="hero-art" />
+    </div>
+  </div>
+</section>
 
-  /* Type scale */
-  --step-6: 3.000rem;
-  --step-5: 2.250rem;
-  --step-4: 1.750rem;
-  --step-3: 1.500rem;
-  --step-2: 1.250rem;
-  --step-1: 1.125rem;
-  --step-0: 1.000rem;
+<!-- THREE VALUES -->
+<section class="section" id="values">
+  <div class="wrap">
+    <h2>PublicLogic at a glance</h2>
+    <div class="cards three">
+      <article class="card">
+        <h3>Compliance-first</h3>
+        <p>Built around Massachusetts law — Open Meeting Law, Public Records, Licensing, and ADA. Every action is traceable, archivable, and defensible.</p>
+      </article>
+      <article class="card">
+        <h3>Staff-friendly</h3>
+        <p>We protect your time. Less paperwork, clearer workflows, and built-in QA. Staff stay in control, not in the dark.</p>
+      </article>
+      <article class="card">
+        <h3>Grant-aligned</h3>
+        <p>Eligible for Community Compact, One Stop for Growth, MassWorks, LRPIP, and Shared Services funding.</p>
+      </article>
+    </div>
+  </div>
+</section>
 
-  /* Focus */
-  --focus: 2px solid #0B5FFF;
+<!-- PROOF: PILOTS -->
+<section class="section alt" id="proof">
+  <div class="wrap">
+    <h2>Pilots proving it works</h2>
+    <div class="cards three">
+      <article class="card">
+        <h3>HubbCONNECT — Hubbardston</h3>
+        <p>30% of services digitized, 100% compliance alignment. Transparent PRR, FIX, and AGENDA workflows running on town-owned systems.</p>
+      </article>
+      <article class="card">
+        <h3>SuttonCLERK</h3>
+        <p>Licensing and public records workflows reimagined. Clerk staff protected by clear routing, legal citations, and retention enforcement.</p>
+      </article>
+      <article class="card">
+        <h3>SuttonFIX</h3>
+        <p>Resident-facing service requests that reduce calls and missed deadlines. Tiered SLAs create fairness and transparency.</p>
+      </article>
+    </div>
+  </div>
+</section>
 
-  /* Content max width */
-  --container: 1120px;
-}
+<!-- FRAMEWORK SNAPSHOT -->
+<section class="section" id="framework">
+  <div class="wrap grid-2">
+    <div>
+      <h2>The PublicLogic Framework</h2>
+      <p class="lede">We standardize how municipal actions move, get stored, and stay auditable — through VAULT™ and ARCHIEVE™ logic layers. Vendors integrate. Towns retain control.</p>
+      <ul class="meta">
+        <li><strong>VAULT™</strong>: Verified Automation & Unified Logic for Towns — routing, retention, transparency, auditability.</li>
+        <li><strong>ARCHIEVE™</strong>: Rules & retention enforcement engine (high-level only).</li>
+      </ul>
+      <p><a href="framework.html" class="button">See Framework</a></p>
+    </div>
+    <div aria-hidden="true">
+      <img src="assets/pattern.svg" alt="PublicLogic architecture diagram placeholder" />
+    </div>
+  </div>
+</section>
 
-/* Dark theme (auto respects prefers-color-scheme) */
-@media (prefers-color-scheme: dark) {
-  html[data-theme="auto"] {
-    --pl-bg: #0F1423;
-    --pl-bg-alt: #111829;
-    --pl-text: #E6ECFF;
-    --pl-border: #232B44;
-    --pl-ink: #EAF0FF;
-    --shadow-1: 0 2px 8px rgba(0,0,0,0.5);
-    --shadow-2: 0 8px 24px rgba(0,0,0,0.6);
-  }
-}
+<!-- CONTACT -->
+<section class="section alt" id="contact">
+  <div class="wrap grid-2">
+    <div>
+      <h2>Book your Readiness Scan</h2>
+      <p>Start with a 90-minute working session to map your current processes, identify risk, and define a quick win pilot (CLERK or FIX).</p>
+      <p><a href="mailto:info@publiclogic.local" class="button primary">Email to schedule</a></p>
+      <p class="meta"><strong>IP Notice:</strong> VAULT™ and ARCHIEVE™ are described at a high level. Implementation mechanics are proprietary to PublicLogic™.</p>
+    </div>
+    <figure class="photo">
+      <img src="https://placehold.co/960x640?text=Town+Hall+Exterior" alt="Town hall exterior with accessible ramp" />
+      <figcaption>Modernization done the municipal way — practical, transparent, resident-clear.</figcaption>
+    </figure>
+  </div>
+</section>
 
-/* Light / Dark explicit */
-html[data-theme="light"] {
-  --pl-bg: #FFFFFF;
-  --pl-bg-alt: #F5F7FA;
-  --pl-text: #1C2333;
-  --pl-border: #E5E9F2;
-  --pl-ink: #1F2A44;
-}
-html[data-theme="dark"] {
-  --pl-bg: #0F1423;
-  --pl-bg-alt: #111829;
-  --pl-text: #E6ECFF;
-  --pl-border: #232B44;
-  --pl-ink: #EAF0FF;
-}
+<!-- FOOTER -->
+<footer class="site-foot">
+  <div class="wrap">
+    <p>© <span id="year"></span> PublicLogic™ · Built for Massachusetts towns · WCAG 2.1 AA compliant · 201 CMR 17.00 aligned</p>
+  </div>
+</footer>
 
-/* High Contrast mode */
-html.hc {
-  --pl-bg: #000000;
-  --pl-bg-alt: #000000;
-  --pl-text: #FFFFFF;
-  --pl-border: #FFFFFF;
-  --pl-teal: #00FFD1;
-  --pl-orange: #FFB000;
-  --focus: 3px solid #FFFF00;
-}
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
 
-/* =========================
-   Base / Resets
-   ========================= */
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  * { animation: none !important; transition: none !important; }
-}
-
-body {
-  margin: 0;
-  color: var(--pl-text);
-  background: var(--pl-bg);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-               "Helvetica Neue", Arial, "Noto Sans",
-               "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  font-size: 16px;
-  line-height: 1.6;
-  text-rendering: optimizeLegibility;
-  -webkit-text-size-adjust: 100%;
-}
-
-img { max-width: 100%; height: auto; }
-img[loading="lazy"] { background: linear-gradient(90deg, #0000, #0001, #0000); }
-a { color: var(--pl-ink); text-decoration-thickness: 2px; text-underline-offset: 2px; }
-a:hover { text-decoration: none; }
-
-h1, h2, h3, h4 { line-height: 1.2; margin: 0 0 0.5em; color: var(--pl-ink); }
-h1 { font-size: var(--step-6); }
-h2 { font-size: var(--step-4); }
-h3 { font-size: var(--step-2); }
-h4 { font-size: var(--step-1); }
-
-.lead { font-size: var(--step-1); color: var(--pl-text); }
-
-.container {
-  width: min(100% - 2rem, var(--container));
-  margin-inline: auto;
-}
-
-.section { padding: 3.5rem 0; }
-.mt-lg { margin-top: 2rem; }
-.muted { color: #5f6b85; }
-.disclaimer { font-size: 0.9375rem; color: #667; }
-
-/* Skip link */
-.skip-link {
-  position: absolute; left: 0; top: -40px;
-  background: #fff; color: #000; padding: .5rem 1rem; border-radius: 0 0 8px 0;
-  box-shadow: var(--shadow-1);
-}
-.skip-link:focus { top: 0; outline: var(--focus); }
-
-/* Focus styles */
-:focus-visible { outline: var(--focus); outline-offset: 3px; }
-
-/* Buttons */
-.btn {
-  display: inline-flex; align-items: center; justify-content: center;
-  min-height: 44px; padding: .75rem 1.1rem; border-radius: var(--radius);
-  font-weight: 600; text-decoration: none; border: 2px solid transparent;
-  cursor: pointer;
-}
-.btn--primary { background: var(--pl-orange); color: #111; }
-.btn--primary:hover { filter: brightness(0.95); }
-.btn--secondary { background: var(--pl-teal); color: #102; }
-.btn--secondary:hover { filter: brightness(0.95); }
-.btn--ghost { background: transparent; border-color: var(--pl-border); color: var(--pl-ink); }
-
-/* Header / Nav */
-.site-header { position: sticky; top: 0; z-index: 50; background: var(--pl-bg); border-bottom: 1px solid var(--pl-border); }
-.site-header__inner { display: flex; align-items: center; gap: 1rem; padding: .75rem 0; }
-.brand { display: inline-flex; align-items: center; min-height: 44px; }
-.site-header__cta { margin-left: auto; display: none; }
-
-.site-nav { margin-left: auto; }
-.site-nav--desktop { display: none; }
-.site-nav__list { list-style: none; display: flex; padding: 0; margin: 0; gap: .75rem; flex-wrap: wrap; }
-.site-nav__list a { padding: .5rem .75rem; border-radius: 8px; display: inline-block; min-height: 44px; }
-.site-nav__list a:hover { background: var(--pl-bg-alt); }
-.site-nav__summary {
-  list-style: none; padding: .5rem .75rem; border-radius: 8px; min-height: 44px; cursor: pointer;
-  border: 1px solid var(--pl-border); user-select: none;
-}
-.site-nav__panel { padding: .5rem 0; }
-
-.theme-controls { margin-left: .5rem; }
-.theme-controls__set { display: flex; align-items: center; gap: .25rem; border: 0; padding: 0; margin: 0; }
-.theme-controls__option { display: inline-flex; align-items: center; gap: .25rem; padding: .25rem .5rem; border-radius: 6px; }
-.theme-controls__option input { width: 1rem; height: 1rem; }
-.theme-controls__hc { margin-left: .25rem; }
-
-/* Hero */
-.hero {
-  background-image:
-    radial-gradient(1200px 600px at 80% -20%, rgba(46,196,182,0.15), transparent 60%),
-    radial-gradient(800px 400px at -10% 0%, rgba(255,122,89,0.12), transparent 50%),
-    linear-gradient(180deg, var(--pl-bg), var(--pl-bg));
-  padding: 4rem 0 3rem;
-  border-bottom: 1px solid var(--pl-border);
-}
-.hero__inner { text-align: left; }
-.hero__ctas { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1rem; }
-
-/* Cards / Grids */
-.grid { display: grid; gap: 1rem; }
-.grid--2 { grid-template-columns: repeat(1, 1fr); }
-.grid--3 { grid-template-columns: repeat(1, 1fr); }
-
-@media (min-width: 640px) {
-  .grid--2 { grid-template-columns: repeat(2, 1fr); }
-}
-@media (min-width: 900px) {
-  .grid--3 { grid-template-columns: repeat(3, 1fr); }
-  .site-nav--desktop { display: block; }
-  .site-nav--mobile { display: none; }
-  .site-header__cta { display: inline-flex; }
-}
-
-.card {
-  border: 1.5px solid var(--pl-border);
-  background: var(--pl-bg);
-  border-radius: var(--radius);
-  padding: 1rem;
-  box-shadow: var(--shadow-1);
-}
-.card--solution { border-left: 4px solid var(--pl-teal); }
-
-.card__eyebrow { font-size: .85rem; color: #5f6b85; margin-bottom: 0.25rem; }
-.card__title { font-size: var(--step-2); }
-
-/* Features / Modules */
-.feature { padding: 1rem; border: 1.5px solid var(--pl-border); border-radius: var(--radius); background: var(--pl-bg); box-shadow: var(--shadow-1); }
-
-.modules .module { padding: 1rem; border: 1.5px solid var(--pl-border); border-radius: var(--radius); background: var(--pl-bg); box-shadow: var(--shadow-1); }
-.module__title { margin-bottom: .25rem; }
-
-/* Accordion */
-.accordion summary {
-  cursor: pointer;
-  list-style: none;
-  position: relative;
-  padding: .5rem 2rem .5rem .5rem;
-  border-radius: 8px;
-  border: 1.5px solid var(--pl-border);
-  min-height: 44px;
-}
-.accordion summary::marker { content: ""; }
-.accordion summary::after {
-  content: "+";
-  position: absolute; right: .75rem; top: 50%; transform: translateY(-50%);
-  font-weight: 700;
-}
-.accordion[open] summary::after { content: "–"; }
-.accordion__content { padding: .5rem; border-left: 3px solid var(--pl-teal); margin-top: .5rem; }
-
-/* Cases */
-.case__cols { display: grid; gap: 1rem; grid-template-columns: 1fr; }
-@media (min-width: 720px) {
-  .case__cols { grid-template-columns: repeat(3, 1fr); }
-}
-.note { margin-top: .5rem; font-style: italic; color: #58627a; }
-
-/* Partners */
-.partners .partner { text-align: left; padding: 1rem; border: 1.5px solid var(--pl-border); border-radius: var(--radius); background: var(--pl-bg); box-shadow: var(--shadow-1); }
-
-/* Tables */
-.table-wrap { overflow-x: auto; }
-.table { width: 100%; border-collapse: collapse; }
-.table th, .table td { border: 1.5px solid var(--pl-border); padding: .75rem; text-align: left; }
-.table th { background: var(--pl-bg-alt); }
-
-/* About */
-.about__copy p { margin: 0 0 .75rem; }
-
-/* ===== Contact (split) — CodePen-inspired ===== */
-.contact-split {
-  display: grid;
-  gap: 1.25rem;
-  grid-template-columns: 1fr;
-  align-items: start;
-}
-.contact-quick, .contact-form-wrap {
-  border: 1.5px solid var(--pl-border);
-  border-radius: var(--radius);
-  background: var(--pl-bg);
-  box-shadow: var(--shadow-1);
-  padding: 1rem;
-}
-.contact-quick__title, .contact-form__title { margin: 0 0 .5rem; }
-.stack { display: grid; gap: .5rem; }
-.contact-btn {
-  display: inline-flex; align-items: center; gap: .5rem;
-  width: 100%; min-height: 48px; padding: .75rem 1rem;
-  border-radius: 10px; font-weight: 700;
-  border: 2px solid transparent; text-decoration: none;
-}
-.contact-btn--email { background: #F0F7FF; color: #07377F; border-color: #CFE0FF; }
-.contact-btn--calendar { background: #EBFFFB; color: #004A43; border-color: #C6FFF1; }
-.contact-btn--download { background: #FFF4EE; color: #8A2D00; border-color: #FFD8C6; }
-.contact-btn:hover { filter: brightness(0.97); }
-
-.contact-divider {
-  display: none;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-.contact-divider .bar { width: 2px; height: 40px; background: var(--pl-border); }
-.contact-divider .or {
-  display: inline-flex; align-items: center; justify-content: center;
-  width: 42px; height: 42px; border-radius: 50%;
-  margin: .25rem;
-  background: var(--pl-bg-alt); color: #6b7796; font-weight: 800;
-  border: 2px solid var(--pl-border);
-}
-
-@media (min-width: 980px) {
-  .contact-split {
-    grid-template-columns: 1.1fr 0.1fr 1fr;
-    gap: 1.5rem;
-  }
-  .contact-divider { display: flex; flex-direction: column; }
-}
-
-/* Forms */
-.form__grid { align-items: start; }
-.form__field { display: flex; flex-direction: column; gap: .375rem; }
-.form__field--full { grid-column: 1 / -1; }
-.form__field input, .form__field textarea {
-  width: 100%;
-  min-height: 44px;
-  padding: .6rem .75rem;
-  border: 1.5px solid var(--pl-border);
-  border-radius: 8px;
-  background: var(--pl-bg);
-  color: var(--pl-text);
-}
-.form__field textarea { min-height: 140px; }
-.form__field input:focus-visible, .form__field textarea:focus-visible { border-color: var(--pl-teal); outline: var(--focus); }
-.form__error { color: #B00020; min-height: 1.2em; }
-.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
-.form__actions { display: flex; gap: .75rem; margin-top: .5rem; flex-wrap: wrap; }
-.form__note { font-size: .95rem; color: #5f6b85; }
-.form__messages { margin-top: .5rem; }
-
-/* Micro disclosure */
-.micro-info { margin-top: .75rem; }
-.micro-info summary {
-  cursor: pointer; min-height: 44px; padding: .5rem .75rem; border-radius: 8px;
-  border: 1.5px solid var(--pl-border);
-}
-.micro-info[open] summary { background: var(--pl-bg-alt); }
-
-/* Footer */
-.site-footer { border-top: 1px solid var(--pl-border); background: var(--pl-bg-alt); }
-.site-footer__inner { padding: 1.25rem 0; }
-.site-footer__cols { display: grid; gap: 1rem; grid-template-columns: 1fr; }
-@media (min-width: 720px) {
-  .site-footer__cols { grid-template-columns: 2fr 1fr; }
-}
-.footer-links { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: .5rem 1rem; }
-.ip-notice { margin: .75rem 0 0; font-size: .95rem; color: #5f6b85; }
-
-.legal { padding: 2rem 0; background: var(--pl-bg); border-top: 1px solid var(--pl-border); }
-
-/* Cookie banner */
-.cookie { position: sticky; bottom: 0; background: var(--pl-bg-alt); border-top: 1px solid var(--pl-border); box-shadow: var(--shadow-2); }
-.cookie__inner { display: flex; align-items: center; justify-content: space-between; padding: .75rem 0; }
-
-/* Utilities */
-.sr-only {
-  position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;
-  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
-}
-
-/* Print (board-packet friendly) */
-@media print {
-  :root {
-    --pl-bg: #fff; --pl-text: #000; --pl-ink: #000; --pl-border: #000;
-  }
-  * { box-shadow: none !important; text-shadow: none !important; }
-  .site-header, .site-footer .footer-social, .theme-controls, .btn, .cookie, .site-nav { display: none !important; }
-  a::after { content: " (" attr(href) ")"; font-size: .8em; }
-  .section { padding: 1rem 0; }
-  .hero { background: #fff !important; }
-}
+</body>
+</html>
