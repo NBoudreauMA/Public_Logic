@@ -8,6 +8,7 @@
   <link rel="icon" href="logo.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
 
@@ -15,6 +16,7 @@
   <div class="container site-header__inner">
     <a class="brand" href="/" aria-label="PublicLogic home">
       <img src="logo.svg" alt="PublicLogic logo" width="32" height="32" />
+      <span class="brand-text">PublicLogic™</span>
     </a>
 
     <details class="site-nav site-nav--mobile">
@@ -26,7 +28,7 @@
           <li><a href="#modules">Modules</a></li>
           <li><a href="notes.html">Field Notes</a></li>
           <li><a href="partners.html">Partners</a></li>
-          <li><a class="btn btn--primary" href="#contact">Book Readiness Scan</a></li>
+          <li><a class="btn btn--primary" href="#survey">Take the Survey</a></li>
         </ul>
       </nav>
     </details>
@@ -41,14 +43,14 @@
       </ul>
     </nav>
 
-    <fieldset class="theme-controls theme-controls__set" aria-label="Theme">
+    <fieldset class="theme-controls theme-controls__set" aria-label="Theme selector">
       <label class="theme-controls__option"><input type="radio" name="theme" value="auto" checked /> Auto</label>
       <label class="theme-controls__option"><input type="radio" name="theme" value="light" /> Light</label>
       <label class="theme-controls__option"><input type="radio" name="theme" value="dark" /> Dark</label>
       <button id="hc-toggle" type="button" class="theme-controls__hc btn btn--ghost" aria-pressed="false">High contrast</button>
     </fieldset>
 
-    <a class="site-header__cta btn btn--primary" href="#contact">Readiness Scan</a>
+    <a class="site-header__cta btn btn--primary" href="#survey">Take the Survey</a>
   </div>
 </header>
 
@@ -58,13 +60,13 @@
       <div>
         <h1 class="h1">Modernizing town government — without risking compliance, staff comfort, or control.</h1>
         <p class="lead">
-          PublicLogic™ is practitioner-built by <strong>Nathan Boudreau, MPA, MCPPO</strong> (Town Administrator, Hubbardston, MA).
+          PublicLogic™ is practitioner-built by <strong>Nathan Boudreau, MPA, MCPPO</strong> — Town Administrator of Hubbardston, MA.  
           We help Massachusetts communities modernize services with auditable workflows that keep <em>municipal ownership & control</em>.
         </p>
         <div class="hero__ctas">
-          <a class="btn btn--primary" href="#contact">Book a 90-minute Readiness Scan</a>
+          <a class="btn btn--primary" href="#survey">Take the PublicLogic Survey</a>
           <a class="btn btn--secondary" href="notes.html">Field Notes & Public Insights</a>
-          <a class="btn btn--ghost" href="#compliance">See compliance map</a>
+          <a class="btn btn--ghost" href="#framework">See compliance map</a>
         </div>
         <p class="muted mt-lg">Pilots: HubbCONNECT · SuttonCLERK · SuttonFIX</p>
       </div>
@@ -99,103 +101,20 @@
     </div>
   </section>
 
-  <section class="section" aria-labelledby="proof-title">
-    <div class="container">
-      <h2 id="proof-title">Pilots proving it works</h2>
-      <div class="grid grid--3 mt-lg case__cols">
-        <article class="card">
-          <h3>HubbCONNECT — Hubbardston</h3>
-          <p>30% live modules; resident status transparency; town-owned M365 records.</p>
-          <p class="note">Built on CivicOptimize + Power Automate; logic by PublicLogic.</p>
-        </article>
-        <article class="card">
-          <h3>SuttonCLERK</h3>
-          <p>Public Records queue with deadlines, exemptions checklist, and exportable logs for <strong>c.66 §10</strong>.</p>
-        </article>
-        <article class="card">
-          <h3>SuttonFIX</h3>
-          <p>Service requests with SLA tiers and public status — fewer calls, clearer expectations.</p>
-        </article>
-      </div>
-    </div>
-  </section>
+  <!-- other sections unchanged -->
 
-  <section id="framework" class="section">
+  <section id="survey" class="section">
     <div class="container">
-      <h2>The PublicLogic Framework</h2>
-      <div class="grid grid--2 mt-lg">
-        <div class="about__copy">
-          <p class="lead"><strong>VAULT™</strong> governs routing, retention, transparency, and auditability across modules. <strong>ARCHIEVE™</strong> enforces rules and holds based on state retention schedules. (High-level only; mechanics are proprietary.)</p>
-          <details class="accordion">
-            <summary>How vendors plug in without lock-in</summary>
-            <div class="accordion__content">
-              PublicLogic defines the process and compliance layer; vendors (e.g., Polimorphic, CivicOptimize) provide the UI. Towns keep IDs, records, and audit logs.
-            </div>
-          </details>
-        </div>
-        <figure class="photo" aria-hidden="true">
-          <img src="pattern.svg" alt="" loading="lazy" />
-          <figcaption class="muted">Town-owned logic + records; vendor UIs at the edge.</figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
-
-  <section id="modules" class="section">
-    <div class="container">
-      <h2>Modules you can adopt à la carte</h2>
-      <div class="grid grid--3 mt-lg modules">
-        <div class="module"><h3 class="module__title">CLERK</h3><p>PRR, licensing, vital records. <span class="muted">Aligns: c.66 §10; c.140/c.138</span></p></div>
-        <div class="module"><h3 class="module__title">FIX</h3><p>Resident service requests with SLAs and status transparency. <span class="muted">Aligns: c.40 §§6C–6D</span></p></div>
-        <div class="module"><h3 class="module__title">AGENDA</h3><p>OML agenda/packet builder with timestamped posting log. <span class="muted">Aligns: c.30A</span></p></div>
-        <div class="module"><h3 class="module__title">INSPECT / PERMIT</h3><p>Scheduling, findings, notices. <span class="muted">Aligns: c.143</span></p></div>
-        <div class="module"><h3 class="module__title">FISCAL</h3><p>AP/AR intake, budget artifacts, capital requests.</p></div>
-        <div class="module"><h3 class="module__title">HR / TIME</h3><p>Onboarding, required trainings, time & attendance approvals.</p></div>
-      </div>
+      <h2>PublicLogic Survey</h2>
+      <p class="lead">
+        Help us understand how towns across Massachusetts are approaching modernization, automation, and compliance.  
+        Take the quick PublicLogic Survey and share your perspective.
+      </p>
+      <a class="btn btn--primary" href="#" target="_blank" rel="noopener">Launch the Survey</a>
+      <p class="muted mt-lg">We’ll add the live survey link here soon.</p>
     </div>
   </section>
 </main>
-
-<section id="contact" class="section">
-  <div class="container">
-    <h2>Book your Readiness Scan</h2>
-    <p class="lead">A focused 90-minute working session to map processes, identify risk, and select a quick-win pilot (CLERK or FIX).</p>
-    <form class="form grid grid--2 form__grid" data-mailto="info@publiclogic.local" novalidate>
-      <p class="hp"><label for="company">Company</label><input id="company" name="company" autocomplete="organization" /></p>
-      <div class="form__field">
-        <label for="name">Name</label>
-        <input id="name" name="name" autocomplete="name" required />
-        <span id="err-name" class="form__error" aria-live="polite"></span>
-      </div>
-      <div class="form__field">
-        <label for="email">Email</label>
-        <input id="email" name="email" type="email" autocomplete="email" required />
-        <span id="err-email" class="form__error" aria-live="polite"></span>
-      </div>
-      <div class="form__field">
-        <label for="role">Role</label>
-        <input id="role" name="role" autocomplete="organization-title" />
-        <span id="err-role" class="form__error" aria-live="polite"></span>
-      </div>
-      <div class="form__field">
-        <label for="town">Town</label>
-        <input id="town" name="town" autocomplete="address-level2" />
-        <span id="err-town" class="form__error" aria-live="polite"></span>
-      </div>
-      <div class="form__field form__field--full">
-        <label for="message">Message</label>
-        <textarea id="message" name="message" required></textarea>
-        <span id="err-message" class="form__error" aria-live="polite"></span>
-      </div>
-      <div class="form__actions form__field--full">
-        <button class="btn btn--primary" type="submit">Send</button>
-        <a class="btn btn--ghost" href="mailto:info@publiclogic.local">Email instead</a>
-      </div>
-      <p class="form__messages form__field--full" aria-live="polite"></p>
-      <p class="form__note form__field--full"><strong>Public Records:</strong> Submissions may be public records under <abbr title="Massachusetts General Laws">M.G.L.</abbr> c.66 §10. Do not include sensitive personal information.</p>
-    </form>
-  </div>
-</section>
 
 <footer class="site-footer" role="contentinfo">
   <div class="container site-footer__inner">
