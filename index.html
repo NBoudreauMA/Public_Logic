@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PublicLogic™ — Compliance-First Modernization for Massachusetts Towns</title>
+  <title>PublicLogic™ — Smarter Systems. Stronger Communities.</title>
   <meta name="description" content="PublicLogic™ modernizes Massachusetts town services with compliance-first, staff-friendly frameworks that keep municipal ownership and control. Built by a Town Administrator, for towns." />
-  <link rel="icon" href="logo.svg" type="image/svg+xml" />
+  <link rel="icon" href="logo.png" type="image/png" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 
@@ -15,8 +15,8 @@
 <header class="site-header" role="banner">
   <div class="container site-header__inner">
     <a class="brand" href="/" aria-label="PublicLogic home">
-      <img src="logo.svg" alt="PublicLogic logo" width="32" height="32" />
-      <span class="brand-text">PublicLogic™</span>
+      <img src="logo.png" alt="PublicLogic logo" width="48" height="48" />
+      <span class="brand-text">Public_Logic</span>
     </a>
 
     <details class="site-nav site-nav--mobile">
@@ -43,37 +43,27 @@
       </ul>
     </nav>
 
-    <fieldset class="theme-controls theme-controls__set" aria-label="Theme selector">
-      <label class="theme-controls__option"><input type="radio" name="theme" value="auto" checked /> Auto</label>
-      <label class="theme-controls__option"><input type="radio" name="theme" value="light" /> Light</label>
-      <label class="theme-controls__option"><input type="radio" name="theme" value="dark" /> Dark</label>
-      <button id="hc-toggle" type="button" class="theme-controls__hc btn btn--ghost" aria-pressed="false">High contrast</button>
-    </fieldset>
-
     <a class="site-header__cta btn btn--primary" href="#survey">Take the Survey</a>
   </div>
 </header>
 
-<section class="hero" id="top">
-  <div class="container hero__inner">
-    <div class="grid grid--2">
-      <div>
-        <h1 class="h1">Modernizing town government — without risking compliance, staff comfort, or control.</h1>
-        <p class="lead">
-          PublicLogic™ is practitioner-built by <strong>Nathan Boudreau, MPA, MCPPO</strong> — Town Administrator of Hubbardston, MA.  
-          We help Massachusetts communities modernize services with auditable workflows that keep <em>municipal ownership & control</em>.
-        </p>
-        <div class="hero__ctas">
-          <a class="btn btn--primary" href="#survey">Take the PublicLogic Survey</a>
-          <a class="btn btn--secondary" href="notes.html">Field Notes & Public Insights</a>
-          <a class="btn btn--ghost" href="#framework">See compliance map</a>
-        </div>
-        <p class="muted mt-lg">Pilots: HubbCONNECT · SuttonCLERK · SuttonFIX</p>
-      </div>
-      <figure class="photo" aria-hidden="true">
-        <img src="pattern.svg" alt="" loading="lazy" />
-      </figure>
+<!-- HERO -->
+<section class="hero hero--centered" id="top">
+  <div class="container hero__inner text-center">
+    <img src="logo.png" alt="PublicLogic logo" class="hero__logo" width="220" height="220" loading="eager" />
+    <h1 class="h1">Smarter Systems.<br />Stronger Communities.</h1>
+    <p class="lead mt-sm">
+      PublicLogic™ helps Massachusetts communities modernize services with auditable workflows that keep 
+      <em>municipal ownership & control</em>.
+    </p>
+
+    <div class="hero__ctas">
+      <a class="btn btn--primary" href="#survey">Take the PublicLogic Survey</a>
+      <a class="btn btn--secondary" href="notes.html">Field Notes & Public Insights</a>
+      <a class="btn btn--ghost" href="#framework">See Compliance Map</a>
     </div>
+
+    <p class="muted mt-lg">Pilots: HubbCONNECT · SuttonCLERK · SuttonFIX</p>
   </div>
 </section>
 
@@ -101,10 +91,68 @@
     </div>
   </section>
 
-  <!-- other sections unchanged -->
-
-  <section id="survey" class="section">
+  <section class="section" aria-labelledby="proof-title">
     <div class="container">
+      <h2 id="proof-title">Pilots proving it works</h2>
+      <div class="grid grid--3 mt-lg case__cols">
+        <article class="card">
+          <h3>HubbCONNECT — Hubbardston</h3>
+          <p>30% live modules; resident status transparency; town-owned Microsoft 365 records.</p>
+          <p class="note">Built on CivicOptimize + Power Automate; logic by PublicLogic.</p>
+        </article>
+        <article class="card">
+          <h3>SuttonCLERK</h3>
+          <p>Public Records queue with deadlines, exemptions checklist, and exportable logs for <strong>c.66 §10</strong>.</p>
+        </article>
+        <article class="card">
+          <h3>SuttonFIX</h3>
+          <p>Service requests with SLA tiers and public status — fewer calls, clearer expectations.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="framework" class="section">
+    <div class="container">
+      <h2>The PublicLogic Framework</h2>
+      <div class="grid grid--2 mt-lg">
+        <div class="about__copy">
+          <p class="lead"><strong>VAULT™</strong> governs routing, retention, transparency, and auditability across modules.  
+            <strong>ARCHIEVE™</strong> enforces rules and holds based on state retention schedules.  
+            (High-level only; mechanics are proprietary.)</p>
+          <details class="accordion">
+            <summary>How vendors plug in without lock-in</summary>
+            <div class="accordion__content">
+              PublicLogic defines the process and compliance layer; vendors (e.g., Polimorphic, CivicOptimize) provide the UI.  
+              Towns keep IDs, records, and audit logs.
+            </div>
+          </details>
+        </div>
+        <figure class="photo" aria-hidden="true">
+          <img src="pattern.svg" alt="" loading="lazy" />
+          <figcaption class="muted">Town-owned logic + records; vendor UIs at the edge.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="modules" class="section">
+    <div class="container">
+      <h2>Modules you can adopt à la carte</h2>
+      <div class="grid grid--3 mt-lg modules">
+        <div class="module"><h3 class="module__title">CLERK</h3><p>PRR, licensing, vital records. <span class="muted">Aligns: c.66 §10; c.140/c.138</span></p></div>
+        <div class="module"><h3 class="module__title">FIX</h3><p>Resident service requests with SLAs and status transparency. <span class="muted">Aligns: c.40 §§6C–6D</span></p></div>
+        <div class="module"><h3 class="module__title">AGENDA</h3><p>OML agenda/packet builder with timestamped posting log. <span class="muted">Aligns: c.30A</span></p></div>
+        <div class="module"><h3 class="module__title">INSPECT / PERMIT</h3><p>Scheduling, findings, notices. <span class="muted">Aligns: c.143</span></p></div>
+        <div class="module"><h3 class="module__title">FISCAL</h3><p>AP/AR intake, budget artifacts, capital requests.</p></div>
+        <div class="module"><h3 class="module__title">HR / TIME</h3><p>Onboarding, required trainings, time & attendance approvals.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SURVEY SECTION -->
+  <section id="survey" class="section section--highlight">
+    <div class="container text-center">
       <h2>PublicLogic Survey</h2>
       <p class="lead">
         Help us understand how towns across Massachusetts are approaching modernization, automation, and compliance.  
