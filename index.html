@@ -3,16 +3,55 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <title>PublicLogic™ — Smarter Systems. Stronger Communities.</title>
-  <meta name="description" content="PublicLogic™ modernizes municipal services with compliance-first, staff-friendly frameworks that keep town ownership and control." />
+  <meta name="description" content="PublicLogic™ modernizes municipal services with compliance-first, staff-friendly frameworks that preserve town ownership and control." />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#1D4D30" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="PublicLogic™ — Smarter Systems. Stronger Communities.">
+  <meta property="og:description" content="Practitioner-built modernization for MA towns. Compliance-first, vendor-agnostic, staff-friendly.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="logo.png">
+  <meta property="og:url" content="https://publiclogic.org/">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="PublicLogic™ — Smarter Systems. Stronger Communities.">
+  <meta name="twitter:description" content="Compliance-first frameworks that keep town ownership & control.">
+  <meta name="twitter:image" content="logo.png">
+
   <link rel="icon" href="logo.png" type="image/png" />
+  <link rel="preload" href="styles.css" as="style" />
   <link rel="stylesheet" href="styles.css" />
+  <script>document.documentElement.classList.remove('no-js');</script>
+
+  <style>
+    /* Small progressive enhancements that won’t clash with styles.css */
+    :root {
+      color-scheme: light dark;
+    }
+    @media (prefers-color-scheme: dark) {
+      body { background:#0f1512; color:#e8f1ec; }
+      .site-header, .section, .section--highlight, .site-footer { background:transparent; }
+    }
+    .visually-hidden { position:absolute !important; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); clip-path:inset(50%); white-space:nowrap; border:0; padding:0; margin:-1px; }
+    .skip-link { position:absolute; left:-999px; top:auto; width:1px; height:1px; overflow:hidden; }
+    .skip-link:focus { left:16px; top:16px; width:auto; height:auto; padding:.6rem .8rem; background:#fff; color:#111; border-radius:.4rem; z-index:10000; }
+    img[loading="lazy"] { view-transition-name:none; }
+    @media (prefers-reduced-motion: reduce) {
+      * { animation:none !important; transition:none !important; scroll-behavior:auto !important; }
+    }
+    .badge { display:inline-block; font:600 0.75rem/1.2 system-ui, sans-serif; padding:.25rem .5rem; border-radius:999px; background:#e8f5e9; color:#14532d; border:1px solid #c7e8cf; }
+    .muted-legal { font-size:.9rem; opacity:.85; }
+  </style>
 </head>
 
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
 
-<!-- HEADER (logob.png in the corner; acts as Home) -->
+<!-- HEADER -->
 <header class="site-header" role="banner">
   <div class="container site-header__inner">
     <a class="brand brand--corner" href="/" aria-label="PublicLogic home">
@@ -40,34 +79,37 @@
     <h1 class="h1">Smarter Systems. Stronger Communities.</h1>
     <p class="lead">
       Practitioner-built modernization for Massachusetts towns with auditable workflows that keep
-      <em>municipal ownership & control</em>.
+      <em>municipal ownership &amp; control</em>.
     </p>
 
-    <div class="hero__ctas">
+    <div class="hero__ctas" role="group" aria-label="Primary actions">
       <a class="btn btn--primary" href="#survey">Take the PublicLogic Survey</a>
-      <a class="btn btn--secondary" href="notes.html">Field Notes & Public Insights</a>
+      <a class="btn btn--secondary" href="notes.html">Field Notes &amp; Public Insights</a>
       <a class="btn btn--ghost" href="#framework">See Compliance Map</a>
     </div>
 
-    <p class="muted mt-lg">Pilots: HubbCONNECT · SuttonCLERK · SuttonFIX</p>
+    <p class="muted mt-lg" aria-live="polite">Pilots: HubbCONNECT · SuttonCLERK · SuttonFIX</p>
   </div>
 </section>
 
 <main id="main">
+  <!-- VALUE PILLARS -->
   <section id="values" class="section">
     <div class="container">
       <h2>PublicLogic at a glance</h2>
       <div class="grid grid--3 mt-lg">
         <article class="card card--solution">
-          <div class="card__eyebrow">Protect staff & residents</div>
+          <div class="card__eyebrow">Protect staff &amp; residents</div>
           <h3 class="card__title">Compliance-first</h3>
           <p>Built around Massachusetts law — <strong>M.G.L. c.30A</strong> (OML), <strong>c.66 §10</strong> (PRR), <strong>c.140/c.138</strong> (licensing), <strong>c.143</strong> (building), and ADA. Every action is traceable and archivable.</p>
         </article>
+
         <article class="card">
-          <div class="card__eyebrow">Fewer clicks & clearer roles</div>
+          <div class="card__eyebrow">Fewer clicks &amp; clearer roles</div>
           <h3 class="card__title">Staff-friendly</h3>
           <p>Plain-language forms, realistic SLAs, and routing that reflects how departments actually work — not how software wishes they worked.</p>
         </article>
+
         <article class="card">
           <div class="card__eyebrow">Ready for state programs</div>
           <h3 class="card__title">Grant-aligned</h3>
@@ -77,13 +119,14 @@
     </div>
   </section>
 
+  <!-- PROOF -->
   <section class="section" aria-labelledby="proof-title">
     <div class="container">
       <h2 id="proof-title">Pilots proving it works</h2>
       <div class="grid grid--3 mt-lg case__cols">
         <article class="card">
           <h3>HubbCONNECT — Hubbardston</h3>
-          <p>30% live modules; resident status transparency; town-owned Microsoft 365 records.</p>
+          <p>~30% live modules; resident status transparency; town-owned Microsoft 365 records.</p>
           <p class="note">Built on CivicOptimize + Power Automate; logic by PublicLogic.</p>
         </article>
         <article class="card">
@@ -98,73 +141,102 @@
     </div>
   </section>
 
+  <!-- FRAMEWORK -->
   <section id="framework" class="section">
     <div class="container">
       <h2>The PublicLogic Framework</h2>
       <div class="grid grid--2 mt-lg">
         <div class="about__copy">
-          <p class="lead"><strong>VAULT™</strong> governs routing, retention, transparency, and auditability across modules. 
-          <strong>ARCHIEVE™</strong> enforces rules and holds based on state retention schedules. (High-level only; mechanics are proprietary.)</p>
+          <p class="lead">
+            <strong>VAULT™</strong> governs routing, retention, transparency, and auditability across modules.
+            <strong>ARCHIEVE™</strong> enforces rules and holds based on state retention schedules.
+            <span class="badge" aria-label="High-level only">High-level only</span> Mechanics are proprietary.
+          </p>
+
           <details class="accordion">
             <summary>How vendors plug in without lock-in</summary>
             <div class="accordion__content">
-              PublicLogic defines the process and compliance layer; vendors (e.g., Polimorphic, CivicOptimize) provide the UI.
+              PublicLogic defines the process &amp; compliance layer; vendors (e.g., Polimorphic, CivicOptimize) provide the UI.
               Towns keep IDs, records, and audit logs.
             </div>
           </details>
         </div>
+
         <figure class="photo" aria-hidden="true">
           <img src="pattern.svg" alt="" loading="lazy" />
-          <figcaption class="muted">Town-owned logic + records; vendor UIs at the edge.</figcaption>
+          <figcaption class="muted">Town-owned logic &amp; records; vendor UIs at the edge.</figcaption>
         </figure>
       </div>
     </div>
   </section>
 
+  <!-- MODULES -->
   <section id="modules" class="section">
     <div class="container">
       <h2>Modules you can adopt à la carte</h2>
       <div class="grid grid--3 mt-lg modules">
-        <div class="module"><h3 class="module__title">CLERK</h3><p>PRR, licensing, vital records. <span class="muted">Aligns: c.66 §10; c.140/c.138</span></p></div>
-        <div class="module"><h3 class="module__title">FIX</h3><p>Resident service requests with SLAs and status transparency. <span class="muted">Aligns: c.40 §§6C–6D</span></p></div>
-        <div class="module"><h3 class="module__title">AGENDA</h3><p>OML agenda/packet builder with timestamped posting log. <span class="muted">Aligns: c.30A</span></p></div>
-        <div class="module"><h3 class="module__title">INSPECT / PERMIT</h3><p>Scheduling, findings, notices. <span class="muted">Aligns: c.143</span></p></div>
-        <div class="module"><h3 class="module__title">FISCAL</h3><p>AP/AR intake, budget artifacts, capital requests.</p></div>
-        <div class="module"><h3 class="module__title">HR / TIME</h3><p>Onboarding, required trainings, time & attendance approvals.</p></div>
+        <div class="module">
+          <h3 class="module__title">CLERK</h3>
+          <p>PRR, licensing, vital records. <span class="muted">Aligns: c.66 §10; c.140/c.138</span></p>
+        </div>
+        <div class="module">
+          <h3 class="module__title">FIX</h3>
+          <p>Resident service requests with SLAs and status transparency. <span class="muted">Aligns: c.40 §§6C–6D</span></p>
+        </div>
+        <div class="module">
+          <h3 class="module__title">AGENDA</h3>
+          <p>OML agenda/packet builder with timestamped posting log. <span class="muted">Aligns: c.30A</span></p>
+        </div>
+        <div class="module">
+          <h3 class="module__title">INSPECT / PERMIT</h3>
+          <p>Scheduling, findings, notices. <span class="muted">Aligns: c.143</span></p>
+        </div>
+        <div class="module">
+          <h3 class="module__title">FISCAL</h3>
+          <p>AP/AR intake, budget artifacts, capital requests.</p>
+        </div>
+        <div class="module">
+          <h3 class="module__title">HR / TIME</h3>
+          <p>Onboarding, required trainings, time &amp; attendance approvals.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- SURVEY SECTION -->
-  <section id="survey" class="section section--highlight">
+  <!-- SURVEY -->
+  <section id="survey" class="section section--highlight" aria-labelledby="survey-title">
     <div class="container text-center">
-      <h2>PublicLogic Survey</h2>
-      <p class="lead">
-        Help us understand how towns across Massachusetts are approaching modernization, automation, and compliance.
-      </p>
+      <h2 id="survey-title">PublicLogic Survey</h2>
+      <p class="lead">Help us understand how towns across Massachusetts are approaching modernization, automation, and compliance.</p>
       <a class="btn btn--primary" href="#" target="_blank" rel="noopener">Launch the Survey</a>
       <p class="muted mt-lg">We’ll add the live survey link here soon.</p>
     </div>
   </section>
 </main>
 
+<!-- FOOTER -->
 <footer class="site-footer" role="contentinfo">
   <div class="container site-footer__inner">
     <div class="site-footer__cols">
       <div>
-        <ul class="footer-links">
+        <ul class="footer-links" aria-label="Footer links">
           <li><a href="legal/privacy.html">Privacy</a></li>
           <li><a href="legal/accessibility.html">Accessibility</a></li>
           <li><a href="partners.html">Partners</a></li>
           <li><a href="notes.html">Field Notes</a></li>
         </ul>
-        <p class="ip-notice">VAULT™ and ARCHIEVE™ are described at a high level; implementation mechanics are proprietary to PublicLogic™.</p>
+        <p class="ip-notice muted-legal">
+          VAULT™ and ARCHIEVE™ are described at a high level; implementation mechanics are proprietary to PublicLogic™.
+        </p>
       </div>
       <div class="muted">© <span id="year"></span> PublicLogic™ · WCAG 2.1 AA · 201 CMR 17.00 aligned</div>
     </div>
   </div>
 </footer>
 
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
 <script src="app.js" defer></script>
 </body>
 </html>
